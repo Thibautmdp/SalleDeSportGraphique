@@ -4,6 +4,10 @@
  */
 package pfiches;
 
+import ptraitement.Admin;
+import ptraitement.Client;
+import ptraitement.Salle;
+
 /**
  *
  * @author thiba
@@ -11,12 +15,14 @@ package pfiches;
 public class FAcceuil extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FAcceuil.class.getName());
-
+    private Salle salle;
     /**
      * Creates new form FAcceuil
      */
     public FAcceuil() {
         initComponents();
+        salle = new Salle("LE SPORT AU MAX", "sauvegarde_clients.txt");
+        salle.Charger();
     }
 
     /**
@@ -30,12 +36,14 @@ public class FAcceuil extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        TXTMail = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        TXTMDP = new javax.swing.JTextField();
+        bSeConnecter = new javax.swing.JButton();
+        bInscription = new javax.swing.JButton();
         bQuitter = new javax.swing.JButton();
-        jChoixUtilisateur = new javax.swing.JComboBox<>();
-        jNomUtilisateur = new javax.swing.JTextField();
-        MDP = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -52,7 +60,18 @@ public class FAcceuil extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Connexion compte");
+        jLabel3.setText("mail d'utilisateur : ");
+
+        jLabel4.setText("mot de passe : ");
+
+        bSeConnecter.setText("Se connecter");
+        bSeConnecter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bSeConnecterActionPerformed(evt);
+            }
+        });
+
+        bInscription.setText("Inscription");
 
         bQuitter.setText("Quitter");
         bQuitter.addActionListener(new java.awt.event.ActionListener() {
@@ -61,60 +80,57 @@ public class FAcceuil extends javax.swing.JFrame {
             }
         });
 
-        jChoixUtilisateur.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Client", "Admin" }));
-        jChoixUtilisateur.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jChoixUtilisateurActionPerformed(evt);
-            }
-        });
-
-        jNomUtilisateur.setText("Enter votre identifiant");
-
-        MDP.setText("Entrer votre mot de passe");
-        MDP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MDPActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setText("jLabel2");
+        jLabel5.setText("BIENVENUE A SPORT AU MAX");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(bQuitter)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(MDP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jChoixUtilisateur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jNomUtilisateur, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(bQuitter))
-                .addGap(30, 30, 30))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(112, 112, 112)
+                                .addComponent(jLabel5))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(TXTMDP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(TXTMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(90, 90, 90))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(79, 79, 79)
+                        .addComponent(bInscription)
+                        .addGap(18, 18, 18)
+                        .addComponent(bSeConnecter)))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(jLabel1)
+                .addGap(19, 19, 19)
+                .addComponent(jLabel5)
+                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(TXTMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jNomUtilisateur, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addComponent(MDP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addComponent(jChoixUtilisateur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(TXTMDP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bInscription)
+                    .addComponent(bSeConnecter))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(bQuitter)
-                .addGap(24, 24, 24))
+                .addGap(50, 50, 50))
         );
 
         pack();
@@ -122,15 +138,36 @@ public class FAcceuil extends javax.swing.JFrame {
 
     private void bQuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bQuitterActionPerformed
         // TODO add your handling code here:
+        System.exit(0);
     }//GEN-LAST:event_bQuitterActionPerformed
 
-    private void MDPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MDPActionPerformed
+    private void bSeConnecterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSeConnecterActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_MDPActionPerformed
+         String email = TXTMail.getText();
+        String mdp = TXTMDP.getText();    
+    
+        if (email.isEmpty() || mdp.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Veuillez remplir tous les champs !");
+            return;
+        }
+        Object utilisateur = salle.SeConnecter(email, mdp);
 
-    private void jChoixUtilisateurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jChoixUtilisateurActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jChoixUtilisateurActionPerformed
+        if (utilisateur != null) {
+            if (utilisateur instanceof Admin) {
+                //FAdmin pageAdmin = new FAdmin(salle);
+                //pageAdmin.setVisible(true);
+                this.dispose(); 
+           } else if (utilisateur instanceof Client) {
+            // Vers la page Client
+            //FClient pageClient = new FClient(salle, (Client) utilisateur);
+            //pageClient.setVisible(true);
+            this.dispose();
+            }
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "Email ou mot de passe incorrect", "Erreur", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }    
+    
+    }//GEN-LAST:event_bSeConnecterActionPerformed
 
     /**
      * @param args the command line arguments
@@ -158,12 +195,14 @@ public class FAcceuil extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField MDP;
+    private javax.swing.JTextField TXTMDP;
+    private javax.swing.JTextField TXTMail;
+    private javax.swing.JButton bInscription;
     private javax.swing.JButton bQuitter;
-    private javax.swing.JComboBox<String> jChoixUtilisateur;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField jNomUtilisateur;
+    private javax.swing.JButton bSeConnecter;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
