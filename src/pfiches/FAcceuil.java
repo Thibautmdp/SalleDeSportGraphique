@@ -144,28 +144,25 @@ public class FAcceuil extends javax.swing.JFrame {
     private void bSeConnecterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSeConnecterActionPerformed
         // TODO add your handling code here:
          String email = TXTMail.getText();
-        String mdp = TXTMDP.getText();    
-    
+        String mdp = TXTMDP.getText();
         if (email.isEmpty() || mdp.isEmpty()) {
             javax.swing.JOptionPane.showMessageDialog(this, "Veuillez remplir tous les champs !");
             return;
         }
         Object utilisateur = salle.SeConnecter(email, mdp);
-
         if (utilisateur != null) {
             if (utilisateur instanceof Admin) {
-                //FAdmin pageAdmin = new FAdmin(salle);
-                //pageAdmin.setVisible(true);
+                FAdmin pageAdmin = new FAdmin(salle);
+                pageAdmin.setVisible(true);
                 this.dispose(); 
            } else if (utilisateur instanceof Client) {
-            // Vers la page Client
-            //FClient pageClient = new FClient(salle, (Client) utilisateur);
-            //pageClient.setVisible(true);
+                FClient pageClient = new FClient(salle, (Client) utilisateur);
+                pageClient.setVisible(true);
             this.dispose();
             }
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "Email ou mot de passe incorrect", "Erreur", javax.swing.JOptionPane.ERROR_MESSAGE);
-        }    
+        }
     
     }//GEN-LAST:event_bSeConnecterActionPerformed
 
