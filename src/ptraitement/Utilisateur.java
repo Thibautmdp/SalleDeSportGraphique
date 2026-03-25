@@ -4,7 +4,6 @@
  */
 package ptraitement;
 
-import salledesport_projet2.*;
 
 /**
  *

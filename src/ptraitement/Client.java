@@ -4,7 +4,7 @@
  */
 package ptraitement;
 
-import salledesport_projet2.*;
+
 import java.util.ArrayList;
 import java.util.List;
 

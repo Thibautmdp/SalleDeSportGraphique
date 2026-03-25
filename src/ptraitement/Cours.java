@@ -4,7 +4,6 @@
  */
 package ptraitement;
 
-import salledesport_projet2.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
