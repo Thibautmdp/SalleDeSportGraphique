@@ -62,7 +62,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                               <EmptySpace pref="16" max="32767" attributes="0"/>
-                              <Component id="jRadioButton1" min="-2" pref="98" max="-2" attributes="0"/>
+                              <Component id="BMensuel" min="-2" pref="98" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jButton2" min="-2" max="-2" attributes="0"/>
@@ -75,8 +75,8 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jRadioButton2" alignment="1" min="-2" pref="98" max="-2" attributes="0"/>
-                          <Component id="jRadioButton3" alignment="1" min="-2" pref="98" max="-2" attributes="0"/>
+                          <Component id="BTrimestiel" alignment="1" min="-2" pref="98" max="-2" attributes="0"/>
+                          <Component id="BAnnuel" alignment="1" min="-2" pref="98" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -95,7 +95,7 @@
                   <Group type="103" alignment="1" groupAlignment="3" attributes="0">
                       <Component id="TXTNom" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jRadioButton1" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
+                      <Component id="BMensuel" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -103,14 +103,14 @@
                   <Component id="jLabel3" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Group type="103" alignment="1" groupAlignment="3" attributes="0">
                       <Component id="TXTPrénom" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jRadioButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="BTrimestiel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                       <Component id="TXTMail" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jRadioButton3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="BAnnuel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -184,17 +184,20 @@
         <Property name="text" type="java.lang.String" value="T&#xe9;l&#xe9;phone :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="jRadioButton1">
+    <Component class="javax.swing.JRadioButton" name="BMensuel">
       <Properties>
         <Property name="text" type="java.lang.String" value="mensuel"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BMensuelActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="text" type="java.lang.String" value="Inscription : "/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="jRadioButton2">
+    <Component class="javax.swing.JRadioButton" name="BTrimestiel">
       <Properties>
         <Property name="text" type="java.lang.String" value="trimestriel"/>
       </Properties>
@@ -204,7 +207,7 @@
         <Property name="text" type="java.lang.String" value="Nom : "/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="jRadioButton3">
+    <Component class="javax.swing.JRadioButton" name="BAnnuel">
       <Properties>
         <Property name="text" type="java.lang.String" value="annuel"/>
       </Properties>

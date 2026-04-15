@@ -44,11 +44,11 @@ public class FInscription extends javax.swing.JDialog {
         jLabel5 = new javax.swing.JLabel();
         TXTTéléphone = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        BMensuel = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        BTrimestiel = new javax.swing.JRadioButton();
         jLabel2 = new javax.swing.JLabel();
-        jRadioButton3 = new javax.swing.JRadioButton();
+        BAnnuel = new javax.swing.JRadioButton();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -82,15 +82,20 @@ public class FInscription extends javax.swing.JDialog {
 
         jLabel6.setText("Téléphone :");
 
-        jRadioButton1.setText("mensuel");
+        BMensuel.setText("mensuel");
+        BMensuel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BMensuelActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Inscription : ");
 
-        jRadioButton2.setText("trimestriel");
+        BTrimestiel.setText("trimestriel");
 
         jLabel2.setText("Nom : ");
 
-        jRadioButton3.setText("annuel");
+        BAnnuel.setText("annuel");
 
         jLabel3.setText("Prénom :");
 
@@ -130,7 +135,7 @@ public class FInscription extends javax.swing.JDialog {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
-                                .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(BMensuel, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jButton2)
                                 .addGap(18, 18, 18)
@@ -139,8 +144,8 @@ public class FInscription extends javax.swing.JDialog {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRadioButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jRadioButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(BTrimestiel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BAnnuel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -154,18 +159,18 @@ public class FInscription extends javax.swing.JDialog {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(TXTNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel7)
-                        .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(BMensuel, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel3)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(TXTPrénom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jRadioButton2)))
+                        .addComponent(BTrimestiel)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(TXTMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jRadioButton3))
+                        .addComponent(BAnnuel))
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,7 +197,27 @@ public class FInscription extends javax.swing.JDialog {
         String Nom = TXTNom.getText();
         String Prenom = TXTPrénom.getText();
         String Tel = TXTTéléphone.getText();
-        ((FAcce))
+        
+        String abonnement = "";
+        if (BMensuel.isSelected()) abonnement = "Mensuel";
+        else if (BTrimestiel.isSelected()) abonnement = "Trimestriel";
+        else if (BAnnuel.isSelected()) abonnement = "Annuel";
+
+        if (Nom.isEmpty() || email.isEmpty() || abonnement.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Veuillez remplir les informations et choisir un abonnement.");
+            return;
+        }
+
+    try {
+        
+        salle.Creer_Compte(Nom, Prenom, email, mdp, Tel, abonnement);
+        
+        javax.swing.JOptionPane.showMessageDialog(this, "Inscription réussie !");
+        this.dispose();
+    } catch (Exception e) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Erreur lors de l'inscription : " + e.getMessage());
+    }
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void TXTTéléphoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TXTTéléphoneActionPerformed
@@ -202,6 +227,10 @@ public class FInscription extends javax.swing.JDialog {
     private void TXTNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TXTNomActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TXTNomActionPerformed
+
+    private void BMensuelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BMensuelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BMensuelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -241,6 +270,9 @@ public class FInscription extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton BAnnuel;
+    private javax.swing.JRadioButton BMensuel;
+    private javax.swing.JRadioButton BTrimestiel;
     private javax.swing.JTextField TXTMDP;
     private javax.swing.JTextField TXTMail;
     private javax.swing.JTextField TXTNom;
@@ -255,8 +287,5 @@ public class FInscription extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
     // End of variables declaration//GEN-END:variables
 }

@@ -115,7 +115,7 @@ public class FConnection extends javax.swing.JDialog {
     private void bRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRetourActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        parent.setVisible(true);
+        
     }//GEN-LAST:event_bRetourActionPerformed
 
     private void bSeConnecterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSeConnecterActionPerformed
