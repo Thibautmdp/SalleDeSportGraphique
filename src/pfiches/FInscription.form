@@ -160,6 +160,9 @@
     <Component class="javax.swing.JTextField" name="TXTPr&#xe9;nom">
     </Component>
     <Component class="javax.swing.JTextField" name="TXTNom">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TXTNomActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>

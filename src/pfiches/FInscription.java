@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package pfiches;
+import ptraitement.*;
 
 /**
  *
@@ -11,14 +12,17 @@ package pfiches;
 public class FInscription extends javax.swing.JDialog {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FInscription.class.getName());
-
+    private Salle salle;
     /**
      * Creates new form FInscription
      */
-    public FInscription(java.awt.Frame parent, boolean modal) {
+    public FInscription(java.awt.Frame parent, boolean modal, Salle salle) {
         super(parent, modal);
         initComponents();
+        this.salle = salle;
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -57,6 +61,12 @@ public class FInscription extends javax.swing.JDialog {
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
+            }
+        });
+
+        TXTNom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TXTNomActionPerformed(evt);
             }
         });
 
@@ -177,11 +187,21 @@ public class FInscription extends javax.swing.JDialog {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        String email = TXTMail.getText();
+        String mdp = TXTMDP.getText();
+        String Nom = TXTNom.getText();
+        String Prenom = TXTPrénom.getText();
+        String Tel = TXTTéléphone.getText();
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void TXTTéléphoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TXTTéléphoneActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TXTTéléphoneActionPerformed
+
+    private void TXTNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TXTNomActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TXTNomActionPerformed
 
     /**
      * @param args the command line arguments

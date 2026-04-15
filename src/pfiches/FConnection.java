@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package pfiches;
+import ptraitement.*;
+
 
 /**
  *
@@ -12,6 +14,7 @@ public class FConnection extends javax.swing.JDialog {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FConnection.class.getName());
     private ptraitement.Salle salle;
+
     /**
      * Creates new form FConnection
      */
@@ -30,7 +33,7 @@ public class FConnection extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        bQuitter = new javax.swing.JButton();
+        bRetour = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         TXTMail = new javax.swing.JTextField();
@@ -40,10 +43,10 @@ public class FConnection extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        bQuitter.setText("Quitter");
-        bQuitter.addActionListener(new java.awt.event.ActionListener() {
+        bRetour.setText("Retour");
+        bRetour.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bQuitterActionPerformed(evt);
+                bRetourActionPerformed(evt);
             }
         });
 
@@ -78,12 +81,12 @@ public class FConnection extends javax.swing.JDialog {
                                     .addComponent(jLabel4))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(TXTMDP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(TXTMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(TXTMail)
+                                    .addComponent(TXTMDP)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(bSeConnecter)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
-                                .addComponent(bQuitter)))))
+                                .addComponent(bRetour)))))
                 .addGap(61, 61, 61))
         );
         layout.setVerticalGroup(
@@ -101,7 +104,7 @@ public class FConnection extends javax.swing.JDialog {
                     .addComponent(TXTMDP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bQuitter)
+                    .addComponent(bRetour)
                     .addComponent(bSeConnecter))
                 .addGap(68, 68, 68))
         );
@@ -109,10 +112,11 @@ public class FConnection extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bQuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bQuitterActionPerformed
+    private void bRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRetourActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_bQuitterActionPerformed
+        this.setVisible(false);
+        parent.setVisible(true);
+    }//GEN-LAST:event_bRetourActionPerformed
 
     private void bSeConnecterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSeConnecterActionPerformed
         // TODO add your handling code here:
@@ -127,7 +131,7 @@ public class FConnection extends javax.swing.JDialog {
             if (utilisateur instanceof Admin) {
                 FAdmin pageAdmin = new FAdmin(salle);
                 pageAdmin.setVisible(true);
-                this.dispose();
+                this.setVisible(false);
             } else if (utilisateur instanceof Client) {
                 FClient pageClient = new FClient(salle, (Client) utilisateur);
                 pageClient.setVisible(true);
@@ -179,7 +183,7 @@ public class FConnection extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField TXTMDP;
     private javax.swing.JTextField TXTMail;
-    private javax.swing.JButton bQuitter;
+    private javax.swing.JButton bRetour;
     private javax.swing.JButton bSeConnecter;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

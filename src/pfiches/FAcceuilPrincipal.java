@@ -4,6 +4,8 @@
  */
 package pfiches;
 import javax.swing.JOptionPane;
+import ptraitement.*;
+
 /**
  *
  * @author maxen
@@ -13,14 +15,22 @@ public class FAcceuilPrincipal extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FAcceuilPrincipal.class.getName());
     private FConnection fichFConnection;
     private FInscription fichFInscription;
+    private Salle salle;
     
     /**
      * Creates new form FAcceuilPrincipal
      */
     public FAcceuilPrincipal() {
         initComponents();
+        salle = new Salle("LE SPORT AU MAX", "sauvegarde_clients.txt");
+        salle.Charger();
         fichFConnection = new FConnection(this,false);
-        fichFInscription = new FInscription(this, false);
+        fichFInscription = new FInscription(this, false,salle);
+        
+    }
+    
+    public Salle getSalle(){
+        return this.salle;
     }
 
     /**

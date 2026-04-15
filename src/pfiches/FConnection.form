@@ -39,14 +39,14 @@
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="TXTMDP" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="TXTMail" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="TXTMail" max="32767" attributes="0"/>
+                                  <Component id="TXTMDP" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="bSeConnecter" min="-2" max="-2" attributes="0"/>
                               <EmptySpace pref="68" max="32767" attributes="0"/>
-                              <Component id="bQuitter" min="-2" max="-2" attributes="0"/>
+                              <Component id="bRetour" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -72,7 +72,7 @@
               </Group>
               <EmptySpace pref="75" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="bQuitter" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bRetour" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="bSeConnecter" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
@@ -81,12 +81,12 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="bQuitter">
+    <Component class="javax.swing.JButton" name="bRetour">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Quitter"/>
+        <Property name="text" type="java.lang.String" value="Retour"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bQuitterActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bRetourActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
