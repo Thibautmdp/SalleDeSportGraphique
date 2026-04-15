@@ -24,7 +24,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace pref="95" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
@@ -38,6 +38,32 @@
                   </Group>
               </Group>
           </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="bHautDuCorps" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="bYoga" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="bBasDuCorps" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Component id="bCorpsComplet" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="bPillate" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                      <Component id="bGymnastique" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace min="0" pref="21" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -48,7 +74,19 @@
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="216" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="bYoga" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bPillate" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bGymnastique" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="bHautDuCorps" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bBasDuCorps" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bCorpsComplet" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="129" max="32767" attributes="0"/>
               <Component id="bRetour" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
           </Group>
@@ -76,6 +114,40 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="bYoga">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Yoga"/>
+        <Property name="actionCommand" type="java.lang.String" value="Yoga"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bYogaActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="bPillate">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Pilate"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="bGymnastique">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Gymnastique"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="bHautDuCorps">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Haut du Corps"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="bBasDuCorps">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Bas Du Corps"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="bCorpsComplet">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Corps Complet"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

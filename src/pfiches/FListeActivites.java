@@ -32,6 +32,12 @@ public class FListeActivites extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         bRetour = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        bYoga = new javax.swing.JButton();
+        bPillate = new javax.swing.JButton();
+        bGymnastique = new javax.swing.JButton();
+        bHautDuCorps = new javax.swing.JButton();
+        bBasDuCorps = new javax.swing.JButton();
+        bCorpsComplet = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -51,12 +57,30 @@ public class FListeActivites extends javax.swing.JDialog {
             }
         });
 
+        bYoga.setText("Yoga");
+        bYoga.setActionCommand("Yoga");
+        bYoga.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bYogaActionPerformed(evt);
+            }
+        });
+
+        bPillate.setText("Pilate");
+
+        bGymnastique.setText("Gymnastique");
+
+        bHautDuCorps.setText("Haut du Corps");
+
+        bBasDuCorps.setText("Bas Du Corps");
+
+        bCorpsComplet.setText("Corps Complet");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(95, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -66,6 +90,25 @@ public class FListeActivites extends javax.swing.JDialog {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(bRetour)
                         .addGap(23, 23, 23))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(bHautDuCorps)
+                        .addGap(30, 30, 30))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(bYoga)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(bBasDuCorps)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bCorpsComplet))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(bPillate)
+                        .addGap(46, 46, 46)
+                        .addComponent(bGymnastique)))
+                .addGap(0, 21, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -74,7 +117,17 @@ public class FListeActivites extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 216, Short.MAX_VALUE)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bYoga)
+                    .addComponent(bPillate)
+                    .addComponent(bGymnastique))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bHautDuCorps)
+                    .addComponent(bBasDuCorps)
+                    .addComponent(bCorpsComplet))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
                 .addComponent(bRetour)
                 .addGap(15, 15, 15))
         );
@@ -89,6 +142,10 @@ public class FListeActivites extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void bYogaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bYogaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bYogaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -128,7 +185,13 @@ public class FListeActivites extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bBasDuCorps;
+    private javax.swing.JButton bCorpsComplet;
+    private javax.swing.JButton bGymnastique;
+    private javax.swing.JButton bHautDuCorps;
+    private javax.swing.JButton bPillate;
     private javax.swing.JButton bRetour;
+    private javax.swing.JButton bYoga;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
