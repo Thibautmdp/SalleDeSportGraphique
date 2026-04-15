@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package pfiches;
 
@@ -8,14 +8,15 @@ package pfiches;
  *
  * @author maxen
  */
-public class FInscription extends javax.swing.JFrame {
+public class FInscription extends javax.swing.JDialog {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FInscription.class.getName());
 
     /**
      * Creates new form FInscription
      */
-    public FInscription() {
+    public FInscription(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
     }
 
@@ -28,64 +29,29 @@ public class FInscription extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        buttonGroup2 = new javax.swing.ButtonGroup();
-        buttonGroup3 = new javax.swing.ButtonGroup();
-        buttonGroup4 = new javax.swing.ButtonGroup();
-        buttonGroup5 = new javax.swing.ButtonGroup();
-        buttonGroup6 = new javax.swing.ButtonGroup();
-        buttonGroup7 = new javax.swing.ButtonGroup();
-        buttonGroup8 = new javax.swing.ButtonGroup();
-        buttonGroup9 = new javax.swing.ButtonGroup();
-        buttonGroup10 = new javax.swing.ButtonGroup();
-        buttonGroup11 = new javax.swing.ButtonGroup();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         TXTMDP = new javax.swing.JTextField();
         TXTMail = new javax.swing.JTextField();
         TXTPrénom = new javax.swing.JTextField();
         TXTNom = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         TXTTéléphone = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
+        jLabel1 = new javax.swing.JLabel();
         jRadioButton2 = new javax.swing.JRadioButton();
+        jLabel2 = new javax.swing.JLabel();
         jRadioButton3 = new javax.swing.JRadioButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel5.setText("Mot de passe : ");
-
-        jLabel6.setText("Téléphone :");
-
-        jLabel1.setText("Inscription : ");
-
-        jLabel2.setText("Nom : ");
-
-        jLabel3.setText("Prénom :");
-
-        jLabel4.setText("Mail : ");
-
-        jLabel7.setText("Abonnement :");
-
-        TXTTéléphone.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TXTTéléphoneActionPerformed(evt);
-            }
-        });
-
-        jRadioButton1.setText("mensuel");
-
-        jRadioButton2.setText("trimestriel");
-
-        jRadioButton3.setText("annuel");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jButton1.setText("Retour");
+
+        jLabel4.setText("Mail : ");
 
         jButton2.setText("Inscription");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -93,6 +59,30 @@ public class FInscription extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
+
+        jLabel7.setText("Abonnement :");
+
+        jLabel5.setText("Mot de passe : ");
+
+        TXTTéléphone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TXTTéléphoneActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("Téléphone :");
+
+        jRadioButton1.setText("mensuel");
+
+        jLabel1.setText("Inscription : ");
+
+        jRadioButton2.setText("trimestriel");
+
+        jLabel2.setText("Nom : ");
+
+        jRadioButton3.setText("annuel");
+
+        jLabel3.setText("Prénom :");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -185,13 +175,13 @@ public class FInscription extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TXTTéléphoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TXTTéléphoneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TXTTéléphoneActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void TXTTéléphoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TXTTéléphoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TXTTéléphoneActionPerformed
 
     /**
      * @param args the command line arguments
@@ -214,8 +204,20 @@ public class FInscription extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new FInscription().setVisible(true));
+        /* Create and display the dialog */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                FInscription dialog = new FInscription(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
+            }
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -224,17 +226,6 @@ public class FInscription extends javax.swing.JFrame {
     private javax.swing.JTextField TXTNom;
     private javax.swing.JTextField TXTPrénom;
     private javax.swing.JTextField TXTTéléphone;
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.ButtonGroup buttonGroup10;
-    private javax.swing.ButtonGroup buttonGroup11;
-    private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.ButtonGroup buttonGroup3;
-    private javax.swing.ButtonGroup buttonGroup4;
-    private javax.swing.ButtonGroup buttonGroup5;
-    private javax.swing.ButtonGroup buttonGroup6;
-    private javax.swing.ButtonGroup buttonGroup7;
-    private javax.swing.ButtonGroup buttonGroup8;
-    private javax.swing.ButtonGroup buttonGroup9;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;

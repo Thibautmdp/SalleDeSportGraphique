@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package pfiches;
-
+import javax.swing.JOptionPane;
 /**
  *
  * @author maxen
@@ -11,12 +11,16 @@ package pfiches;
 public class FAcceuilPrincipal extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FAcceuilPrincipal.class.getName());
-
+    private FConnection fichFConnection;
+    private FInscription fichFInscription;
+    
     /**
      * Creates new form FAcceuilPrincipal
      */
     public FAcceuilPrincipal() {
         initComponents();
+        fichFConnection = new FConnection(this,false);
+        fichFInscription = new FInscription(this, false);
     }
 
     /**
@@ -48,6 +52,11 @@ public class FAcceuilPrincipal extends javax.swing.JFrame {
         });
 
         BNon.setText("Non");
+        BNon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BNonActionPerformed(evt);
+            }
+        });
 
         bQuitter.setText("Quitter");
         bQuitter.addActionListener(new java.awt.event.ActionListener() {
@@ -99,13 +108,31 @@ public class FAcceuilPrincipal extends javax.swing.JFrame {
     private void BOuiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BOuiActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        fichAcceuil
+        fichFConnection.setVisible(true);
+        
+/*
+        ptraitement.Salle maSalle = new ptraitement.Salle("LE SPORT AU MAX", "sauvegarde_clients.txt");
+    maSalle.Charger();
+
+    // 2. On crée le JDialog en lui passant 'this' (le parent) et la salle
+    FConnection dialConnexion = new FConnection(this, true, maSalle);
+    
+    // 3. On centre et on affiche
+    dialConnexion.setLocationRelativeTo(null);
+    dialConnexion.setVisible(true);
+        */
     }//GEN-LAST:event_BOuiActionPerformed
 
     private void bQuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bQuitterActionPerformed
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_bQuitterActionPerformed
+
+    private void BNonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BNonActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        fichFInscription.setVisible(true);
+    }//GEN-LAST:event_BNonActionPerformed
 
     /**
      * @param args the command line arguments

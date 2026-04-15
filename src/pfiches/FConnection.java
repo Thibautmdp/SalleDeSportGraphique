@@ -1,28 +1,24 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package pfiches;
 
-import ptraitement.Admin;
-import ptraitement.Client;
-import ptraitement.Salle;
-
 /**
  *
- * @author thiba
+ * @author maxen
  */
-public class FAcceuil extends javax.swing.JFrame {
+public class FConnection extends javax.swing.JDialog {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FAcceuil.class.getName());
-    private Salle salle;
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FConnection.class.getName());
+    private ptraitement.Salle salle;
     /**
-     * Creates new form FAcceuil
+     * Creates new form FConnection
      */
-    public FAcceuil() {
+    public FConnection(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
-        salle = new Salle("LE SPORT AU MAX", "sauvegarde_clients.txt");
-        salle.Charger();
+        this.salle = salle;
     }
 
     /**
@@ -34,30 +30,24 @@ public class FAcceuil extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        bQuitter = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         TXTMail = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         TXTMDP = new javax.swing.JTextField();
         bSeConnecter = new javax.swing.JButton();
-        bQuitter = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        bQuitter.setText("Quitter");
+        bQuitter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bQuitterActionPerformed(evt);
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        });
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jLabel5.setText("BIENVENUE A SPORT AU MAX");
 
         jLabel3.setText("mail d'utilisateur : ");
 
@@ -69,15 +59,6 @@ public class FAcceuil extends javax.swing.JFrame {
                 bSeConnecterActionPerformed(evt);
             }
         });
-
-        bQuitter.setText("Quitter");
-        bQuitter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bQuitterActionPerformed(evt);
-            }
-        });
-
-        jLabel5.setText("BIENVENUE A SPORT AU MAX");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -101,7 +82,7 @@ public class FAcceuil extends javax.swing.JFrame {
                                     .addComponent(TXTMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(bSeConnecter)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                                 .addComponent(bQuitter)))))
                 .addGap(61, 61, 61))
         );
@@ -135,7 +116,7 @@ public class FAcceuil extends javax.swing.JFrame {
 
     private void bSeConnecterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSeConnecterActionPerformed
         // TODO add your handling code here:
-         String email = TXTMail.getText();
+        String email = TXTMail.getText();
         String mdp = TXTMDP.getText();
         if (email.isEmpty() || mdp.isEmpty()) {
             javax.swing.JOptionPane.showMessageDialog(this, "Veuillez remplir tous les champs !");
@@ -146,16 +127,16 @@ public class FAcceuil extends javax.swing.JFrame {
             if (utilisateur instanceof Admin) {
                 FAdmin pageAdmin = new FAdmin(salle);
                 pageAdmin.setVisible(true);
-                this.dispose(); 
-           } else if (utilisateur instanceof Client) {
+                this.dispose();
+            } else if (utilisateur instanceof Client) {
                 FClient pageClient = new FClient(salle, (Client) utilisateur);
                 pageClient.setVisible(true);
-            this.dispose();
+                this.dispose();
             }
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "Email ou mot de passe incorrect", "Erreur", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
-    
+
     }//GEN-LAST:event_bSeConnecterActionPerformed
 
     /**
@@ -179,8 +160,20 @@ public class FAcceuil extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new FAcceuil().setVisible(true));
+        /* Create and display the dialog */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                FConnection dialog = new FConnection(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
+            }
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -191,7 +184,5 @@ public class FAcceuil extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
