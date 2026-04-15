@@ -192,7 +192,7 @@ public class FInscription extends javax.swing.JDialog {
         String Nom = TXTNom.getText();
         String Prenom = TXTPrénom.getText();
         String Tel = TXTTéléphone.getText();
-        
+        ((FAcce))
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void TXTTéléphoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TXTTéléphoneActionPerformed
