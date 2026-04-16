@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package pfiches;
+import javax.swing.JOptionPane;
 import ptraitement.*;
 
 
@@ -18,7 +19,7 @@ public class FConnection extends javax.swing.JDialog {
     /**
      * Creates new form FConnection
      */
-    public FConnection(java.awt.Frame parent, boolean modal) {
+    public FConnection(java.awt.Frame parent, boolean modal, Salle salle) {
         super(parent, modal);
         initComponents();
         this.salle = salle;
@@ -115,30 +116,33 @@ public class FConnection extends javax.swing.JDialog {
     private void bRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRetourActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        
+        this.getParent().setVisible(true);
     }//GEN-LAST:event_bRetourActionPerformed
 
     private void bSeConnecterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSeConnecterActionPerformed
         // TODO add your handling code here:
         String email = TXTMail.getText();
         String mdp = TXTMDP.getText();
-        if (email.isEmpty() || mdp.isEmpty()) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Veuillez remplir tous les champs !");
-            return;
-        }
-        Object utilisateur = salle.SeConnecter(email, mdp);
-        if (utilisateur != null) {
-            if (utilisateur instanceof Admin) {
-                FAdmin pageAdmin = new FAdmin(salle);
-                pageAdmin.setVisible(true);
-                this.setVisible(false);
-            } else if (utilisateur instanceof Client) {
-                FClient pageClient = new FClient(salle, (Client) utilisateur);
-                pageClient.setVisible(true);
-                this.dispose();
-            }
+        //verif de l'admin 
+        if (email.equals("Max.admin@admin.fr") && mdp.equals("mdpadmin")){
+            JOptionPane.showMessageDialog(this, "Connexion Admin réussie !");
+            this.setVisible(false);
+            new FAdmin(salle).setVisible(true); // on ouvre la page admin
         } else {
-            javax.swing.JOptionPane.showMessageDialog(this, "Email ou mot de passe incorrect", "Erreur", javax.swing.JOptionPane.ERROR_MESSAGE);
+            Client clientTrouve = null;
+            for(Client c : salle.getListeDesClients()){
+                if( c.getEmail().equals(email) && c.getMdp().equals(mdp)){
+                    clientTrouve = c;
+                    break;
+                }
+            }
+            if (clientTrouve != null) {
+                JOptionPane.showMessageDialog(this, "Bienvenue " + clientTrouve.getPrenom());
+                this.setVisible(false);
+                new FClient().setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(this, "Email ou mot de passe incorrect.");
+            }
         }
 
     }//GEN-LAST:event_bSeConnecterActionPerformed
@@ -168,7 +172,7 @@ public class FConnection extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                FConnection dialog = new FConnection(new javax.swing.JFrame(), true);
+                FConnection dialog = new FConnection(new javax.swing.JFrame(), true, null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

@@ -29,31 +29,62 @@ public class FAdmin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        BConsulter_La_Liste_Des_Clients = new javax.swing.JButton();
+        BGestion_Des_Cours = new javax.swing.JButton();
+        BStatistique = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("tu es admin");
+        BConsulter_La_Liste_Des_Clients.setText("Consulter la liste des Clients");
+        BConsulter_La_Liste_Des_Clients.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BConsulter_La_Liste_Des_ClientsActionPerformed(evt);
+            }
+        });
+
+        BGestion_Des_Cours.setText("Gestion des cours ");
+        BGestion_Des_Cours.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BGestion_Des_CoursActionPerformed(evt);
+            }
+        });
+
+        BStatistique.setText("Statistique");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(149, 149, 149)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(167, Short.MAX_VALUE))
+                .addGap(61, 61, 61)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BStatistique)
+                    .addComponent(BGestion_Des_Cours)
+                    .addComponent(BConsulter_La_Liste_Des_Clients))
+                .addContainerGap(416, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(90, 90, 90)
-                .addComponent(jLabel1)
-                .addContainerGap(194, Short.MAX_VALUE))
+                .addGap(122, 122, 122)
+                .addComponent(BConsulter_La_Liste_Des_Clients)
+                .addGap(18, 18, 18)
+                .addComponent(BGestion_Des_Cours)
+                .addGap(40, 40, 40)
+                .addComponent(BStatistique)
+                .addContainerGap(183, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BConsulter_La_Liste_Des_ClientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BConsulter_La_Liste_Des_ClientsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BConsulter_La_Liste_Des_ClientsActionPerformed
+
+    private void BGestion_Des_CoursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BGestion_Des_CoursActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BGestion_Des_CoursActionPerformed
 
     /**
      * @param args the command line arguments
@@ -81,6 +112,8 @@ public class FAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton BConsulter_La_Liste_Des_Clients;
+    private javax.swing.JButton BGestion_Des_Cours;
+    private javax.swing.JButton BStatistique;
     // End of variables declaration//GEN-END:variables
 }

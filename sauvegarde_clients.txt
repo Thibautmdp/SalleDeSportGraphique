@@ -1,1 +1,2 @@
 CL-1 ; Thibourino ; bourino ; tibtest2@gmail.com ; 1234 ; 0000 ; 1 ; true
+C2 ; Poulard ; Maxence ; maxence.poulard@epfedu.fr ; Vie5cgmf! ; 0651012741 ; Mensuel ; true

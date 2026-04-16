@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package pfiches;
+import javax.swing.JOptionPane;
 import ptraitement.*;
 
 /**
@@ -207,16 +208,16 @@ public class FInscription extends javax.swing.JDialog {
             javax.swing.JOptionPane.showMessageDialog(this, "Veuillez remplir les informations et choisir un abonnement.");
             return;
         }
-
-    try {
+        String numClient = "C" + (salle.getListeDesClients().size() + 1); // Numéro de client 
         
-        salle.Creer_Compte(Nom, Prenom, email, mdp, Tel, abonnement);
+        Client NouveauClient = new Client(numClient, Nom, Prenom, email, mdp, Tel, abonnement);
+        salle.getListeDesClients().add(NouveauClient);
         
-        javax.swing.JOptionPane.showMessageDialog(this, "Inscription réussie !");
-        this.dispose();
-    } catch (Exception e) {
-        javax.swing.JOptionPane.showMessageDialog(this, "Erreur lors de l'inscription : " + e.getMessage());
-    }
+        salle.Sauvegarder();
+        
+        JOptionPane.showMessageDialog(this, "Inscription réussie! Voici votre numéro de client : " + numClient);
+        this.setVisible(false);
+        this.getParent().setVisible(true);
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -257,7 +258,7 @@ public class FInscription extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                FInscription dialog = new FInscription(new javax.swing.JFrame(), true);
+                FInscription dialog = new FInscription(new javax.swing.JFrame(), true,null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

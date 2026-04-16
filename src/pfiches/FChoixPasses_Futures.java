@@ -113,7 +113,7 @@ public class FChoixPasses_Futures extends javax.swing.JDialog {
     private void bRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRetourActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        
+        this.getParent().setVisible(true);
     }//GEN-LAST:event_bRetourActionPerformed
 
     /**

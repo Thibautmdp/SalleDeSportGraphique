@@ -24,8 +24,8 @@ public class FAcceuilPrincipal extends javax.swing.JFrame {
         initComponents();
         salle = new Salle("LE SPORT AU MAX", "sauvegarde_clients.txt");
         salle.Charger();
-        fichFConnection = new FConnection(this,false);
-        fichFInscription = new FInscription(this, false,salle);
+        fichFConnection = new FConnection(this, false, salle);
+        fichFInscription = new FInscription(this, false, salle);
         
     }
     

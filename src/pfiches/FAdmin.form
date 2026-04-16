@@ -24,26 +24,50 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="149" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" pref="84" max="-2" attributes="0"/>
-              <EmptySpace pref="167" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="BStatistique" min="-2" max="-2" attributes="0"/>
+                  <Component id="BGestion_Des_Cours" min="-2" max="-2" attributes="0"/>
+                  <Component id="BConsulter_La_Liste_Des_Clients" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="416" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="194" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
+              <Component id="BConsulter_La_Liste_Des_Clients" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="BGestion_Des_Cours" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+              <Component id="BStatistique" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="183" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JButton" name="BConsulter_La_Liste_Des_Clients">
       <Properties>
-        <Property name="text" type="java.lang.String" value="tu es admin"/>
+        <Property name="text" type="java.lang.String" value="Consulter la liste des Clients"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BConsulter_La_Liste_Des_ClientsActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="BGestion_Des_Cours">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Gestion des cours "/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BGestion_Des_CoursActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="BStatistique">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Statistique"/>
       </Properties>
     </Component>
   </SubComponents>

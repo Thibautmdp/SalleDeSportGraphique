@@ -59,7 +59,6 @@ public class FListeActivites extends javax.swing.JDialog {
         });
 
         bYoga.setText("Yoga");
-        bYoga.setActionCommand("Yoga");
         bYoga.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bYogaActionPerformed(evt);
@@ -103,13 +102,13 @@ public class FListeActivites extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(bBasDuCorps)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(bCorpsComplet))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(bPillate)
                         .addGap(46, 46, 46)
                         .addComponent(bGymnastique)))
-                .addGap(0, 21, Short.MAX_VALUE))
+                .addGap(0, 17, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,6 +137,8 @@ public class FListeActivites extends javax.swing.JDialog {
 
     private void bRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRetourActionPerformed
         // TODO add your handling code here:
+        this.setVisible(false);
+        this.getParent().setVisible(true);
     }//GEN-LAST:event_bRetourActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
