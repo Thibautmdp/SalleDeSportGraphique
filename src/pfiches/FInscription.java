@@ -55,6 +55,11 @@ public class FInscription extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jButton1.setText("Retour");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Mail : ");
 
@@ -198,7 +203,6 @@ public class FInscription extends javax.swing.JDialog {
         String Nom = TXTNom.getText();
         String Prenom = TXTPrénom.getText();
         String Tel = TXTTéléphone.getText();
-        
         String abonnement = "";
         if (BMensuel.isSelected()) abonnement = "Mensuel";
         else if (BTrimestiel.isSelected()) abonnement = "Trimestriel";
@@ -219,6 +223,7 @@ public class FInscription extends javax.swing.JDialog {
         this.setVisible(false);
         this.getParent().setVisible(true);
         
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void TXTTéléphoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TXTTéléphoneActionPerformed
@@ -229,9 +234,17 @@ public class FInscription extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_TXTNomActionPerformed
 
+
     private void BMensuelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BMensuelActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BMensuelActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        getParent().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -254,7 +267,7 @@ public class FInscription extends javax.swing.JDialog {
         }
         //</editor-fold>
 
-        /* Create and display the dialog */
+        /* Create and display the dialog 
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
@@ -267,7 +280,7 @@ public class FInscription extends javax.swing.JDialog {
                 });
                 dialog.setVisible(true);
             }
-        });
+        }); */
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

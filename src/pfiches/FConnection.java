@@ -122,12 +122,12 @@ public class FConnection extends javax.swing.JDialog {
     private void bSeConnecterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSeConnecterActionPerformed
         // TODO add your handling code here:
         String email = TXTMail.getText();
-        String mdp = TXTMDP.getText();
-        //verif de l'admin 
+        String mdp = TXTMDP.getText();        //verif de l'admin 
         if (email.equals("Max.admin@admin.fr") && mdp.equals("mdpadmin")){
             JOptionPane.showMessageDialog(this, "Connexion Admin réussie !");
             this.setVisible(false);
             new FAdmin(salle).setVisible(true); // on ouvre la page admin
+
         } else {
             Client clientTrouve = null;
             for(Client c : salle.getListeDesClients()){

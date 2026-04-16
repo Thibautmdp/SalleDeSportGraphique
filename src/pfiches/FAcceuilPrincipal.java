@@ -16,6 +16,9 @@ public class FAcceuilPrincipal extends javax.swing.JFrame {
     private FConnection fichFConnection;
     private FInscription fichFInscription;
     private Salle salle;
+    private FListeActivites fichListeActivites;
+    private FChoixPasses_Futures fichChoixPasses_Futures;
+    private FMonProfil fichMonprofil;
     
     /**
      * Creates new form FAcceuilPrincipal
@@ -24,9 +27,15 @@ public class FAcceuilPrincipal extends javax.swing.JFrame {
         initComponents();
         salle = new Salle("LE SPORT AU MAX", "sauvegarde_clients.txt");
         salle.Charger();
+
         fichFConnection = new FConnection(this, false, salle);
         fichFInscription = new FInscription(this, false, salle);
         
+
+        fichFConnection = new FConnection(this,false,salle);
+        fichFInscription = new FInscription(this, false,salle);
+        fichListeActivites = new FListeActivites (this,false);
+
     }
     
     public Salle getSalle(){
