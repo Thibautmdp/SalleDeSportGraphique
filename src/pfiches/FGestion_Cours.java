@@ -64,6 +64,11 @@ public class FGestion_Cours extends javax.swing.JDialog {
         });
 
         BSupprimer.setText("Supprimer");
+        BSupprimer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BSupprimerActionPerformed(evt);
+            }
+        });
 
         BModifier.setText("Modifier");
 
@@ -120,6 +125,28 @@ public class FGestion_Cours extends javax.swing.JDialog {
         this.setVisible(false);
         fichFAjouter_Cours.setVisible(true);
     }//GEN-LAST:event_BAjouterActionPerformed
+
+    private void BSupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSupprimerActionPerformed
+        // TODO add your handling code here:
+        int ligne = TCours.getSelectedRow();
+        
+        if (ligne != -1) {
+            String Nom_Cours = TCours.getValueAt(ligne, 0).toString();
+            String dateCours = TCours.getValueAt(ligne, 4).toString();
+            
+            int choix = javax.swing.JOptionPane.showConfirmDialog(this, "Êtes-vous sûr de vouloir supprimer le cours de " + Nom_Cours + " du " + dateCours + " ?","Confirmation de suppression", javax.swing.JOptionPane.YES_NO_OPTION, javax.swing.JOptionPane.WARNING_MESSAGE);
+            
+            if(choix == javax.swing.JOptionPane.YES_OPTION){
+                salle.getListeDesCoursFuturs().remove(ligne);
+                salle.Sauvegarder();
+                Remplir_Tableau_Cours();
+                javax.swing.JOptionPane.showMessageDialog(this, "Cours supprimé avec succès.");
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(this, "veuillez selectionner un cours dans le tableau ");
+            }
+            
+        }
+    }//GEN-LAST:event_BSupprimerActionPerformed
 
     /**
      * @param args the command line arguments
