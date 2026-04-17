@@ -10,35 +10,33 @@ import ptraitement.*;
  *
  * @author maxen
  */
-public class FConsulter_Liste_Clients extends javax.swing.JDialog {
+public class FGestion_Cours extends javax.swing.JDialog {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FConsulter_Liste_Clients.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FGestion_Cours.class.getName());
     private Salle salle;
-    
+    private FAjouter_Cours fichFAjouter_Cours;
     /**
-     * Creates new form FConsulter_Liste_Clients
+     * Creates new form FGestion_Cours
      */
-    public FConsulter_Liste_Clients(java.awt.Frame parent, boolean modal,Salle salle) {
+    public FGestion_Cours(java.awt.Frame parent, boolean modal, Salle salle) {
         super(parent, modal);
         initComponents();
         this.salle = salle;
-        if(this.salle != null){
-            Remplir_Tableau_Liste_Client();
-        }
-    }
-
-    private void Remplir_Tableau_Liste_Client() {
-        // on definis les colonnes du tableau : 
-        String [] Colonnes = {"Numero client ", "Nom ", "Prenom ", "Email ", "Telephone ", "Abonnement "};
-        DefaultTableModel model = new DefaultTableModel(Colonnes, 0);
-        List<Client> liste = salle.getListeDesClients();
+        Remplir_Tableau_Cours();
         
-        for(Client c : liste) {
-            Object[] ligne = {c.getNumClient(), c.getNom(), c.getPrenom(), c.getEmail(), c.getNumTel(), c.getAbo()};
+        
+    }
+    
+    private void Remplir_Tableau_Cours(){
+        String[] colonnes = { "Type", "Activite", "Places", "Coach", "Date", "Heure"};
+        DefaultTableModel model = new DefaultTableModel(colonnes, 0);
+        List<Cours> liste = salle.getListeDesCoursFuturs();
+        
+        for(Cours c : liste) {
+            Object[] ligne = {c.getType_de_cours(), c.getNomActivite(), c.getListe_Client_Inscrit().size(), "Coach", c.getDate(), "Heure"};
             model.addRow(ligne);
         }
-        Tableau_Liste_Clients.setModel(model);
-        
+        TCours.setModel(model);
     }
     
     /**
@@ -50,13 +48,26 @@ public class FConsulter_Liste_Clients extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        BAjouter = new javax.swing.JButton();
+        BSupprimer = new javax.swing.JButton();
+        BModifier = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        Tableau_Liste_Clients = new javax.swing.JTable();
-        BConsulter_Liste_Client_Retour = new javax.swing.JToggleButton();
+        TCours = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        Tableau_Liste_Clients.setModel(new javax.swing.table.DefaultTableModel(
+        BAjouter.setText("Ajouter");
+        BAjouter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BAjouterActionPerformed(evt);
+            }
+        });
+
+        BSupprimer.setText("Supprimer");
+
+        BModifier.setText("Modifier");
+
+        TCours.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -67,46 +78,48 @@ public class FConsulter_Liste_Clients extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(Tableau_Liste_Clients);
-
-        BConsulter_Liste_Client_Retour.setText("Retour");
-        BConsulter_Liste_Client_Retour.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BConsulter_Liste_Client_RetourActionPerformed(evt);
-            }
-        });
+        jScrollPane1.setViewportView(TCours);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(BConsulter_Liste_Client_Retour)))
-                .addGap(16, 16, 16))
+                        .addGap(23, 23, 23)
+                        .addComponent(BAjouter)
+                        .addGap(18, 18, 18)
+                        .addComponent(BSupprimer)
+                        .addGap(18, 18, 18)
+                        .addComponent(BModifier))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(166, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
-                .addComponent(BConsulter_Liste_Client_Retour)
-                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BAjouter)
+                    .addComponent(BSupprimer)
+                    .addComponent(BModifier))
+                .addGap(76, 76, 76)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(125, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BConsulter_Liste_Client_RetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BConsulter_Liste_Client_RetourActionPerformed
+    private void BAjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAjouterActionPerformed
         // TODO add your handling code here:
+        fichFAjouter_Cours = new FAjouter_Cours(null, true, this.salle);
         this.setVisible(false);
-        this.getParent().setVisible(true);
-    }//GEN-LAST:event_BConsulter_Liste_Client_RetourActionPerformed
+        fichFAjouter_Cours.setVisible(true);
+    }//GEN-LAST:event_BAjouterActionPerformed
 
     /**
      * @param args the command line arguments
@@ -133,7 +146,7 @@ public class FConsulter_Liste_Clients extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                FConsulter_Liste_Clients dialog = new FConsulter_Liste_Clients(new javax.swing.JFrame(), true,null);
+                FGestion_Cours dialog = new FGestion_Cours(new javax.swing.JFrame(), true, null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -146,9 +159,10 @@ public class FConsulter_Liste_Clients extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton BConsulter_Liste_Client_Retour;
-    private javax.swing.JTable Tableau_Liste_Clients;
+    private javax.swing.JButton BAjouter;
+    private javax.swing.JButton BModifier;
+    private javax.swing.JButton BSupprimer;
+    private javax.swing.JTable TCours;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
-
 }

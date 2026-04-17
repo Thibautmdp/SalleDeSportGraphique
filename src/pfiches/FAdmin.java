@@ -12,12 +12,15 @@ import ptraitement.*;
 public class FAdmin extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FAdmin.class.getName());
-
+    private FConsulter_Liste_Clients fichFConsulter_Liste_Clients;
+    private FGestion_Cours fichFGestion_Cours;
+    private Salle salle;
     /**
      * Creates new form FAdmin
      */
     public FAdmin(Salle salle) {
         initComponents();
+        this.salle = salle;
     }
 
     /**
@@ -80,10 +83,16 @@ public class FAdmin extends javax.swing.JFrame {
 
     private void BConsulter_La_Liste_Des_ClientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BConsulter_La_Liste_Des_ClientsActionPerformed
         // TODO add your handling code here:
+        fichFConsulter_Liste_Clients = new FConsulter_Liste_Clients(this, true, this.salle);
+        this.setVisible(false);
+        fichFConsulter_Liste_Clients.setVisible(true);
     }//GEN-LAST:event_BConsulter_La_Liste_Des_ClientsActionPerformed
 
     private void BGestion_Des_CoursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BGestion_Des_CoursActionPerformed
         // TODO add your handling code here:
+        fichFGestion_Cours = new FGestion_Cours(this, true, this.salle);
+        this.setVisible(false);
+        fichFGestion_Cours.setVisible(true);
     }//GEN-LAST:event_BGestion_Des_CoursActionPerformed
 
     /**
