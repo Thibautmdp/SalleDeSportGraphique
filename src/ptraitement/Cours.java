@@ -70,6 +70,7 @@ public class Cours {
     public List<Client> getListe_Client_Inscrit() {
         return Liste_Client_Inscrit;
     }
+    
 
     public void setNomCours(String nouveauNom) {
         if (nouveauNom != null && !nouveauNom.isEmpty()) {
@@ -94,4 +95,38 @@ public class Cours {
             System.out.println("Erreur : le nombre doit etre superieur a 0.");
         }
     }
+    
+
+    public int getNb_Place_Max() {
+        return Nbr_de_place;
+    }
+
+    public String getCoach() {
+        return nomCoach;
+    }
+
+    public String getHeure() {
+        return Heure;
+    }
+
+    public void setType_de_cours(String type_de_cours) {
+        this.Type_de_cours = type_de_cours;
+    }
+
+    public void setNb_Place_Max(int Places) {
+        this.Nbr_de_place = Places;
+    }
+
+    public void setCoach(String coach) {
+        this.nomCoach = coach;
+    }
+
+    public void setDate(java.time.LocalDate date) {
+        this.Date = date;
+    }
+
+    public void setHeure(String heure) {
+        this.Heure = heure;
+    }
+    
 }

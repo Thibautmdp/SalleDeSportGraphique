@@ -35,6 +35,7 @@ public class FAdmin extends javax.swing.JFrame {
         BConsulter_La_Liste_Des_Clients = new javax.swing.JButton();
         BGestion_Des_Cours = new javax.swing.JButton();
         BStatistique = new javax.swing.JButton();
+        BRetour = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,6 +55,13 @@ public class FAdmin extends javax.swing.JFrame {
 
         BStatistique.setText("Statistique");
 
+        BRetour.setText("Retour");
+        BRetour.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BRetourActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -61,9 +69,12 @@ public class FAdmin extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BConsulter_La_Liste_Des_Clients)
                     .addComponent(BStatistique)
-                    .addComponent(BGestion_Des_Cours)
-                    .addComponent(BConsulter_La_Liste_Des_Clients))
+                    .addComponent(BRetour)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(BGestion_Des_Cours)))
                 .addContainerGap(416, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -73,9 +84,11 @@ public class FAdmin extends javax.swing.JFrame {
                 .addComponent(BConsulter_La_Liste_Des_Clients)
                 .addGap(18, 18, 18)
                 .addComponent(BGestion_Des_Cours)
-                .addGap(40, 40, 40)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(BStatistique)
-                .addContainerGap(183, Short.MAX_VALUE))
+                .addGap(29, 29, 29)
+                .addComponent(BRetour)
+                .addContainerGap(159, Short.MAX_VALUE))
         );
 
         pack();
@@ -94,6 +107,12 @@ public class FAdmin extends javax.swing.JFrame {
         this.setVisible(false);
         fichFGestion_Cours.setVisible(true);
     }//GEN-LAST:event_BGestion_Des_CoursActionPerformed
+
+    private void BRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BRetourActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        this.getParent().setVisible(true);
+    }//GEN-LAST:event_BRetourActionPerformed
 
     /**
      * @param args the command line arguments
@@ -123,6 +142,7 @@ public class FAdmin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BConsulter_La_Liste_Des_Clients;
     private javax.swing.JButton BGestion_Des_Cours;
+    private javax.swing.JButton BRetour;
     private javax.swing.JButton BStatistique;
     // End of variables declaration//GEN-END:variables
 }

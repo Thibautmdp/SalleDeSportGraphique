@@ -4,6 +4,7 @@
  */
 package pfiches;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import ptraitement.*;
 /**
@@ -15,6 +16,7 @@ public class FGestion_Cours extends javax.swing.JDialog {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FGestion_Cours.class.getName());
     private Salle salle;
     private FAjouter_Cours fichFAjouter_Cours;
+    private FModifier_Cours fichFModifier_Cours;
     /**
      * Creates new form FGestion_Cours
      */
@@ -30,13 +32,19 @@ public class FGestion_Cours extends javax.swing.JDialog {
     private void Remplir_Tableau_Cours(){
         String[] colonnes = { "Type", "Activite", "Places", "Coach", "Date", "Heure"};
         DefaultTableModel model = new DefaultTableModel(colonnes, 0);
-        List<Cours> liste = salle.getListeDesCoursFuturs();
+        List<Cours> Liste_Futur = salle.getListeDesCoursFuturs();
+        List<Cours> Liste_Passé = salle.getListeDesCoursPasses();
         
-        for(Cours c : liste) {
+        for(Cours c : Liste_Futur) {
             Object[] ligne = {c.getType_de_cours(), c.getNomActivite(), c.getListe_Client_Inscrit().size(), "Coach", c.getDate(), "Heure"};
             model.addRow(ligne);
         }
-        TCours.setModel(model);
+        TCours_Futur.setModel(model);
+        for(Cours c : Liste_Passé) {
+            Object[] ligne = {c.getType_de_cours(), c.getNomActivite(), c.getListe_Client_Inscrit().size(), "Coach", c.getDate(), "Heure"};
+            model.addRow(ligne);
+        }
+        TCours_Passé.setModel(model);
     }
     
     /**
@@ -52,7 +60,12 @@ public class FGestion_Cours extends javax.swing.JDialog {
         BSupprimer = new javax.swing.JButton();
         BModifier = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TCours = new javax.swing.JTable();
+        TCours_Futur = new javax.swing.JTable();
+        BRetour = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        TCours_Passé = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -71,8 +84,13 @@ public class FGestion_Cours extends javax.swing.JDialog {
         });
 
         BModifier.setText("Modifier");
+        BModifier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BModifierActionPerformed(evt);
+            }
+        });
 
-        TCours.setModel(new javax.swing.table.DefaultTableModel(
+        TCours_Futur.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -83,25 +101,61 @@ public class FGestion_Cours extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(TCours);
+        jScrollPane1.setViewportView(TCours_Futur);
+
+        BRetour.setText("Retour");
+        BRetour.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BRetourActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Cours Futur");
+
+        jLabel2.setText("Cours Passé");
+
+        TCours_Passé.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(TCours_Passé);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
+                        .addGap(380, 380, 380)
+                        .addComponent(BRetour)
+                        .addContainerGap(104, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(BAjouter)
                         .addGap(18, 18, 18)
-                        .addComponent(BSupprimer)
-                        .addGap(18, 18, 18)
-                        .addComponent(BModifier))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(166, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(BSupprimer)
+                                .addGap(18, 18, 18)
+                                .addComponent(BModifier))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(101, 101, 101))))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGap(22, 22, 22))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,9 +164,16 @@ public class FGestion_Cours extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BAjouter)
                     .addComponent(BSupprimer)
-                    .addComponent(BModifier))
-                .addGap(76, 76, 76)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BModifier)
+                    .addComponent(BRetour))
+                .addGap(42, 42, 42)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(125, Short.MAX_VALUE))
         );
 
@@ -128,16 +189,34 @@ public class FGestion_Cours extends javax.swing.JDialog {
 
     private void BSupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSupprimerActionPerformed
         // TODO add your handling code here:
-        int ligne = TCours.getSelectedRow();
+        int Ligne_Futur = TCours_Futur.getSelectedRow();
+        int Ligne_Passé = TCours_Futur.getSelectedRow();
         
-        if (ligne != -1) {
-            String Nom_Cours = TCours.getValueAt(ligne, 0).toString();
-            String dateCours = TCours.getValueAt(ligne, 4).toString();
+        if (Ligne_Futur != -1) {
+            String Nom_Cours = TCours_Futur.getValueAt(Ligne_Futur, 0).toString();
+            String dateCours = TCours_Futur.getValueAt(Ligne_Futur, 4).toString();
             
             int choix = javax.swing.JOptionPane.showConfirmDialog(this, "Êtes-vous sûr de vouloir supprimer le cours de " + Nom_Cours + " du " + dateCours + " ?","Confirmation de suppression", javax.swing.JOptionPane.YES_NO_OPTION, javax.swing.JOptionPane.WARNING_MESSAGE);
             
             if(choix == javax.swing.JOptionPane.YES_OPTION){
-                salle.getListeDesCoursFuturs().remove(ligne);
+                salle.getListeDesCoursFuturs().remove(Ligne_Futur);
+                salle.Sauvegarder();
+                Remplir_Tableau_Cours();
+                javax.swing.JOptionPane.showMessageDialog(this, "Cours supprimé avec succès.");
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(this, "veuillez selectionner un cours dans le tableau ");
+            }
+            
+        }
+        
+        if (Ligne_Passé != -1) {
+            String Nom_Cours = TCours_Passé.getValueAt(Ligne_Passé, 0).toString();
+            String dateCours = TCours_Passé.getValueAt(Ligne_Passé, 4).toString();
+            
+            int choix = javax.swing.JOptionPane.showConfirmDialog(this, "Êtes-vous sûr de vouloir supprimer le cours de " + Nom_Cours + " du " + dateCours + " ?","Confirmation de suppression", javax.swing.JOptionPane.YES_NO_OPTION, javax.swing.JOptionPane.WARNING_MESSAGE);
+            
+            if(choix == javax.swing.JOptionPane.YES_OPTION){
+                salle.getListeDesCoursFuturs().remove(TCours_Passé);
                 salle.Sauvegarder();
                 Remplir_Tableau_Cours();
                 javax.swing.JOptionPane.showMessageDialog(this, "Cours supprimé avec succès.");
@@ -147,6 +226,26 @@ public class FGestion_Cours extends javax.swing.JDialog {
             
         }
     }//GEN-LAST:event_BSupprimerActionPerformed
+
+    private void BModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BModifierActionPerformed
+        // TODO add your handling code here:
+        //recup la ligne selectionner
+        int Ligne_Futur = TCours_Futur.getSelectedRow();
+        if(Ligne_Futur != -1){
+            Cours Cours_Choisie = salle .getListeDesCoursFuturs().get(Ligne_Futur);
+            FModifier_Cours fichFModifier_Cours = new FModifier_Cours(null, true, salle, Cours_Choisie);
+            fichFModifier_Cours.setVisible(true);
+            Remplir_Tableau_Cours();
+        } else {
+            JOptionPane.showMessageDialog(this, "Veuillez sélectionner un cours dans le tableau 'Cours Futur'.");
+        }
+    }//GEN-LAST:event_BModifierActionPerformed
+
+    private void BRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BRetourActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        this.getParent().setVisible(true);
+    }//GEN-LAST:event_BRetourActionPerformed
 
     /**
      * @param args the command line arguments
@@ -188,8 +287,13 @@ public class FGestion_Cours extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BAjouter;
     private javax.swing.JButton BModifier;
+    private javax.swing.JButton BRetour;
     private javax.swing.JButton BSupprimer;
-    private javax.swing.JTable TCours;
+    private javax.swing.JTable TCours_Futur;
+    private javax.swing.JTable TCours_Passé;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }

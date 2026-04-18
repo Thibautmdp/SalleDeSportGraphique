@@ -26,9 +26,13 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="BStatistique" min="-2" max="-2" attributes="0"/>
-                  <Component id="BGestion_Des_Cours" min="-2" max="-2" attributes="0"/>
                   <Component id="BConsulter_La_Liste_Des_Clients" min="-2" max="-2" attributes="0"/>
+                  <Component id="BStatistique" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="BRetour" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                      <Component id="BGestion_Des_Cours" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace pref="416" max="32767" attributes="0"/>
           </Group>
@@ -41,9 +45,11 @@
               <Component id="BConsulter_La_Liste_Des_Clients" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="BGestion_Des_Cours" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="BStatistique" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="183" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+              <Component id="BRetour" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="159" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -69,6 +75,14 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Statistique"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="BRetour">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Retour"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BRetourActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

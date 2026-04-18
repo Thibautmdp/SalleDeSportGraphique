@@ -34,7 +34,7 @@ public class FAcceuilPrincipal extends javax.swing.JFrame {
 
         fichFConnection = new FConnection(this,false,salle);
         fichFInscription = new FInscription(this, false,salle);
-        fichListeActivites = new FListeActivites (this,false);
+        fichListeActivites = new FListeActivites (this,false,salle);
 
     }
     

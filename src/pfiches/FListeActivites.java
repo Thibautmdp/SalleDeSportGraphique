@@ -4,6 +4,10 @@
  */
 package pfiches;
 
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import ptraitement.*;
+
 
 /**
  *
@@ -12,13 +16,27 @@ package pfiches;
 public class FListeActivites extends javax.swing.JDialog {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FListeActivites.class.getName());
-
+    private Salle salle;
     /**
      * Creates new form FListeActivites
      */
-    public FListeActivites(java.awt.Frame parent, boolean modal) {
+    public FListeActivites(java.awt.Frame parent, boolean modal, Salle salle) {
         super(parent, modal);
         initComponents();
+        this.salle = salle;
+        Remplir_Tableau_Cours();
+    }
+    
+    private void Remplir_Tableau_Cours(){
+        String[] colonnes = { "Type", "Activite", "Places", "Coach", "Date", "Heure"};
+        DefaultTableModel model = new DefaultTableModel(colonnes, 0);
+        List<Cours> liste = salle.getListeDesCoursFuturs();
+        
+        for(Cours c : liste) {
+            Object[] ligne = {c.getType_de_cours(), c.getNomActivite(), c.getListe_Client_Inscrit().size(), "Coach", c.getDate(), "Heure"};
+            model.addRow(ligne);
+        }
+        TCours.setModel(model);
     }
 
     /**
@@ -33,12 +51,8 @@ public class FListeActivites extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         bRetour = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        bYoga = new javax.swing.JButton();
-        bPillate = new javax.swing.JButton();
-        bGymnastique = new javax.swing.JButton();
-        bHautDuCorps = new javax.swing.JButton();
-        bBasDuCorps = new javax.swing.JButton();
-        bCorpsComplet = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TCours = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -58,57 +72,35 @@ public class FListeActivites extends javax.swing.JDialog {
             }
         });
 
-        bYoga.setText("Yoga");
-        bYoga.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bYogaActionPerformed(evt);
+        TCours.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        });
-
-        bPillate.setText("Pilate");
-
-        bGymnastique.setText("Gymnastique");
-
-        bHautDuCorps.setText("Haut du Corps");
-
-        bBasDuCorps.setText("Bas Du Corps");
-
-        bCorpsComplet.setText("Corps Complet");
+        ));
+        jScrollPane1.setViewportView(TCours);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(37, 37, 37)
-                        .addComponent(jButton1)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(bRetour)
-                        .addGap(23, 23, 23))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(bHautDuCorps)
-                        .addGap(30, 30, 30))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(bYoga)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(bBasDuCorps)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(bCorpsComplet))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(bPillate)
-                        .addGap(46, 46, 46)
-                        .addComponent(bGymnastique)))
-                .addGap(0, 17, Short.MAX_VALUE))
+                .addGap(45, 45, 45)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE)
+                    .addComponent(bRetour))
+                .addGap(23, 23, 23))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(155, 155, 155)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,17 +109,9 @@ public class FListeActivites extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jButton1))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bYoga)
-                    .addComponent(bPillate)
-                    .addComponent(bGymnastique))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bHautDuCorps)
-                    .addComponent(bBasDuCorps)
-                    .addComponent(bCorpsComplet))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
+                .addGap(32, 32, 32)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addComponent(bRetour)
                 .addGap(15, 15, 15))
         );
@@ -146,10 +130,6 @@ public class FListeActivites extends javax.swing.JDialog {
         this.setVisible(false);
         //get.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void bYogaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bYogaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bYogaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,7 +156,7 @@ public class FListeActivites extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                FListeActivites dialog = new FListeActivites(new javax.swing.JFrame(), true);
+                FListeActivites dialog = new FListeActivites(new javax.swing.JFrame(), true, null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -189,14 +169,10 @@ public class FListeActivites extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bBasDuCorps;
-    private javax.swing.JButton bCorpsComplet;
-    private javax.swing.JButton bGymnastique;
-    private javax.swing.JButton bHautDuCorps;
-    private javax.swing.JButton bPillate;
+    private javax.swing.JTable TCours;
     private javax.swing.JButton bRetour;
-    private javax.swing.JButton bYoga;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

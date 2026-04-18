@@ -15,6 +15,7 @@ public class FConnection extends javax.swing.JDialog {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FConnection.class.getName());
     private ptraitement.Salle salle;
+    private FListeActivites fichListeActivites;
 
     /**
      * Creates new form FConnection
@@ -139,7 +140,8 @@ public class FConnection extends javax.swing.JDialog {
             if (clientTrouve != null) {
                 JOptionPane.showMessageDialog(this, "Bienvenue " + clientTrouve.getPrenom());
                 this.setVisible(false);
-                new FClient().setVisible(true);
+                fichListeActivites = new FListeActivites(null, true, salle);
+                fichListeActivites.setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(this, "Email ou mot de passe incorrect.");
             }

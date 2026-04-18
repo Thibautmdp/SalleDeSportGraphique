@@ -21,9 +21,12 @@ public class FInscription extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.salle = salle;
-    }
-    
-    
+        javax.swing.ButtonGroup groupeAbo = new javax.swing.ButtonGroup();
+        groupeAbo.add(BMensuel);
+        groupeAbo.add(BTrimestiel);
+        groupeAbo.add(BAnnuel);
+        BMensuel.setSelected(true);
+    }    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,9 +37,9 @@ public class FInscription extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        BRetour = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        BInscription = new javax.swing.JButton();
         TXTMDP = new javax.swing.JTextField();
         TXTMail = new javax.swing.JTextField();
         TXTPrénom = new javax.swing.JTextField();
@@ -54,19 +57,19 @@ public class FInscription extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jButton1.setText("Retour");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BRetour.setText("Retour");
+        BRetour.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BRetourActionPerformed(evt);
             }
         });
 
         jLabel4.setText("Mail : ");
 
-        jButton2.setText("Inscription");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        BInscription.setText("Inscription");
+        BInscription.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                BInscriptionActionPerformed(evt);
             }
         });
 
@@ -143,9 +146,9 @@ public class FInscription extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                                 .addComponent(BMensuel, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton2)
+                                .addComponent(BInscription)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton1)
+                                .addComponent(BRetour)
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -188,15 +191,15 @@ public class FInscription extends javax.swing.JDialog {
                     .addComponent(TXTTéléphone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(BInscription)
+                    .addComponent(BRetour))
                 .addGap(54, 54, 54))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void BInscriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BInscriptionActionPerformed
         // TODO add your handling code here:
         String email = TXTMail.getText();
         String mdp = TXTMDP.getText();
@@ -224,7 +227,7 @@ public class FInscription extends javax.swing.JDialog {
         this.getParent().setVisible(true);
         
 
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_BInscriptionActionPerformed
 
     private void TXTTéléphoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TXTTéléphoneActionPerformed
         // TODO add your handling code here:
@@ -239,11 +242,11 @@ public class FInscription extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_BMensuelActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BRetourActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
         getParent().setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_BRetourActionPerformed
 
 
     /**
@@ -285,15 +288,15 @@ public class FInscription extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton BAnnuel;
+    private javax.swing.JButton BInscription;
     private javax.swing.JRadioButton BMensuel;
+    private javax.swing.JButton BRetour;
     private javax.swing.JRadioButton BTrimestiel;
     private javax.swing.JTextField TXTMDP;
     private javax.swing.JTextField TXTMail;
     private javax.swing.JTextField TXTNom;
     private javax.swing.JTextField TXTPrénom;
     private javax.swing.JTextField TXTTéléphone;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

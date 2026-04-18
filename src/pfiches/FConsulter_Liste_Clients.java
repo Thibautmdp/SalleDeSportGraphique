@@ -4,6 +4,7 @@
  */
 package pfiches;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import ptraitement.*;
 /**
@@ -14,7 +15,7 @@ public class FConsulter_Liste_Clients extends javax.swing.JDialog {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FConsulter_Liste_Clients.class.getName());
     private Salle salle;
-    
+
     /**
      * Creates new form FConsulter_Liste_Clients
      */
@@ -23,22 +24,25 @@ public class FConsulter_Liste_Clients extends javax.swing.JDialog {
         initComponents();
         this.salle = salle;
         if(this.salle != null){
-            Remplir_Tableau_Liste_Client();
+            Afficher_Recherche();
         }
     }
-
-    private void Remplir_Tableau_Liste_Client() {
-        // on definis les colonnes du tableau : 
-        String [] Colonnes = {"Numero client ", "Nom ", "Prenom ", "Email ", "Telephone ", "Abonnement "};
-        DefaultTableModel model = new DefaultTableModel(Colonnes, 0);
-        List<Client> liste = salle.getListeDesClients();
+    private void Afficher_Recherche(){
+        String[] colonnes = {"Numéro", "Nom", "Prénom", "Email", "Telephone", "Abonnement"};
+        DefaultTableModel model = new DefaultTableModel(colonnes, 0);
         
-        for(Client c : liste) {
-            Object[] ligne = {c.getNumClient(), c.getNom(), c.getPrenom(), c.getEmail(), c.getNumTel(), c.getAbo()};
-            model.addRow(ligne);
+        for (Client c : salle.getListeDesClients()) {
+            if (c.getNom().toLowerCase().contains(TXTRecherche.getText().toLowerCase()) 
+                || c.getPrenom().toLowerCase().contains(TXTRecherche.getText().toLowerCase())
+                || c.getEmail().toLowerCase().contains(TXTRecherche.getText().toLowerCase()) 
+                || c.getAbo().toLowerCase().contains(TXTRecherche.getText().toLowerCase())
+                || c.getNumTel().toLowerCase().contains(TXTRecherche.getText().toLowerCase())
+                || c.getNumClient().toLowerCase().contains(TXTRecherche.getText().toLowerCase())){
+                Object[] ligne = {c.getNumClient(), c.getNom(), c.getPrenom(), c.getEmail(), c.getNumTel(), c.getAbo()};
+                model.addRow(ligne);
+            }
         }
         Tableau_Liste_Clients.setModel(model);
-        
     }
     
     /**
@@ -52,7 +56,11 @@ public class FConsulter_Liste_Clients extends javax.swing.JDialog {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         Tableau_Liste_Clients = new javax.swing.JTable();
-        BConsulter_Liste_Client_Retour = new javax.swing.JToggleButton();
+        TXTRecherche = new javax.swing.JTextField();
+        BRechercher = new javax.swing.JButton();
+        BReinitialiser = new javax.swing.JButton();
+        BRetour = new javax.swing.JButton();
+        BChange_Abo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -69,10 +77,31 @@ public class FConsulter_Liste_Clients extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(Tableau_Liste_Clients);
 
-        BConsulter_Liste_Client_Retour.setText("Retour");
-        BConsulter_Liste_Client_Retour.addActionListener(new java.awt.event.ActionListener() {
+        BRechercher.setText("Rechercher");
+        BRechercher.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BConsulter_Liste_Client_RetourActionPerformed(evt);
+                BRechercherActionPerformed(evt);
+            }
+        });
+
+        BReinitialiser.setText("Reinitialiser");
+        BReinitialiser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BReinitialiserActionPerformed(evt);
+            }
+        });
+
+        BRetour.setText("Retour");
+        BRetour.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BRetourActionPerformed(evt);
+            }
+        });
+
+        BChange_Abo.setText("Change Abo");
+        BChange_Abo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BChange_AboActionPerformed(evt);
             }
         });
 
@@ -80,33 +109,104 @@ public class FConsulter_Liste_Clients extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(BConsulter_Liste_Client_Retour)))
-                .addGap(16, 16, 16))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 621, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(TXTRecherche, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(BRechercher)
+                            .addComponent(BReinitialiser)
+                            .addComponent(BChange_Abo))
+                        .addGap(48, 48, 48))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(BRetour)
+                        .addGap(139, 139, 139))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
-                .addComponent(BConsulter_Liste_Client_Retour)
-                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(151, 151, 151)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(BRechercher)
+                            .addComponent(TXTRecherche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(BReinitialiser)
+                        .addGap(18, 18, 18)
+                        .addComponent(BChange_Abo)
+                        .addGap(64, 64, 64)
+                        .addComponent(BRetour))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BConsulter_Liste_Client_RetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BConsulter_Liste_Client_RetourActionPerformed
+    private void BRechercherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BRechercherActionPerformed
+        // TODO add your handling code here:
+        Afficher_Recherche();
+    }//GEN-LAST:event_BRechercherActionPerformed
+
+    private void BReinitialiserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BReinitialiserActionPerformed
+        // TODO add your handling code here:
+        TXTRecherche.setText("");
+        Afficher_Recherche();
+    }//GEN-LAST:event_BReinitialiserActionPerformed
+
+    private void BRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BRetourActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
         this.getParent().setVisible(true);
-    }//GEN-LAST:event_BConsulter_Liste_Client_RetourActionPerformed
+    }//GEN-LAST:event_BRetourActionPerformed
+
+    private void BChange_AboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BChange_AboActionPerformed
+        // TODO add your handling code here:
+        int Ligne_Choisie = Tableau_Liste_Clients.getSelectedRow();  // je regarde la ligne selectionner
+        
+        if(Ligne_Choisie != -1){ // je recup l'identifiant (colonne 0)
+            String ID_Clients = Tableau_Liste_Clients.getValueAt(Ligne_Choisie, 0).toString();
+        
+        for (int i = 0; i < salle.getListeDesClients().size(); i++) {
+            Client c = salle.getListeDesClients().get(i);
+            
+            if (c.getNumClient().equals(ID_Clients)) {
+                //On détermine le nouvel abonnement
+                String nouvelAbo = c.getAbo().equals("Désactivé") ? "Mensuel" : "Désactivé";
+                
+                //On crée un nouvel objet Client avec les infos existantes + le nouvel abo
+                // Vérifie bien l'ordre des paramètres de ton constructeur Client !
+                Client clientModifie = new Client(
+                    c.getNumClient(), 
+                    c.getNom(), 
+                    c.getPrenom(), 
+                    c.getEmail(), 
+                    c.getMdp(), // Si tu as accès au MDP
+                    c.getNumTel(), 
+                    nouvelAbo
+                );
+                
+                // 3. On remplace l'ancien par le nouveau dans la liste
+                salle.getListeDesClients().set(i, clientModifie);
+                
+                // 4. On sauvegarde et on rafraîchit
+                salle.Sauvegarder();
+                Afficher_Recherche();
+                
+                JOptionPane.showMessageDialog(this, "Statut modifié : " + nouvelAbo);
+                break;
+            }
+        }
+    } else {
+        JOptionPane.showMessageDialog(this, "Veuillez sélectionner un client.");
+    }
+    }//GEN-LAST:event_BChange_AboActionPerformed
 
     /**
      * @param args the command line arguments
@@ -146,7 +246,11 @@ public class FConsulter_Liste_Clients extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton BConsulter_Liste_Client_Retour;
+    private javax.swing.JButton BChange_Abo;
+    private javax.swing.JButton BRechercher;
+    private javax.swing.JButton BReinitialiser;
+    private javax.swing.JButton BRetour;
+    private javax.swing.JTextField TXTRecherche;
     private javax.swing.JTable Tableau_Liste_Clients;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
