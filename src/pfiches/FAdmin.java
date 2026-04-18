@@ -14,6 +14,7 @@ public class FAdmin extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FAdmin.class.getName());
     private FConsulter_Liste_Clients fichFConsulter_Liste_Clients;
     private FGestion_Cours fichFGestion_Cours;
+    private FStatistique_Cours fichFStatistique_Cours;
     private Salle salle;
     /**
      * Creates new form FAdmin
@@ -54,6 +55,11 @@ public class FAdmin extends javax.swing.JFrame {
         });
 
         BStatistique.setText("Statistique");
+        BStatistique.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BStatistiqueActionPerformed(evt);
+            }
+        });
 
         BRetour.setText("Retour");
         BRetour.addActionListener(new java.awt.event.ActionListener() {
@@ -69,12 +75,10 @@ public class FAdmin extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BGestion_Des_Cours)
                     .addComponent(BConsulter_La_Liste_Des_Clients)
                     .addComponent(BStatistique)
-                    .addComponent(BRetour)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(BGestion_Des_Cours)))
+                    .addComponent(BRetour))
                 .addContainerGap(416, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -113,6 +117,14 @@ public class FAdmin extends javax.swing.JFrame {
         this.setVisible(false);
         this.getParent().setVisible(true);
     }//GEN-LAST:event_BRetourActionPerformed
+
+    private void BStatistiqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BStatistiqueActionPerformed
+        // TODO add your handling code here:
+        fichFStatistique_Cours = new FStatistique_Cours(this, true, this.salle);
+        this.setVisible(false);
+        fichFStatistique_Cours.setVisible(true);
+        this.setVisible(true);
+    }//GEN-LAST:event_BStatistiqueActionPerformed
 
     /**
      * @param args the command line arguments

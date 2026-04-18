@@ -26,13 +26,10 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="BGestion_Des_Cours" min="-2" max="-2" attributes="0"/>
                   <Component id="BConsulter_La_Liste_Des_Clients" min="-2" max="-2" attributes="0"/>
                   <Component id="BStatistique" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="BRetour" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                      <Component id="BGestion_Des_Cours" min="-2" max="-2" attributes="0"/>
-                  </Group>
               </Group>
               <EmptySpace pref="416" max="32767" attributes="0"/>
           </Group>
@@ -75,6 +72,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Statistique"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BStatistiqueActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="BRetour">
       <Properties>

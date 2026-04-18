@@ -190,41 +190,38 @@ public class FGestion_Cours extends javax.swing.JDialog {
     private void BSupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSupprimerActionPerformed
         // TODO add your handling code here:
         int Ligne_Futur = TCours_Futur.getSelectedRow();
-        int Ligne_Passé = TCours_Futur.getSelectedRow();
+        int Ligne_Passé = TCours_Passé.getSelectedRow();
         
         if (Ligne_Futur != -1) {
-            String Nom_Cours = TCours_Futur.getValueAt(Ligne_Futur, 0).toString();
-            String dateCours = TCours_Futur.getValueAt(Ligne_Futur, 4).toString();
             
-            int choix = javax.swing.JOptionPane.showConfirmDialog(this, "Êtes-vous sûr de vouloir supprimer le cours de " + Nom_Cours + " du " + dateCours + " ?","Confirmation de suppression", javax.swing.JOptionPane.YES_NO_OPTION, javax.swing.JOptionPane.WARNING_MESSAGE);
+            Cours cours = salle.getListeDesCoursFuturs().get(Ligne_Futur);
             
+            if (cours.getListe_Client_Inscrit().size() > 0) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Impossible de supprimer : " + cours.getListe_Client_Inscrit().size() + " client(s) déjà inscrit(s) !", "Action refusée", javax.swing.JOptionPane.ERROR_MESSAGE);
+            } else {
+                int choix = javax.swing.JOptionPane.showConfirmDialog(this, "Etes vous sur de vouloir supprimer le cours de " + cours.getType_de_cours() + " du " + cours.getDate() + " ?","Confirmation de suppression", javax.swing.JOptionPane.YES_NO_OPTION, javax.swing.JOptionPane.WARNING_MESSAGE);
+            
+                if(choix == javax.swing.JOptionPane.YES_OPTION){
+                    salle.getListeDesCoursFuturs().remove(Ligne_Futur);
+                    salle.Sauvegarder();
+                    Remplir_Tableau_Cours();
+                    javax.swing.JOptionPane.showMessageDialog(this, "Cours supprime avec succes.");
+
+            }}
+        } else if (Ligne_Passé != -1) {
+            Cours cours = salle.getListeDesCoursPasses().get(Ligne_Passé);
+            int choix = javax.swing.JOptionPane.showConfirmDialog(this, "Etes vous sur de vouloir supprimer le cours de " + cours.getType_de_cours() + " du " + cours.getDate() + " ?","Confirmation de suppression", javax.swing.JOptionPane.YES_NO_OPTION, javax.swing.JOptionPane.WARNING_MESSAGE);
+
             if(choix == javax.swing.JOptionPane.YES_OPTION){
-                salle.getListeDesCoursFuturs().remove(Ligne_Futur);
+                salle.getListeDesCoursPasses().remove(Ligne_Passé);
                 salle.Sauvegarder();
                 Remplir_Tableau_Cours();
-                javax.swing.JOptionPane.showMessageDialog(this, "Cours supprimé avec succès.");
-            } else {
+                javax.swing.JOptionPane.showMessageDialog(this, "Cours supprime avec succes");      
+            }else {
                 javax.swing.JOptionPane.showMessageDialog(this, "veuillez selectionner un cours dans le tableau ");
             }
-            
         }
         
-        if (Ligne_Passé != -1) {
-            String Nom_Cours = TCours_Passé.getValueAt(Ligne_Passé, 0).toString();
-            String dateCours = TCours_Passé.getValueAt(Ligne_Passé, 4).toString();
-            
-            int choix = javax.swing.JOptionPane.showConfirmDialog(this, "Êtes-vous sûr de vouloir supprimer le cours de " + Nom_Cours + " du " + dateCours + " ?","Confirmation de suppression", javax.swing.JOptionPane.YES_NO_OPTION, javax.swing.JOptionPane.WARNING_MESSAGE);
-            
-            if(choix == javax.swing.JOptionPane.YES_OPTION){
-                salle.getListeDesCoursFuturs().remove(TCours_Passé);
-                salle.Sauvegarder();
-                Remplir_Tableau_Cours();
-                javax.swing.JOptionPane.showMessageDialog(this, "Cours supprimé avec succès.");
-            } else {
-                javax.swing.JOptionPane.showMessageDialog(this, "veuillez selectionner un cours dans le tableau ");
-            }
-            
-        }
     }//GEN-LAST:event_BSupprimerActionPerformed
 
     private void BModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BModifierActionPerformed
