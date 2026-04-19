@@ -18,7 +18,8 @@ public class FAcceuilPrincipal extends javax.swing.JFrame {
     private Salle salle;
     private FListeActivites fichListeActivites;
     private FChoixPasses_Futures fichChoixPasses_Futures;
-    private FMonProfil fichMonprofil;
+    private FMonProfil fichMonProfil;
+   
     
     /**
      * Creates new form FAcceuilPrincipal
@@ -35,13 +36,14 @@ public class FAcceuilPrincipal extends javax.swing.JFrame {
         fichFConnection = new FConnection(this,false,salle);
         fichFInscription = new FInscription(this, false,salle);
         fichListeActivites = new FListeActivites (this,false,salle);
+        fichMonProfil =new FMonProfil(this,false);
 
     }
     
     public Salle getSalle(){
         return this.salle;
     }
-
+    public FMonProfil getfichMonProfil(){return this.fichMonProfil;}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -56,6 +58,8 @@ public class FAcceuilPrincipal extends javax.swing.JFrame {
         BOui = new javax.swing.JToggleButton();
         BNon = new javax.swing.JToggleButton();
         bQuitter = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        bAdmin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,6 +88,13 @@ public class FAcceuilPrincipal extends javax.swing.JFrame {
             }
         });
 
+        bAdmin.setText("acces Admin");
+        bAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAdminActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -91,15 +102,19 @@ public class FAcceuilPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(BOui)
-                        .addGap(35, 35, 35)
-                        .addComponent(BNon))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(107, 107, 107)
-                        .addComponent(jLabel1)))
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addComponent(BOui)
+                                .addGap(35, 35, 35)
+                                .addComponent(BNon))
+                            .addComponent(bAdmin))))
                 .addContainerGap(99, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -116,7 +131,11 @@ public class FAcceuilPrincipal extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(BOui)
                     .addComponent(BNon))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addGap(19, 19, 19)
+                .addComponent(bAdmin)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addComponent(bQuitter)
                 .addGap(44, 44, 44))
         );
@@ -153,6 +172,12 @@ public class FAcceuilPrincipal extends javax.swing.JFrame {
         fichFInscription.setVisible(true);
     }//GEN-LAST:event_BNonActionPerformed
 
+    private void bAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAdminActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        fichFConnection.setVisible(true);
+    }//GEN-LAST:event_bAdminActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -181,8 +206,10 @@ public class FAcceuilPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton BNon;
     private javax.swing.JToggleButton BOui;
+    private javax.swing.JButton bAdmin;
     private javax.swing.JButton bQuitter;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }

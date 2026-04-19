@@ -17,6 +17,7 @@ public class FListeActivites extends javax.swing.JDialog {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FListeActivites.class.getName());
     private Salle salle;
+    private FAcceuilPrincipal monAcceuil;
     /**
      * Creates new form FListeActivites
      */
@@ -36,7 +37,7 @@ public class FListeActivites extends javax.swing.JDialog {
             Object[] ligne = {c.getType_de_cours(), c.getNomActivite(), c.getListe_Client_Inscrit().size(), "Coach", c.getDate(), "Heure"};
             model.addRow(ligne);
         }
-        TCours.setModel(model);
+        //TCours.setModel(model);
     }
 
     /**
@@ -50,9 +51,10 @@ public class FListeActivites extends javax.swing.JDialog {
 
         jLabel1 = new javax.swing.JLabel();
         bRetour = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        TCours = new javax.swing.JTable();
+        jGestionCompte = new javax.swing.JButton();
+        bYoga = new javax.swing.JButton();
+        bGym = new javax.swing.JButton();
+        bPilate = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -65,42 +67,41 @@ public class FListeActivites extends javax.swing.JDialog {
             }
         });
 
-        jButton1.setText("mettre photo");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jGestionCompte.setText("mettre photo");
+        jGestionCompte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jGestionCompteActionPerformed(evt);
             }
         });
 
-        TCours.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(TCours);
+        bYoga.setText("Yoga");
+
+        bGym.setText("Gymnastique");
+
+        bPilate.setText("pilate");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE)
-                    .addComponent(bRetour))
+                .addContainerGap(511, Short.MAX_VALUE)
+                .addComponent(bRetour)
                 .addGap(23, 23, 23))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(155, 155, 155)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(jGestionCompte)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(78, 78, 78)
+                .addComponent(bYoga)
+                .addGap(93, 93, 93)
+                .addComponent(bGym)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bPilate)
+                .addGap(90, 90, 90))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,10 +109,13 @@ public class FListeActivites extends javax.swing.JDialog {
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jButton1))
-                .addGap(32, 32, 32)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                    .addComponent(jGestionCompte))
+                .addGap(122, 122, 122)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bYoga)
+                    .addComponent(bGym)
+                    .addComponent(bPilate))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 193, Short.MAX_VALUE)
                 .addComponent(bRetour)
                 .addGap(15, 15, 15))
         );
@@ -125,11 +129,11 @@ public class FListeActivites extends javax.swing.JDialog {
         this.getParent().setVisible(true);
     }//GEN-LAST:event_bRetourActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jGestionCompteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGestionCompteActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        //get.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        ((FAcceuilPrincipal)this.getParent()).getfichMonProfil().setVisible(true);
+    }//GEN-LAST:event_jGestionCompteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -169,10 +173,11 @@ public class FListeActivites extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable TCours;
+    private javax.swing.JButton bGym;
+    private javax.swing.JButton bPilate;
     private javax.swing.JButton bRetour;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton bYoga;
+    private javax.swing.JButton jGestionCompte;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

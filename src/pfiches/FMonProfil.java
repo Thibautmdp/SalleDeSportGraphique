@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package pfiches;
-
+import ptraitement.*;
 /**
  *
  * @author thiba
@@ -12,6 +12,7 @@ public class FMonProfil extends javax.swing.JDialog {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FMonProfil.class.getName());
     private FListeActivites fichFListeActivites;
+    private Salle salle;
 
     /**
      * Creates new form FMonProfil
