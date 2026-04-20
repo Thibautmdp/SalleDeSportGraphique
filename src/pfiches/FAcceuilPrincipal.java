@@ -19,6 +19,7 @@ public class FAcceuilPrincipal extends javax.swing.JFrame {
     private FListeActivites fichListeActivites;
     private FChoixPasses_Futures fichChoixPasses_Futures;
     private FMonProfil fichMonProfil;
+    private Client client;
    
     
     /**
@@ -36,7 +37,7 @@ public class FAcceuilPrincipal extends javax.swing.JFrame {
         fichFConnection = new FConnection(this,false,salle);
         fichFInscription = new FInscription(this, false,salle);
         fichListeActivites = new FListeActivites (this,false,salle);
-        fichMonProfil =new FMonProfil(this,false);
+       
 
     }
     

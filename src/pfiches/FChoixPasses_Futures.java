@@ -45,6 +45,11 @@ public class FChoixPasses_Futures extends javax.swing.JDialog {
         bCoursPasses.setActionCommand("");
 
         jButton2.setText("Mettre photo");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         BCoursFutures.setText("Cours Futures");
 
@@ -115,6 +120,10 @@ public class FChoixPasses_Futures extends javax.swing.JDialog {
         this.setVisible(false);
         this.getParent().setVisible(true);
     }//GEN-LAST:event_bRetourActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

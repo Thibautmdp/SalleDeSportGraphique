@@ -140,7 +140,7 @@ public class FConnection extends javax.swing.JDialog {
             if (clientTrouve != null) {
                 JOptionPane.showMessageDialog(this, "Bienvenue " + clientTrouve.getPrenom());
                 this.setVisible(false);
-                fichListeActivites = new FListeActivites(null, true, salle);
+                fichListeActivites = new FListeActivites((java.awt.Frame) this.getParent(), true, salle);
                 fichListeActivites.setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(this, "Email ou mot de passe incorrect.");

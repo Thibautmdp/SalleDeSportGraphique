@@ -2,3 +2,4 @@ CL-1 ; Thibourino ; bourino ; tibtest2@gmail.com ; 1234 ; 0000 ; Mensuel ; true
 C2 ; Poulard ; Maxence ; maxence.poulard@epfedu.fr ; Vie5cgmf! ; 0651012741 ; Mensuel ; true
 C3 ; Martinant ; Thibaut ; thibaut.martinant@epfedu.fr ; maxence ; 0666568268 ; Trimestriel ; true
 C4 ; martinant ; thibaut ; thibaut.martinantdepreneuf@epfedu.fr ; mdp ; 0666568268 ; Trimestriel ; true
+C5 ; mdp ; thib ; thibmdp@gmail.com ; mdp ; 06060606 ; Trimestriel ; true

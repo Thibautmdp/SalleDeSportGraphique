@@ -25,6 +25,7 @@ public class FListeActivites extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.salle = salle;
+         this.monAcceuil = (FAcceuilPrincipal) parent;
         Remplir_Tableau_Cours();
     }
     
@@ -132,7 +133,8 @@ public class FListeActivites extends javax.swing.JDialog {
     private void jGestionCompteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGestionCompteActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        ((FAcceuilPrincipal)this.getParent()).getfichMonProfil().setVisible(true);
+         monAcceuil.getfichMonProfil().setVisible(true);
+        //((FAcceuilPrincipal)this.getParent()).getfichMonProfil().setVisible(true);
     }//GEN-LAST:event_jGestionCompteActionPerformed
 
     /**

@@ -13,15 +13,26 @@ public class FMonProfil extends javax.swing.JDialog {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FMonProfil.class.getName());
     private FListeActivites fichFListeActivites;
     private Salle salle;
+    private Client client;
 
     /**
      * Creates new form FMonProfil
      */
-    public FMonProfil(java.awt.Frame parent, boolean modal) {
+    public FMonProfil(java.awt.Frame parent, boolean modal,Client client) {
         super(parent, modal);
         initComponents();
+        this.client = client;  
+        AfficherDonnees();
     }
-
+    
+    public void AfficherDonnees(){
+    jNom.setText("Nom : " + client.getNom());
+    jPrenom.setText("Prénom : " + client.getPrenom());
+    jEmail.setText("Email : " + client.getEmail());
+    //jMDP.setText("MDP : " + client.getMDP());
+    jTel.setText("Téléphone : " + client.getNumTel());
+    jAbo.setText("Abonnement : " + client.getAbo());
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,6 +43,19 @@ public class FMonProfil extends javax.swing.JDialog {
     private void initComponents() {
 
         bRetour = new javax.swing.JButton();
+        nom = new javax.swing.JLabel();
+        prenom = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        bModifierMesInfos = new javax.swing.JButton();
+        jNom = new javax.swing.JLabel();
+        jPrenom = new javax.swing.JLabel();
+        jEmail = new javax.swing.JLabel();
+        jMDP = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jTel = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jAbo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -42,20 +66,94 @@ public class FMonProfil extends javax.swing.JDialog {
             }
         });
 
+        nom.setText("Nom");
+
+        prenom.setText("Prenom");
+
+        jLabel3.setText("adresse mail");
+
+        jLabel4.setText("mot de passe");
+
+        bModifierMesInfos.setText("Modifier mes infos ");
+
+        jNom.setText("jLabel1");
+
+        jPrenom.setText("jLabel2");
+
+        jEmail.setText("jLabel5");
+
+        jMDP.setText("jLabel6");
+
+        jLabel1.setText("tel");
+
+        jTel.setText("jLabel2");
+
+        jLabel2.setText("type d'abo");
+
+        jAbo.setText("jLabel5");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(306, Short.MAX_VALUE)
-                .addComponent(bRetour)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bModifierMesInfos)
+                        .addGap(40, 40, 40))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel3)
+                                .addComponent(prenom)
+                                .addComponent(nom))
+                            .addComponent(jLabel1))
+                        .addGap(52, 52, 52)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTel)
+                            .addComponent(jNom)
+                            .addComponent(jPrenom)
+                            .addComponent(jEmail)
+                            .addComponent(jMDP))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(bRetour)
+                    .addComponent(jAbo))
                 .addGap(22, 22, 22))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(256, Short.MAX_VALUE)
-                .addComponent(bRetour)
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nom)
+                    .addComponent(jNom))
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(prenom)
+                    .addComponent(jPrenom)
+                    .addComponent(jLabel2))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jEmail)
+                    .addComponent(jAbo))
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jMDP))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jTel))
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bRetour)
+                    .addComponent(bModifierMesInfos))
                 .addGap(21, 21, 21))
         );
 
@@ -94,7 +192,7 @@ public class FMonProfil extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                FMonProfil dialog = new FMonProfil(new javax.swing.JFrame(), true);
+                FMonProfil dialog = new FMonProfil(new javax.swing.JFrame(), true, null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -107,6 +205,19 @@ public class FMonProfil extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bModifierMesInfos;
     private javax.swing.JButton bRetour;
+    private javax.swing.JLabel jAbo;
+    private javax.swing.JLabel jEmail;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jMDP;
+    private javax.swing.JLabel jNom;
+    private javax.swing.JLabel jPrenom;
+    private javax.swing.JLabel jTel;
+    private javax.swing.JLabel nom;
+    private javax.swing.JLabel prenom;
     // End of variables declaration//GEN-END:variables
 }
