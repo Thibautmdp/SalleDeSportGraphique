@@ -49,8 +49,8 @@ public class FStatistique_Cours extends javax.swing.JDialog {
             }
         }
         
-        jTable1.setModel(Modele_Top);
-        jTable2.setModel(Modele_Flop);
+        TAble_Top.setModel(Modele_Top);
+        Table_Flop.setModel(Modele_Flop);
     }
 
     /**
@@ -67,9 +67,9 @@ public class FStatistique_Cours extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         BRetour = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TAble_Top = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        Table_Flop = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -86,7 +86,7 @@ public class FStatistique_Cours extends javax.swing.JDialog {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TAble_Top.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -97,9 +97,9 @@ public class FStatistique_Cours extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(TAble_Top);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        Table_Flop.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -110,7 +110,7 @@ public class FStatistique_Cours extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(Table_Flop);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -204,12 +204,12 @@ public class FStatistique_Cours extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BRetour;
+    private javax.swing.JTable TAble_Top;
+    private javax.swing.JTable Table_Flop;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
 }
