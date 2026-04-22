@@ -1,28 +1,29 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package pfiches;
 import ptraitement.*;
-
 /**
  *
  * @author maxen
  */
-public class FAdmin extends javax.swing.JFrame {
+public class FAdmin extends javax.swing.JDialog {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FAdmin.class.getName());
     private FConsulter_Liste_Clients fichFConsulter_Liste_Clients;
     private FGestion_Cours fichFGestion_Cours;
     private FStatistique_Cours fichFStatistique_Cours;
     private Salle salle;
-    private javax.swing.JFrame parent;
+    private javax.swing.JDialog parent;
     /**
      * Creates new form FAdmin
      */
-    public FAdmin(Salle salle) {
+    public FAdmin(javax.swing.JDialog parent, boolean modal,  Salle salle) {
+        super(parent, modal);
         initComponents();
         this.salle = salle;
+        this.parent = parent;
     }
 
     /**
@@ -39,7 +40,7 @@ public class FAdmin extends javax.swing.JFrame {
         BStatistique = new javax.swing.JButton();
         BRetour = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         BConsulter_La_Liste_Des_Clients.setText("Consulter la liste des Clients");
         BConsulter_La_Liste_Des_Clients.addActionListener(new java.awt.event.ActionListener() {
@@ -80,7 +81,7 @@ public class FAdmin extends javax.swing.JFrame {
                     .addComponent(BConsulter_La_Liste_Des_Clients)
                     .addComponent(BStatistique)
                     .addComponent(BRetour))
-                .addContainerGap(416, Short.MAX_VALUE))
+                .addContainerGap(162, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,7 +94,7 @@ public class FAdmin extends javax.swing.JFrame {
                 .addComponent(BStatistique)
                 .addGap(29, 29, 29)
                 .addComponent(BRetour)
-                .addContainerGap(159, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
@@ -113,14 +114,6 @@ public class FAdmin extends javax.swing.JFrame {
         fichFGestion_Cours.setVisible(true);
     }//GEN-LAST:event_BGestion_Des_CoursActionPerformed
 
-    private void BRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BRetourActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-        if(parent != null){
-            parent.setVisible(true);
-        }
-    }//GEN-LAST:event_BRetourActionPerformed
-
     private void BStatistiqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BStatistiqueActionPerformed
         // TODO add your handling code here:
         fichFStatistique_Cours = new FStatistique_Cours(this, true, this.salle);
@@ -128,6 +121,15 @@ public class FAdmin extends javax.swing.JFrame {
         fichFStatistique_Cours.setVisible(true);
         this.setVisible(true);
     }//GEN-LAST:event_BStatistiqueActionPerformed
+
+    private void BRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BRetourActionPerformed
+        // TODO add your handling code here:
+        
+        if(parent != null){
+            parent.setVisible(true);
+        }
+        this.setVisible(false);
+    }//GEN-LAST:event_BRetourActionPerformed
 
     /**
      * @param args the command line arguments
@@ -150,8 +152,20 @@ public class FAdmin extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
-        //java.awt.EventQueue.invokeLater(() -> new FAdmin().setVisible(true));
+        /* Create and display the dialog */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                FAdmin dialog = new FAdmin(new javax.swing.JDialog(), true,null);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
+            }
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

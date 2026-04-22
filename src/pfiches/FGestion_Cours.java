@@ -20,7 +20,7 @@ public class FGestion_Cours extends javax.swing.JDialog {
     /**
      * Creates new form FGestion_Cours
      */
-    public FGestion_Cours(java.awt.Frame parent, boolean modal, Salle salle) {
+    public FGestion_Cours(javax.swing.JDialog parent, boolean modal, Salle salle) {
         super(parent, modal);
         initComponents();
         this.salle = salle;
@@ -277,7 +277,7 @@ public class FGestion_Cours extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                FGestion_Cours dialog = new FGestion_Cours(new javax.swing.JFrame(), true, null);
+                FGestion_Cours dialog = new FGestion_Cours(new javax.swing.JDialog(), true, null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

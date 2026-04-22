@@ -26,6 +26,7 @@ public class Salle {
     private List<Cours> Liste_des_cours_futurs;
     private List<Cours> Liste_des_cours_passes;
     private String Nom_du_fichier_sauvegarder;
+    private List<Cours> Liste_des_cours;
 
     Scanner scan = new Scanner(System.in);
 
@@ -510,14 +511,27 @@ public class Salle {
         try {
             FileWriter fw = new FileWriter(this.Nom_du_fichier_sauvegarder, false);
             PrintWriter pw = new PrintWriter(fw);
-            for (Client client : Liste_des_clients) {
-                pw.println(client.getNumClient() + " ; " + client.getNom() + " ; " + client.getPrenom()
-                        + " ; " + client.getEmail() + " ; " + client.getMotDePasse()
-                        + " ; " + client.getNumTel() + " ; " + client.getAbo()
-                        + " ; " + client.Abo_est_il_actif());
-            }
+            // CLIENTS
+        for (Client client : Liste_des_clients) {
+            pw.println("CLIENT ; " + client.getNumClient() + " ; " + client.getNom() + " ; " + client.getPrenom()
+                    + " ; " + client.getEmail() + " ; " + client.getMotDePasse()
+                    + " ; " + client.getNumTel() + " ; " + client.getAbo()
+                    + " ; " + client.Abo_est_il_actif());
+        }
+
+        // COURS FUTURS
+        for (Cours c : Liste_des_cours_futurs) {
+            pw.println("COURS_FUTUR ; " + c.getType_de_cours() + " ; " + c.getNomActivite() + " ; " 
+                    + c.getNb_Place_Max() + " ; " + c.getCoach() + " ; " + c.getDate() + " ; " + c.getHeure());
+        }
+
+        //  COURS PASSÉS
+        for (Cours c : Liste_des_cours_passes) {
+            pw.println("COURS_PASSE ; " + c.getType_de_cours() + " ; " + c.getNomActivite() + " ; " 
+                    + c.getNb_Place_Max() + " ; " + c.getCoach() + " ; " + c.getDate() + " ; " + c.getHeure());
+        }
             pw.close();
-            System.out.println("Sauvegarde reussie.");
+             System.out.println("Sauvegarde Cours reussie.");
         } catch (IOException e) {
             System.out.println("Erreur lors de la sauvegarde.");
         }
@@ -529,24 +543,35 @@ public class Salle {
             BufferedReader br = new BufferedReader(fr);
             String ligne;
             this.Liste_des_clients.clear();
+            this.Liste_des_cours_futurs.clear();
+            this.Liste_des_cours_passes.clear();
+            
             while ((ligne = br.readLine()) != null) {
                 String[] data = ligne.split(" ; ");
-                if (data.length == 8) {
-                    String numClient = data[0];
-                    String nom = data[1];
-                    String prenom = data[2];
-                    String email = data[3];
-                    String mdp = data[4];
-                    String tel = data[5];
-                    String typeAbo = data[6];
-                    boolean estActif = Boolean.parseBoolean(data[7]);
-                    Client c = new Client(numClient, nom, prenom, email, mdp, tel, typeAbo);
-                    c.Abo_devient_actif(estActif);
+                if (data.length > 0) {
+                String marqueur = data[0]; // Le premier élément nous dit ce que c'est
+
+                if (marqueur.equals("CLIENT") && data.length == 9) {
+                    // Lecture d'un client
+                    Client c = new Client(data[1], data[2], data[3], data[4], data[5], data[6], data[7]);
+                    c.Abo_devient_actif(Boolean.parseBoolean(data[8]));
                     this.Liste_des_clients.add(c);
+                } 
+                else if (marqueur.equals("COURS_FUTUR") && data.length == 7) {
+                    // Lecture d'un cours futur
+                    // Ordre : Type, Activité, Places, Coach, Date, Heure
+                    Cours c = new Cours(data[1], data[2], Integer.parseInt(data[3]), data[4], java.time.LocalDate.parse(data[5]), data[6]);
+                    this.Liste_des_cours_futurs.add(c);
+                } 
+                else if (marqueur.equals("COURS_PASSE") && data.length == 7) {
+                    // Lecture d'un cours passé
+                    Cours c = new Cours(data[1], data[2], Integer.parseInt(data[3]), data[4], java.time.LocalDate.parse(data[5]), data[6]);
+                    this.Liste_des_cours_passes.add(c);
                 }
             }
+            }
             br.close();
-            System.out.println("Chargement termine : " + Liste_des_clients.size() + " clients recuperes.");
+            System.out.println("Chargement termine : " + Liste_des_clients.size() + " clients recuperes et " + (Liste_des_cours_futurs.size() + Liste_des_cours_passes.size()) + " cours");
         } catch (IOException e) {
             System.out.println("Aucun fichier de sauvegarde trouve ou erreur de lecture.");
         }
@@ -566,6 +591,13 @@ public class Salle {
 
     public List<Cours> getListeDesCoursPasses() {
         return Liste_des_cours_passes;
+    }
+    
+    public List<Cours> getListeDesCours(){
+        List<Cours> Tous_Les_Cours = new ArrayList<>();
+        Tous_Les_Cours.addAll(Liste_des_cours_passes);
+        Tous_Les_Cours.addAll(Liste_des_cours_futurs);
+        return Tous_Les_Cours;
     }
 
     public List<Client> getListeDesClients() {

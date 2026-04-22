@@ -15,7 +15,7 @@ public class FStatistique_Cours extends javax.swing.JDialog {
     /**
      * Creates new form FStatistique_Cours
      */
-    public FStatistique_Cours(java.awt.Frame parent, boolean modal, Salle salle) {
+    public FStatistique_Cours(javax.swing.JDialog parent, boolean modal, Salle salle) {
         super(parent, modal);
         initComponents();
         this.salle = salle;
@@ -26,7 +26,31 @@ public class FStatistique_Cours extends javax.swing.JDialog {
     
     
     private void Statistique(){
+        String[] colonnes = {"Nom du Cours", "Inscrits", "Capacité", "Remplissage (%)"};
+        javax.swing.table.DefaultTableModel Modele_Top = new javax.swing.table.DefaultTableModel(colonnes, 0);
+        javax.swing.table.DefaultTableModel Modele_Flop = new javax.swing.table.DefaultTableModel(colonnes, 0);
         
+        java.util.List<Cours> Liste_Cours = salle.getListeDesCours();
+        
+        if(Liste_Cours != null){
+            for (Cours c : Liste_Cours) {
+                int NB_Inscrit = c.getNbr_Inscrit();
+                int NB_Max = c.getNb_Place_Max();
+                
+                double Pourcentage = (double) NB_Inscrit / NB_Max * 100;
+                
+                Object[] row = {c.getNomActivite(), c.getNbr_Inscrit(), c.getNb_Place_Max(), String.format("%.1f%%", Pourcentage)};
+                
+                if (Pourcentage >= 70.0){
+                    Modele_Top.addRow(row);
+                } else {
+                    Modele_Flop.addRow(row);
+                }
+            }
+        }
+        
+        jTable1.setModel(Modele_Top);
+        jTable2.setModel(Modele_Flop);
     }
 
     /**
@@ -56,6 +80,11 @@ public class FStatistique_Cours extends javax.swing.JDialog {
         jLabel3.setText("Statistique");
 
         BRetour.setText("Retour");
+        BRetour.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BRetourActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -130,6 +159,12 @@ public class FStatistique_Cours extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void BRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BRetourActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        this.getParent().setVisible(true);
+    }//GEN-LAST:event_BRetourActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -155,7 +190,7 @@ public class FStatistique_Cours extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                FStatistique_Cours dialog = new FStatistique_Cours(new javax.swing.JFrame(), true, null);
+                FStatistique_Cours dialog = new FStatistique_Cours(new javax.swing.JDialog(), true, null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

@@ -17,6 +17,7 @@ public class Cours {
     private String Type_de_cours;
     private String Activites;
     private int Nbr_de_place;
+    private int Nbr_Inscrit;
     private String nomCoach;
     private LocalDate Date;
     private String Heure;
@@ -57,6 +58,11 @@ public class Cours {
 
     public String getType_de_cours() {
         return Type_de_cours;
+    }
+    
+    public int getNbr_Inscrit(){
+        Nbr_Inscrit = Liste_Client_Inscrit.size();
+        return Nbr_Inscrit;
     }
 
     public String getNomActivite() {
@@ -128,5 +134,7 @@ public class Cours {
     public void setHeure(String heure) {
         this.Heure = heure;
     }
+    
+    
     
 }
