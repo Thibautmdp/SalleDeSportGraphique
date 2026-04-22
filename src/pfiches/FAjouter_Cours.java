@@ -13,6 +13,7 @@ public class FAjouter_Cours extends javax.swing.JDialog {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FAjouter_Cours.class.getName());
     private Salle salle;
+    private FListeActivites fichListeActivites;
     /**
      * Creates new form FAjouter_Cours
      */
@@ -177,7 +178,7 @@ public class FAjouter_Cours extends javax.swing.JDialog {
             salle.Sauvegarder();
 
             JOptionPane.showMessageDialog(this, "Cours ajouté avec succès ");
-            this.dispose();
+            
         } catch (java.time.format.DateTimeParseException e) {
             JOptionPane.showMessageDialog(this, "Format de date invalide : Utilisez : AAAA-MM-JJ ");
         } catch (NumberFormatException e) {
@@ -185,6 +186,10 @@ public class FAjouter_Cours extends javax.swing.JDialog {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Erreur : " + e.getMessage());
         }
+        fichListeActivites = new FListeActivites(null, true, salle);
+        fichListeActivites.setVisible(true);
+        
+        this.dispose();
     }//GEN-LAST:event_BValiderActionPerformed
 
     private void BRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BRetourActionPerformed

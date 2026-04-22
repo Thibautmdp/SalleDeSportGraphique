@@ -44,6 +44,8 @@ public class FAcceuilPrincipal extends javax.swing.JFrame {
     public Salle getSalle(){
         return this.salle;
     }
+    
+    
     public FMonProfil getfichMonProfil(){return this.fichMonProfil;}
     /**
      * This method is called from within the constructor to initialize the form.
