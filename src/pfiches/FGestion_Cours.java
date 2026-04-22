@@ -30,21 +30,30 @@ public class FGestion_Cours extends javax.swing.JDialog {
     }
     
     private void Remplir_Tableau_Cours(){
-        String[] colonnes = { "Type", "Activite", "Places", "Coach", "Date", "Heure"};
-        DefaultTableModel model = new DefaultTableModel(colonnes, 0);
+        String[] colonnes = { "Type", "Activite", "Nombre d'incrits" ,"Places", "Coach", "Date", "Heure"};
+        
+        //Cours futurs : 
+        
+        DefaultTableModel Model_Futur = new DefaultTableModel(colonnes, 0);
         List<Cours> Liste_Futur = salle.getListeDesCoursFuturs();
-        List<Cours> Liste_Passé = salle.getListeDesCoursPasses();
         
         for(Cours c : Liste_Futur) {
-            Object[] ligne = {c.getType_de_cours(), c.getNomActivite(), c.getListe_Client_Inscrit().size(), "Coach", c.getDate(), "Heure"};
-            model.addRow(ligne);
+            Object[] ligne = {c.getType_de_cours(), c.getNomActivite(), c.getListe_Client_Inscrit().size(), c.getNb_Place_Max(), c.getCoach(), c.getDate(), c.getHeure()};
+            Model_Futur.addRow(ligne);
         }
-        TCours_Futur.setModel(model);
+        TCours_Futur.setModel(Model_Futur);
+        
+        // Cours Passés : 
+        
+        DefaultTableModel Model_Passe = new DefaultTableModel(colonnes, 0);
+        List<Cours> Liste_Passé = salle.getListeDesCoursPasses();
+        
+        
         for(Cours c : Liste_Passé) {
-            Object[] ligne = {c.getType_de_cours(), c.getNomActivite(), c.getListe_Client_Inscrit().size(), "Coach", c.getDate(), "Heure"};
-            model.addRow(ligne);
+            Object[] ligne = {c.getType_de_cours(), c.getNomActivite(), c.getListe_Client_Inscrit().size(), c.getNb_Place_Max(), c.getCoach(), c.getDate(), c.getHeure()};
+            Model_Passe.addRow(ligne);
         }
-        TCours_Passé.setModel(model);
+        TCours_Passé.setModel(Model_Passe);
     }
     
     /**
@@ -137,7 +146,7 @@ public class FGestion_Cours extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(380, 380, 380)
                         .addComponent(BRetour)
-                        .addContainerGap(104, Short.MAX_VALUE))
+                        .addContainerGap(648, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(BAjouter)
                         .addGap(18, 18, 18)
@@ -152,10 +161,9 @@ public class FGestion_Cours extends javax.swing.JDialog {
                         .addGap(101, 101, 101))))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addGap(22, 22, 22))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 551, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,9 +190,9 @@ public class FGestion_Cours extends javax.swing.JDialog {
 
     private void BAjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAjouterActionPerformed
         // TODO add your handling code here:
-        fichFAjouter_Cours = new FAjouter_Cours(null, true, this.salle);
-        this.setVisible(false);
+        fichFAjouter_Cours = new FAjouter_Cours(null, true, salle);
         fichFAjouter_Cours.setVisible(true);
+        Remplir_Tableau_Cours();
     }//GEN-LAST:event_BAjouterActionPerformed
 
     private void BSupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSupprimerActionPerformed

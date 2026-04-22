@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package pfiches;
+import java.time.LocalDate;
 import javax.swing.JOptionPane;
 import ptraitement.*;
 /**
@@ -22,7 +23,10 @@ public class FModifier_Cours extends javax.swing.JDialog {
         initComponents();
         this.salle = salle;
         this.cours = cours;
-        Modification_Cours();
+        if (this.cours != null){
+            Modification_Cours();
+        }
+        this.setLocationRelativeTo(parent);
     }
     
     private void Modification_Cours(){
@@ -155,31 +159,34 @@ public class FModifier_Cours extends javax.swing.JDialog {
     private void BEnregistrerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BEnregistrerActionPerformed
         // TODO add your handling code here:
         try{
-            cours.setType_de_cours(TXTCours.getText());
-            cours.setNomActivite(TXTActivite.getText());
-            cours.setCoach(TXTCoach.getText());
-            cours.setDate(java.time.LocalDate.parse(TXTDate.getText()));
-            cours.setHeure(TXTHeure.getText());
-
-            salle.Sauvegarder();
-
-            JOptionPane.showMessageDialog(this, "Modifications enregistrées !");
-
-            this.setVisible(false);
-            if (this.getParent() != null) {
+            cours.setType_de_cours(TXTCours.getText().trim());
+            cours.setNomActivite(TXTActivite.getText().trim());
+            cours.setCoach(TXTCoach.getText().trim());
+            LocalDate nouvelleDate = LocalDate.parse(TXTDate.getText().trim());
+            cours.setDate(nouvelleDate);
+            cours.setHeure(TXTHeure.getText().trim());
+            
+            if(salle != null){
+                salle.Sauvegarder();
+                JOptionPane.showMessageDialog(this, "Modifications enregistrées !");
+                this.dispose();
+                if (this.getParent() != null) {
                 this.getParent().setVisible(true);
+                }
+            } else {
+                throw new Exception("Erreur : Reference à la 'Salle' manquante ");
             }
-        } catch(Exception e) {
+            
+        } catch(java.time.format.DateTimeParseException e){
             JOptionPane.showMessageDialog(this, "Erreur de saisie : " + e.getMessage());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erreur lors de l'enregistrement : " + e.getMessage());
         }
     }//GEN-LAST:event_BEnregistrerActionPerformed
 
     private void BRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BRetourActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
-        if (this.getParent() != null) {
-            this.getParent().setVisible(true);
-        }
+        this.dispose();
     }//GEN-LAST:event_BRetourActionPerformed
 
     /**

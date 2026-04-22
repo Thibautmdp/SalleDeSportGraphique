@@ -483,6 +483,24 @@ public class Salle {
             }
         }
     }
+    
+    public void trierCours(){
+        LocalDate Aujourd_Hui = LocalDate.now();
+        List<Cours> ADeplacer = new ArrayList<>();
+        
+        for (Cours c : Liste_des_cours_futurs){
+            if (c.getDate().isBefore(Aujourd_Hui)){
+                ADeplacer.add(c);
+            }
+        }
+        
+        for (Cours c : ADeplacer){
+            Liste_des_cours_futurs.remove(c);
+            Liste_des_cours_passes.add(c);
+        }
+        System.out.println("Tri effectué : " + ADeplacer.size() + " cours déplacés vers le passé.");
+    }
+    
 
     // ========================
     // SAUVEGARDE / CHARGEMENT

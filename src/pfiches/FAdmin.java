@@ -16,6 +16,7 @@ public class FAdmin extends javax.swing.JFrame {
     private FGestion_Cours fichFGestion_Cours;
     private FStatistique_Cours fichFStatistique_Cours;
     private Salle salle;
+    private javax.swing.JFrame parent;
     /**
      * Creates new form FAdmin
      */
@@ -115,7 +116,9 @@ public class FAdmin extends javax.swing.JFrame {
     private void BRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BRetourActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        this.getParent().setVisible(true);
+        if(parent != null){
+            parent.setVisible(true);
+        }
     }//GEN-LAST:event_BRetourActionPerformed
 
     private void BStatistiqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BStatistiqueActionPerformed
