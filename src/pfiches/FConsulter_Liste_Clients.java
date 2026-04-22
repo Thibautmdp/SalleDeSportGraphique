@@ -19,7 +19,7 @@ public class FConsulter_Liste_Clients extends javax.swing.JDialog {
     /**
      * Creates new form FConsulter_Liste_Clients
      */
-    public FConsulter_Liste_Clients(java.awt.Frame parent, boolean modal,Salle salle) {
+    public FConsulter_Liste_Clients(javax.swing.JDialog parent, boolean modal,Salle salle) {
         super(parent, modal);
         initComponents();
         this.salle = salle;
@@ -234,7 +234,7 @@ public class FConsulter_Liste_Clients extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                FConsulter_Liste_Clients dialog = new FConsulter_Liste_Clients(new javax.swing.JFrame(), true,null);
+                FConsulter_Liste_Clients dialog = new FConsulter_Liste_Clients(new javax.swing.JDialog(), true,null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

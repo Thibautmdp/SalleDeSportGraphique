@@ -16,6 +16,7 @@ public class FConnection extends javax.swing.JDialog {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FConnection.class.getName());
     private ptraitement.Salle salle;
     private FListeActivites fichListeActivites;
+    private FAdmin fichFAdmin;
 
     /**
      * Creates new form FConnection
@@ -124,11 +125,12 @@ public class FConnection extends javax.swing.JDialog {
         // TODO add your handling code here:
         String email = TXTMail.getText();
         String mdp = TXTMDP.getText();        //verif de l'admin 
-        if (email.equals("Max.admin@admin.fr") && mdp.equals("mdpadmin")){
+        if (email.equals("") && mdp.equals("")){
             JOptionPane.showMessageDialog(this, "Connexion Admin réussie !");
             this.setVisible(false);
-            new FAdmin(salle).setVisible(true); // on ouvre la page admin
-
+            FAdmin fichFAdmin = new FAdmin(this,true, salle); // on ouvre la page admin
+            fichFAdmin.setVisible(true);
+            
         } else {
             Client clientTrouve = null;
             for(Client c : salle.getListeDesClients()){

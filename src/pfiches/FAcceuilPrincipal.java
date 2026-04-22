@@ -29,6 +29,7 @@ public class FAcceuilPrincipal extends javax.swing.JFrame {
         initComponents();
         salle = new Salle("LE SPORT AU MAX", "sauvegarde_clients.txt");
         salle.Charger();
+        salle.trierCours();
 
         fichFConnection = new FConnection(this, false, salle);
         fichFInscription = new FInscription(this, false, salle);
@@ -44,6 +45,8 @@ public class FAcceuilPrincipal extends javax.swing.JFrame {
     public Salle getSalle(){
         return this.salle;
     }
+    
+    
     public FMonProfil getfichMonProfil(){return this.fichMonProfil;}
     /**
      * This method is called from within the constructor to initialize the form.

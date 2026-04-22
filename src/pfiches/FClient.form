@@ -34,7 +34,7 @@
                   <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" pref="111" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="241" max="32767" attributes="0"/>
+              <EmptySpace pref="346" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -47,7 +47,7 @@
               <Component id="jScrollPane1" min="-2" pref="102" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
               <Component id="jRetour" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="30" max="32767" attributes="0"/>
+              <EmptySpace pref="102" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

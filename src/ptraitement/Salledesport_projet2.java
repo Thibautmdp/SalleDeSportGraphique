@@ -15,7 +15,7 @@ public class Salledesport_projet2 {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Salle salle = new Salle("LE SPORT AU MAX", "sauvegarde_clients.txt");
+        Salle salle = new Salle("LE SPORT AU MAX", "sauvegarde.txt");
 
         salle.Charger();
 
