@@ -61,7 +61,9 @@ public class FListeActivites extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Decouvrez toutes les activitées");
+        jLabel1.setBorder(new javax.swing.border.MatteBorder(null));
 
         bRetour.setText("Retour");
         bRetour.addActionListener(new java.awt.event.ActionListener() {
@@ -70,55 +72,63 @@ public class FListeActivites extends javax.swing.JDialog {
             }
         });
 
-        jGestionCompte.setText("mettre photo");
+        jGestionCompte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pimage/logocompteE1.jpg"))); // NOI18N
         jGestionCompte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jGestionCompteActionPerformed(evt);
             }
         });
 
+        bYoga.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pimage/Yoga100x100.png"))); // NOI18N
         bYoga.setText("Yoga");
 
+        bGym.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pimage/gym100X100.png"))); // NOI18N
         bGym.setText("Gymnastique");
 
+        bPilate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pimage/pilate100X100.png"))); // NOI18N
         bPilate.setText("pilate");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(511, Short.MAX_VALUE)
-                .addComponent(bRetour)
-                .addGap(23, 23, 23))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(155, 155, 155)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jGestionCompte)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(78, 78, 78)
-                .addComponent(bYoga)
-                .addGap(93, 93, 93)
-                .addComponent(bGym)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bPilate)
-                .addGap(90, 90, 90))
+                .addGap(80, 80, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(bYoga, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(bGym, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(bPilate, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25))
+                    .addComponent(bRetour)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(108, 108, 108)
+                        .addComponent(jGestionCompte, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(23, 23, 23))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jGestionCompte))
-                .addGap(122, 122, 122)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bYoga)
-                    .addComponent(bGym)
-                    .addComponent(bPilate))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 193, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(23, 23, 23)
+                                .addComponent(jGestionCompte, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(66, 66, 66)
+                                .addComponent(jLabel1)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 152, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(bYoga, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bGym, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bPilate, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(50, 50, 50)))
                 .addComponent(bRetour)
                 .addGap(15, 15, 15))
         );
@@ -134,9 +144,10 @@ public class FListeActivites extends javax.swing.JDialog {
 
     private void jGestionCompteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGestionCompteActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
+        
         FMonProfil profil = new FMonProfil((java.awt.Frame)this.getParent(), true, this.clientConnecte);
         profil.setVisible(true);
+        
     }//GEN-LAST:event_jGestionCompteActionPerformed
 
     /**

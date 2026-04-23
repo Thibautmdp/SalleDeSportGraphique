@@ -26,12 +26,12 @@ public class FMonProfil extends javax.swing.JDialog {
     }
     
     public void AfficherDonnees(){
-    jNom.setText("Nom : " + client.getNom());
-    jPrenom.setText("Prénom : " + client.getPrenom());
-    jEmail.setText("Email : " + client.getEmail());
-    //jMDP.setText("MDP : " + client.getMDP());
-    jTel.setText("Téléphone : " + client.getNumTel());
-    jAbo.setText("Abonnement : " + client.getAbo());
+    jNom.setText(client.getNom());
+    jPrenom.setText(client.getPrenom());
+    jEmail.setText(client.getEmail());
+    jMDP.setText(client.getMotDePasse());
+    jTel.setText(client.getNumTel());
+    jAbo.setText( client.getAbo());
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -163,8 +163,8 @@ public class FMonProfil extends javax.swing.JDialog {
     private void bRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRetourActionPerformed
 
         // TODO add your handling code here:
-        this.setVisible(false);
-        getParent().setVisible(true);
+        this.dispose();
+        
     }//GEN-LAST:event_bRetourActionPerformed
 
     /**
