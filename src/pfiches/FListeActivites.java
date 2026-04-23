@@ -18,15 +18,17 @@ public class FListeActivites extends javax.swing.JDialog {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FListeActivites.class.getName());
     private Salle salle;
     private FAcceuilPrincipal monAcceuil;
+    private Client clientConnecte;
     /**
      * Creates new form FListeActivites
      */
-    public FListeActivites(java.awt.Frame parent, boolean modal, Salle salle) {
+    public FListeActivites(java.awt.Frame parent, boolean modal, Salle salle,Client client) {
         super(parent, modal);
         initComponents();
         this.salle = salle;
          this.monAcceuil = (FAcceuilPrincipal) parent;
         Remplir_Tableau_Cours();
+        this.clientConnecte = client;
     }
     
     private void Remplir_Tableau_Cours(){
@@ -133,8 +135,8 @@ public class FListeActivites extends javax.swing.JDialog {
     private void jGestionCompteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGestionCompteActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-         monAcceuil.getfichMonProfil().setVisible(true);
-        //((FAcceuilPrincipal)this.getParent()).getfichMonProfil().setVisible(true);
+        FMonProfil profil = new FMonProfil((java.awt.Frame)this.getParent(), true, this.clientConnecte);
+        profil.setVisible(true);
     }//GEN-LAST:event_jGestionCompteActionPerformed
 
     /**
@@ -162,7 +164,7 @@ public class FListeActivites extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                FListeActivites dialog = new FListeActivites(new javax.swing.JFrame(), true, null);
+                FListeActivites dialog = new FListeActivites(new javax.swing.JFrame(), true, null,null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

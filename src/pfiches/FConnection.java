@@ -124,7 +124,7 @@ public class FConnection extends javax.swing.JDialog {
     private void bSeConnecterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSeConnecterActionPerformed
         // TODO add your handling code here:
         String email = TXTMail.getText();
-        String mdp = TXTMDP.getText();        //verif de l'admin 
+        String mdp = TXTMDP.getText();  // verif admin      
         if (email.equals("") && mdp.equals("")){
             JOptionPane.showMessageDialog(this, "Connexion Admin réussie !");
             this.setVisible(false);
@@ -142,7 +142,7 @@ public class FConnection extends javax.swing.JDialog {
             if (clientTrouve != null) {
                 JOptionPane.showMessageDialog(this, "Bienvenue " + clientTrouve.getPrenom());
                 this.setVisible(false);
-                fichListeActivites = new FListeActivites((java.awt.Frame) this.getParent(), true, salle);
+                fichListeActivites = new FListeActivites((java.awt.Frame) this.getParent(), true, salle,clientTrouve);
                 fichListeActivites.setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(this, "Email ou mot de passe incorrect.");
