@@ -39,29 +39,45 @@ public class FAdmin extends javax.swing.JDialog {
         BGestion_Des_Cours = new javax.swing.JButton();
         BStatistique = new javax.swing.JButton();
         BRetour = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconImage(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        BConsulter_La_Liste_Des_Clients.setText("Consulter la liste des Clients");
+        BConsulter_La_Liste_Des_Clients.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pimage/logo client liste.png"))); // NOI18N
+        BConsulter_La_Liste_Des_Clients.setBorderPainted(false);
+        BConsulter_La_Liste_Des_Clients.setContentAreaFilled(false);
+        BConsulter_La_Liste_Des_Clients.setMaximumSize(new java.awt.Dimension(100, 100));
+        BConsulter_La_Liste_Des_Clients.setMinimumSize(new java.awt.Dimension(100, 100));
+        BConsulter_La_Liste_Des_Clients.setPreferredSize(new java.awt.Dimension(100, 100));
         BConsulter_La_Liste_Des_Clients.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BConsulter_La_Liste_Des_ClientsActionPerformed(evt);
             }
         });
+        getContentPane().add(BConsulter_La_Liste_Des_Clients, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 420, 250, 270));
 
-        BGestion_Des_Cours.setText("Gestion des cours ");
+        BGestion_Des_Cours.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pimage/logo gestion cours.png"))); // NOI18N
+        BGestion_Des_Cours.setToolTipText("");
+        BGestion_Des_Cours.setBorderPainted(false);
+        BGestion_Des_Cours.setContentAreaFilled(false);
         BGestion_Des_Cours.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BGestion_Des_CoursActionPerformed(evt);
             }
         });
+        getContentPane().add(BGestion_Des_Cours, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 270, 270));
 
-        BStatistique.setText("Statistique");
+        BStatistique.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pimage/logo statiques.png"))); // NOI18N
+        BStatistique.setBorderPainted(false);
+        BStatistique.setContentAreaFilled(false);
         BStatistique.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BStatistiqueActionPerformed(evt);
             }
         });
+        getContentPane().add(BStatistique, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 420, 260, 270));
 
         BRetour.setText("Retour");
         BRetour.addActionListener(new java.awt.event.ActionListener() {
@@ -69,33 +85,8 @@ public class FAdmin extends javax.swing.JDialog {
                 BRetourActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BGestion_Des_Cours)
-                    .addComponent(BConsulter_La_Liste_Des_Clients)
-                    .addComponent(BStatistique)
-                    .addComponent(BRetour))
-                .addContainerGap(162, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(122, 122, 122)
-                .addComponent(BConsulter_La_Liste_Des_Clients)
-                .addGap(18, 18, 18)
-                .addComponent(BGestion_Des_Cours)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(BStatistique)
-                .addGap(29, 29, 29)
-                .addComponent(BRetour)
-                .addContainerGap(27, Short.MAX_VALUE))
-        );
+        getContentPane().add(BRetour, new org.netbeans.lib.awtextra.AbsoluteConstraints(672, 333, 80, 30));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, -90, 1690, 840));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -173,5 +164,6 @@ public class FAdmin extends javax.swing.JDialog {
     private javax.swing.JButton BGestion_Des_Cours;
     private javax.swing.JButton BRetour;
     private javax.swing.JButton BStatistique;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
