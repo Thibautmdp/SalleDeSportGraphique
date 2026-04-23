@@ -14,6 +14,7 @@ public class FMonProfil extends javax.swing.JDialog {
     private FListeActivites fichFListeActivites;
     private Salle salle;
     private Client client;
+    private FModifMonProfil fichModifMonProfil;
 
     /**
      * Creates new form FMonProfil
@@ -23,6 +24,7 @@ public class FMonProfil extends javax.swing.JDialog {
         initComponents();
         this.client = client;  
         AfficherDonnees();
+        
     }
     
     public void AfficherDonnees(){
@@ -75,6 +77,11 @@ public class FMonProfil extends javax.swing.JDialog {
         jLabel4.setText("mot de passe");
 
         bModifierMesInfos.setText("Modifier mes infos ");
+        bModifierMesInfos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bModifierMesInfosActionPerformed(evt);
+            }
+        });
 
         jNom.setText("jLabel1");
 
@@ -166,6 +173,18 @@ public class FMonProfil extends javax.swing.JDialog {
         this.dispose();
         
     }//GEN-LAST:event_bRetourActionPerformed
+
+    private void bModifierMesInfosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bModifierMesInfosActionPerformed
+        // TODO add your handling code here:
+        //this.setVisible(false);
+        //fichModifMonProfil.setVisible(true);
+                                                       
+  
+        FModifMonProfil modif = new FModifMonProfil((java.awt.Frame)this.getParent(), true,null, this.client);
+        modif.setVisible(true);  
+
+        
+    }//GEN-LAST:event_bModifierMesInfosActionPerformed
 
     /**
      * @param args the command line arguments
