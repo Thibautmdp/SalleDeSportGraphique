@@ -70,7 +70,7 @@ public class Client extends Utilisateur {
     public void setTel(String Tel) {
         this.Tel = Tel;
     }
-
+   
     public void setTypeAbo(String Periodicite) {
         switch (Periodicite) {
             case "1":

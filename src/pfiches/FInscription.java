@@ -101,6 +101,11 @@ public class FInscription extends javax.swing.JDialog {
         jLabel1.setText("Inscription : ");
 
         BTrimestiel.setText("trimestriel");
+        BTrimestiel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTrimestielActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Nom : ");
 
@@ -247,6 +252,10 @@ public class FInscription extends javax.swing.JDialog {
         this.setVisible(false);
         getParent().setVisible(true);
     }//GEN-LAST:event_BRetourActionPerformed
+
+    private void BTrimestielActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTrimestielActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BTrimestielActionPerformed
 
 
     /**
