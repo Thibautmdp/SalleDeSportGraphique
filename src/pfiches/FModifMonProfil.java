@@ -266,7 +266,13 @@ public class FModifMonProfil extends javax.swing.JDialog {
         String abonnement = "";
         
         
-        
+        if (email.isEmpty() && mdp.isEmpty() && Nom.isEmpty() && Prenom.isEmpty() && Tel.isEmpty()) {
+        javax.swing.JOptionPane.showMessageDialog(this, 
+            "Erreur : Vous n'avez saisi aucune donnée à modifier.", 
+            "Données incomplètes", 
+            javax.swing.JOptionPane.WARNING_MESSAGE);
+        return; 
+        }
 // verif que les nnouvelles donnees ne sont pas vide
         if (!Nom.isEmpty()) client.setNom(Nom);
         if (!Prenom.isEmpty()) client.setPrenom(Prenom);
