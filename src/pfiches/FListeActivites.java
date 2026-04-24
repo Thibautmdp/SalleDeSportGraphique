@@ -62,7 +62,7 @@ public class FListeActivites extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("Decouvrez toutes les activitées");
+        jLabel1.setText("Decouvrez toutes nos activités");
         jLabel1.setBorder(new javax.swing.border.MatteBorder(null));
 
         bRetour.setText("Retour");

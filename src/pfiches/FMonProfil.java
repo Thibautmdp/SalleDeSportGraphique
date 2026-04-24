@@ -24,6 +24,17 @@ public class FMonProfil extends javax.swing.JDialog {
         initComponents();
         this.client = client;  
         AfficherDonnees();
+        // type de l'abonnement 
+        String aboActuel = client.getAbo();
+
+        // On coche le bouton correspondant
+    if (aboActuel.equals("Mensuel")) {
+        bMensuel.setSelected(true);
+    } else if (aboActuel.equals("Trimestriel")) {
+        bTrimestriel.setSelected(true);
+    } else if (aboActuel.equals("Annuel")) {
+        bAnnuel.setSelected(true);
+}
         
     }
     
@@ -33,7 +44,7 @@ public class FMonProfil extends javax.swing.JDialog {
     jEmail.setText(client.getEmail());
     jMDP.setText(client.getMotDePasse());
     jTel.setText(client.getNumTel());
-    jAbo.setText( client.getAbo());
+    //jAbo.setText( client.getAbo());
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,6 +55,15 @@ public class FMonProfil extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDialog1 = new javax.swing.JDialog();
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup3 = new javax.swing.ButtonGroup();
+        buttonGroup4 = new javax.swing.ButtonGroup();
+        buttonGroup5 = new javax.swing.ButtonGroup();
+        buttonGroup6 = new javax.swing.ButtonGroup();
+        buttonGroup7 = new javax.swing.ButtonGroup();
+        buttonGroup8 = new javax.swing.ButtonGroup();
         bRetour = new javax.swing.JButton();
         nom = new javax.swing.JLabel();
         prenom = new javax.swing.JLabel();
@@ -57,7 +77,21 @@ public class FMonProfil extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jTel = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jAbo = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        bMensuel = new javax.swing.JRadioButton();
+        bTrimestriel = new javax.swing.JRadioButton();
+        bAnnuel = new javax.swing.JRadioButton();
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -72,7 +106,7 @@ public class FMonProfil extends javax.swing.JDialog {
 
         prenom.setText("Prenom");
 
-        jLabel3.setText("adresse mail");
+        jLabel3.setText("Email");
 
         jLabel4.setText("mot de passe");
 
@@ -83,81 +117,101 @@ public class FMonProfil extends javax.swing.JDialog {
             }
         });
 
-        jNom.setText("jLabel1");
-
-        jPrenom.setText("jLabel2");
-
-        jEmail.setText("jLabel5");
-
-        jMDP.setText("jLabel6");
-
         jLabel1.setText("tel");
-
-        jTel.setText("jLabel2");
 
         jLabel2.setText("type d'abo");
 
-        jAbo.setText("jLabel5");
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel5.setText("Votre Profil");
+
+        bMensuel.setText("Mensuel");
+        bMensuel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bMensuelActionPerformed(evt);
+            }
+        });
+
+        bTrimestriel.setText("Trimestriel");
+
+        bAnnuel.setText("Annuel");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(bModifierMesInfos)
+                        .addGap(40, 40, 40)
+                        .addComponent(bRetour))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bTrimestriel)
+                            .addComponent(bMensuel)
+                            .addComponent(bAnnuel))))
+                .addGap(22, 22, 22))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(bModifierMesInfos)
-                        .addGap(40, 40, 40))
+                        .addGap(202, 202, 202)
+                        .addComponent(jLabel5))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
+                        .addGap(54, 54, 54)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel3)
-                                .addComponent(prenom)
-                                .addComponent(nom))
+                            .addComponent(prenom)
+                            .addComponent(nom)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
                             .addComponent(jLabel1))
-                        .addGap(52, 52, 52)
+                        .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTel)
-                            .addComponent(jNom)
                             .addComponent(jPrenom)
+                            .addComponent(jNom)
                             .addComponent(jEmail)
-                            .addComponent(jMDP))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(bRetour)
-                    .addComponent(jAbo))
-                .addGap(22, 22, 22))
+                            .addComponent(jMDP))))
+                .addContainerGap(200, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(49, 49, 49)
+                .addComponent(jLabel5)
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nom)
                     .addComponent(jNom))
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(prenom)
-                    .addComponent(jPrenom)
-                    .addComponent(jLabel2))
-                .addGap(31, 31, 31)
+                    .addComponent(jPrenom))
+                .addGap(2, 2, 2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(bMensuel))
+                .addGap(3, 3, 3)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jEmail)
-                    .addComponent(jAbo))
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jMDP))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTel))
-                .addGap(23, 23, 23)
+                    .addComponent(bTrimestriel))
+                .addGap(4, 4, 4)
+                .addComponent(bAnnuel)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(jMDP)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTel)
+                            .addComponent(jLabel1))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bRetour)
                     .addComponent(bModifierMesInfos))
@@ -185,6 +239,12 @@ public class FMonProfil extends javax.swing.JDialog {
 
         
     }//GEN-LAST:event_bModifierMesInfosActionPerformed
+
+    private void bMensuelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bMensuelActionPerformed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_bMensuelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -224,14 +284,26 @@ public class FMonProfil extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton bAnnuel;
+    private javax.swing.JRadioButton bMensuel;
     private javax.swing.JButton bModifierMesInfos;
     private javax.swing.JButton bRetour;
-    private javax.swing.JLabel jAbo;
+    private javax.swing.JRadioButton bTrimestriel;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
+    private javax.swing.ButtonGroup buttonGroup4;
+    private javax.swing.ButtonGroup buttonGroup5;
+    private javax.swing.ButtonGroup buttonGroup6;
+    private javax.swing.ButtonGroup buttonGroup7;
+    private javax.swing.ButtonGroup buttonGroup8;
+    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jEmail;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jMDP;
     private javax.swing.JLabel jNom;
     private javax.swing.JLabel jPrenom;
