@@ -145,7 +145,7 @@ public class FListeActivites extends javax.swing.JDialog {
     private void jGestionCompteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGestionCompteActionPerformed
         // TODO add your handling code here:
         
-        FMonProfil profil = new FMonProfil((java.awt.Frame)this.getParent(), true, this.clientConnecte);
+        FMonProfil profil = new FMonProfil((java.awt.Frame)this.getParent(), true,this.salle, this.clientConnecte);
         profil.setVisible(true);
         
     }//GEN-LAST:event_jGestionCompteActionPerformed

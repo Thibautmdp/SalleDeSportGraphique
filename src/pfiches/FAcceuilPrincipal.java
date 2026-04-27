@@ -31,13 +31,12 @@ public class FAcceuilPrincipal extends javax.swing.JFrame {
         salle.Charger();
         salle.trierCours();
 
-        fichFConnection = new FConnection(this, false, salle);
-        fichFInscription = new FInscription(this, false, salle);
-        
-
-        fichFConnection = new FConnection(this,false,salle);
-        fichFInscription = new FInscription(this, false,salle);
-        fichListeActivites = new FListeActivites (this,false,salle,null);
+        //fichFConnection = new FConnection(this, false, salle);
+        //fichFInscription = new FInscription(this, false, salle);
+        //  fichListeActivites = new FListeActivites (this,false,salle,null);
+        fichFConnection = new FConnection(this, true, salle);
+        fichFInscription = new FInscription(this, true, salle);
+        fichListeActivites = new FListeActivites (this,true,salle,null);
         
 
     }

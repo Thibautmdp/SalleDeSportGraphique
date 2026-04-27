@@ -24,10 +24,27 @@ public class FModifMonProfil extends javax.swing.JDialog {
         initComponents();
         this.salle=salle;
         this.client = client; 
+        AfficherDonnees();
+        String aboActuel = client.getAbo();
+        if (aboActuel.equals("Mensuel")) jRadioButton1.setSelected(true);
+        else if (aboActuel.equals("Trimestriel")) jRadioButton2.setSelected(true);
+        else if (aboActuel.equals("Annuel")) jRadioButton3.setSelected(true);
+
+        // desactive les boutons de GAUCHE 
+        jRadioButton1.setEnabled(false);
+        jRadioButton2.setEnabled(false);
+        jRadioButton3.setEnabled(false);
     
         
     }
-
+    public void AfficherDonnees(){
+    jNom.setText(client.getNom());
+    jPrenom.setText(client.getPrenom());
+    jEmail.setText(client.getEmail());
+    jMdp.setText(client.getMotDePasse());
+    jTel.setText(client.getNumTel());
+    //jAbo.setText( client.getAbo());
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,6 +54,8 @@ public class FModifMonProfil extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         bRetour = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -64,6 +83,11 @@ public class FModifMonProfil extends javax.swing.JDialog {
         bMensuel = new javax.swing.JRadioButton();
         bTrimestriel = new javax.swing.JRadioButton();
         bAnnuel = new javax.swing.JRadioButton();
+        jNom = new javax.swing.JLabel();
+        jPrenom = new javax.swing.JLabel();
+        jEmail = new javax.swing.JLabel();
+        jMdp = new javax.swing.JLabel();
+        jTel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -111,17 +135,29 @@ public class FModifMonProfil extends javax.swing.JDialog {
             }
         });
 
+        buttonGroup2.add(jRadioButton1);
         jRadioButton1.setText("Mensuel");
 
+        buttonGroup2.add(jRadioButton2);
         jRadioButton2.setText("Trimestriel");
 
+        buttonGroup2.add(jRadioButton3);
         jRadioButton3.setText("Annuel");
 
+        buttonGroup1.add(bMensuel);
         bMensuel.setText("Mensuel");
 
+        buttonGroup1.add(bTrimestriel);
         bTrimestriel.setText("trimestriel");
 
+        buttonGroup1.add(bAnnuel);
         bAnnuel.setText("Annuel");
+
+        jEmail.setText("jLabel17");
+
+        jMdp.setText("jLabel18");
+
+        jTel.setText("jLabel19");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -138,10 +174,15 @@ public class FModifMonProfil extends javax.swing.JDialog {
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel7)
                                     .addComponent(jLabel6))
-                                .addGap(380, 380, 380)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel11)
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(380, 380, 380)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel11)
+                                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(53, 53, 53)
+                                        .addComponent(jTel))))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addGap(391, 391, 391)
@@ -181,15 +222,23 @@ public class FModifMonProfil extends javax.swing.JDialog {
                         .addComponent(bRetour, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(48, 48, 48))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(327, 327, 327)
+                        .addComponent(jNom)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel14)
-                            .addComponent(jLabel9))
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bTrimestriel)
-                            .addComponent(bMensuel)
-                            .addComponent(bAnnuel))
+                            .addComponent(jPrenom)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(327, 327, 327)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel14)
+                                    .addComponent(jLabel9))
+                                .addGap(27, 27, 27)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(bTrimestriel)
+                                    .addComponent(bMensuel)
+                                    .addComponent(bAnnuel)))
+                            .addComponent(jEmail)
+                            .addComponent(jMdp))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -203,24 +252,28 @@ public class FModifMonProfil extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(jLabel5)
-                    .addComponent(TXTNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TXTNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jNom))
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(TXTPrénom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13))
+                    .addComponent(jLabel13)
+                    .addComponent(jPrenom))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TXTMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TXTMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jEmail))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(jLabel11)
-                            .addComponent(TXTMDP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TXTMDP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jMdp))
                         .addGap(85, 85, 85)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
@@ -240,7 +293,8 @@ public class FModifMonProfil extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
                             .addComponent(jLabel14)
-                            .addComponent(TXTTéléphone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(TXTTéléphone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTel))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 351, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bRetour, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -347,6 +401,9 @@ public class FModifMonProfil extends javax.swing.JDialog {
     private javax.swing.JButton bRetour;
     private javax.swing.JButton bSauvegarder;
     private javax.swing.JRadioButton bTrimestriel;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JLabel jEmail;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -361,8 +418,12 @@ public class FModifMonProfil extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jMdp;
+    private javax.swing.JLabel jNom;
+    private javax.swing.JLabel jPrenom;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
+    private javax.swing.JLabel jTel;
     // End of variables declaration//GEN-END:variables
 }

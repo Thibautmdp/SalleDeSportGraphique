@@ -19,22 +19,33 @@ public class FMonProfil extends javax.swing.JDialog {
     /**
      * Creates new form FMonProfil
      */
-    public FMonProfil(java.awt.Frame parent, boolean modal,Client client) {
+    public FMonProfil(java.awt.Frame parent, boolean modal,Salle salle,Client client) {
         super(parent, modal);
         initComponents();
-        this.client = client;  
+        this.client = client; 
+        this.salle=salle;
         AfficherDonnees();
-        // type de l'abonnement 
+       
+        // affiche type de l'abonnement 
         String aboActuel = client.getAbo();
 
-        // On coche le bouton correspondant
-    if (aboActuel.equals("Mensuel")) {
-        bMensuel.setSelected(true);
-    } else if (aboActuel.equals("Trimestriel")) {
-        bTrimestriel.setSelected(true);
-    } else if (aboActuel.equals("Annuel")) {
-        bAnnuel.setSelected(true);
-}
+        
+    
+        
+        if (aboActuel.equals("Mensuel")) {
+            bMensuel.setSelected(true);
+        } else if (aboActuel.equals("Trimestriel")) {
+            bTrimestriel.setSelected(true);
+        } else if (aboActuel.equals("Annuel")) {
+            bAnnuel.setSelected(true);
+        }
+
+    
+        
+        bMensuel.setEnabled(false);
+        bTrimestriel.setEnabled(false);
+        bAnnuel.setEnabled(false);
+
         
     }
     
@@ -64,6 +75,7 @@ public class FMonProfil extends javax.swing.JDialog {
         buttonGroup6 = new javax.swing.ButtonGroup();
         buttonGroup7 = new javax.swing.ButtonGroup();
         buttonGroup8 = new javax.swing.ButtonGroup();
+        buttonGroup9 = new javax.swing.ButtonGroup();
         bRetour = new javax.swing.JButton();
         nom = new javax.swing.JLabel();
         prenom = new javax.swing.JLabel();
@@ -124,6 +136,7 @@ public class FMonProfil extends javax.swing.JDialog {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setText("Votre Profil");
 
+        buttonGroup3.add(bMensuel);
         bMensuel.setText("Mensuel");
         bMensuel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,8 +144,10 @@ public class FMonProfil extends javax.swing.JDialog {
             }
         });
 
+        buttonGroup3.add(bTrimestriel);
         bTrimestriel.setText("Trimestriel");
 
+        buttonGroup3.add(bAnnuel);
         bAnnuel.setText("Annuel");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -140,19 +155,20 @@ public class FMonProfil extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(bModifierMesInfos)
-                        .addGap(40, 40, 40)
-                        .addComponent(bRetour))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(315, Short.MAX_VALUE)
                         .addComponent(jLabel2)
                         .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(bTrimestriel)
                             .addComponent(bMensuel)
-                            .addComponent(bAnnuel))))
+                            .addComponent(bAnnuel)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(bModifierMesInfos)
+                        .addGap(50, 50, 50)
+                        .addComponent(bRetour)))
                 .addGap(22, 22, 22))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -234,9 +250,10 @@ public class FMonProfil extends javax.swing.JDialog {
         //fichModifMonProfil.setVisible(true);
                                                        
   
-        FModifMonProfil modif = new FModifMonProfil((java.awt.Frame)this.getParent(), true,null, this.client);
+        FModifMonProfil modif = new FModifMonProfil((java.awt.Frame)this.getParent(), true,this.salle, this.client);
+        
         modif.setVisible(true);  
-
+        AfficherDonnees();
         
     }//GEN-LAST:event_bModifierMesInfosActionPerformed
 
@@ -271,7 +288,7 @@ public class FMonProfil extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                FMonProfil dialog = new FMonProfil(new javax.swing.JFrame(), true, null);
+                FMonProfil dialog = new FMonProfil(new javax.swing.JFrame(), true,null, null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -297,6 +314,7 @@ public class FMonProfil extends javax.swing.JDialog {
     private javax.swing.ButtonGroup buttonGroup6;
     private javax.swing.ButtonGroup buttonGroup7;
     private javax.swing.ButtonGroup buttonGroup8;
+    private javax.swing.ButtonGroup buttonGroup9;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jEmail;
     private javax.swing.JLabel jLabel1;
