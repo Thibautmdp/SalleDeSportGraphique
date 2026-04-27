@@ -25,6 +25,8 @@ public class FCalendrierCour extends javax.swing.JDialog {
     public FCalendrierCour(java.awt.Frame parent, boolean modal,Salle salle,Client client,String type) {
         super(parent, modal);
         initComponents();
+        // On force le placement en haut à gauche (0,0)
+        this.setLocation(0, 0);
         this.salle = salle;
         this.clientConnecte = client;
         this.typeActivite = type;
