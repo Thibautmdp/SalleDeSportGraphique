@@ -66,7 +66,10 @@ private void remplirListes() {
                 // On calcule la différence de jours entre le lundi affiché et la date du cours
                 long diff = java.time.temporal.ChronoUnit.DAYS.between(lundiAffiche, c.getDate());
                 if (diff >= 0 && diff < 7) {
-                    models[(int) diff].addElement(c.getHeure() + " - " + c.getCoach());
+                    int max = c.getNb_Place_Max();
+                    int inscrits = c.getListe_Client_Inscrit().size();
+                    int restantes = max - inscrits;
+                    models[(int) diff].addElement("heure "+ c.getHeure() + "| Coach " + c.getCoach()+ "|  palces: "+ restantes);
                 }
             }
         }
@@ -80,6 +83,7 @@ private void remplirListes() {
     jList5.setModel(models[4]);
     jList6.setModel(models[5]);
     jList7.setModel(models[6]);
+    
 }
 
     /**
