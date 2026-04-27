@@ -81,12 +81,27 @@ public class FListeActivites extends javax.swing.JDialog {
 
         bYoga.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pimage/Yoga100x100.png"))); // NOI18N
         bYoga.setText("Yoga");
+        bYoga.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bYogaActionPerformed(evt);
+            }
+        });
 
         bGym.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pimage/gym100X100.png"))); // NOI18N
         bGym.setText("Gymnastique");
+        bGym.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bGymActionPerformed(evt);
+            }
+        });
 
         bPilate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pimage/pilate100X100.png"))); // NOI18N
         bPilate.setText("pilate");
+        bPilate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bPilateActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -149,6 +164,28 @@ public class FListeActivites extends javax.swing.JDialog {
         profil.setVisible(true);
         
     }//GEN-LAST:event_jGestionCompteActionPerformed
+
+    private void bYogaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bYogaActionPerformed
+        // TODO add your handling code here:
+        // 1. On crée l'instance du calendrier
+    // On lui passe : le parent, le mode modal (true), la salle, le client et le TYPE ("Yoga")
+    FCalendrierCour calendrier = new FCalendrierCour((java.awt.Frame)this.getParent(), true, this.salle, this.clientConnecte, "Yoga");
+    
+    // 2. On rend le calendrier visible
+    calendrier.setVisible(true);
+    }//GEN-LAST:event_bYogaActionPerformed
+
+    private void bGymActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGymActionPerformed
+        // TODO add your handling code here:
+        FCalendrierCour calendrier = new FCalendrierCour((java.awt.Frame)this.getParent(), true, this.salle, this.clientConnecte, "Gymnastique");
+    calendrier.setVisible(true);
+    }//GEN-LAST:event_bGymActionPerformed
+
+    private void bPilateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPilateActionPerformed
+        // TODO add your handling code here:
+        FCalendrierCour calendrier = new FCalendrierCour((java.awt.Frame)this.getParent(), true, this.salle, this.clientConnecte, "Pilate");
+    calendrier.setVisible(true);
+    }//GEN-LAST:event_bPilateActionPerformed
 
     /**
      * @param args the command line arguments

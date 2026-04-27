@@ -117,6 +117,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Yoga"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bYogaActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bGym">
       <Properties>
@@ -125,6 +128,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Gymnastique"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bGymActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bPilate">
       <Properties>
@@ -133,6 +139,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="pilate"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bPilateActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
