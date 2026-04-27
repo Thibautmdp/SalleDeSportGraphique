@@ -312,14 +312,20 @@ public class FModifMonProfil extends javax.swing.JDialog {
 
     private void bSauvegarderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSauvegarderActionPerformed
         // TODO add your handling code here:
-        String email = TXTMail.getText();
-        String mdp = TXTMDP.getText();
-        String Nom = TXTNom.getText();
-        String Prenom = TXTPrénom.getText();
-        String Tel = TXTTéléphone.getText();
+        String email = TXTMail.getText().trim();
+        String mdp = TXTMDP.getText().trim();
+        String Nom = TXTNom.getText().trim();
+        String Prenom = TXTPrénom.getText().trim();
+        String Tel = TXTTéléphone.getText().trim(); // je me suis fais un kiff max j'ai rajouter .trim() qui supr les espaces avant et apres les données
         String abonnement = "";
         
-        
+        if (email.isEmpty() || mdp.isEmpty() || Nom.isEmpty() || Prenom.isEmpty() || Tel.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, 
+                "Erreur : Veuillez remplir tous les champs personnels.", 
+                "Champs vides", 
+                javax.swing.JOptionPane.WARNING_MESSAGE);
+            return; 
+        }
         if (email.isEmpty() && mdp.isEmpty() && Nom.isEmpty() && Prenom.isEmpty() && Tel.isEmpty()) {
         javax.swing.JOptionPane.showMessageDialog(this, 
             "Erreur : Vous n'avez saisi aucune donnée à modifier.", 

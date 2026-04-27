@@ -1,8 +1,9 @@
 CLIENT ; C1 ; martinant ; jean ; mdp ; mdp ; 06 ; Trimestriel ; true
-CLIENT ; C2 ; m ; m ; m ; m ; 06 ; Annuel ; true
+CLIENT ; C2 ; m ; m ; m ; m ; 06 ; Trimestriel ; true
 CLIENT ; C3 ; p ; p ; p ; p ; p ; Trimestriel ; true
 CLIENT ; C4 ; p ; p ; p ; p ; p ; Trimestriel ; true
 CLIENT ; C5 ; Martinant ; fanny ; mdp ; mdp ; 05 ; Trimestriel ; true
 CLIENT ; C6 ; thib ; thib ; mdp ; m ; 06 ; Annuel ; true
 CLIENT ; C7 ; thib ; thib ; thib ; m ; 06 ; Annuel ; true
+CLIENT ; C8 ; f ; f ; f ; p ; f ; Mensuel ; true
 COURS_PASSE ; Exterieur ; Escalade ; 3 ; Camille ; 2026-04-21 ; 09:45
