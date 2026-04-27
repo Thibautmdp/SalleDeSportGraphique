@@ -25,6 +25,9 @@ public class FListeActivites extends javax.swing.JDialog {
     public FListeActivites(java.awt.Frame parent, boolean modal, Salle salle,Client client) {
         super(parent, modal);
         initComponents();
+        this.setPreferredSize(new java.awt.Dimension(1100, 700)); // Taille adaptée à votre contenu
+        this.pack(); // Applique la taille
+        this.setLocationRelativeTo(null); // CENTRE sur l'écran
         this.salle = salle;
          this.monAcceuil = (FAcceuilPrincipal) parent;
         Remplir_Tableau_Cours();

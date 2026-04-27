@@ -25,6 +25,9 @@ public class FCalendrierCour extends javax.swing.JDialog {
     public FCalendrierCour(java.awt.Frame parent, boolean modal,Salle salle,Client client,String type) {
         super(parent, modal);
         initComponents();
+        this.setPreferredSize(new java.awt.Dimension(1100, 700)); // Taille adaptée à votre contenu
+        this.pack(); // Applique la taille
+        this.setLocationRelativeTo(null); // CENTRE sur l'écran
         this.salle = salle;
         this.clientConnecte = client;
         this.typeActivite = type;

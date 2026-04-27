@@ -24,6 +24,9 @@ public class FConnection extends javax.swing.JDialog {
     public FConnection(java.awt.Frame parent, boolean modal, Salle salle) {
         super(parent, modal);
         initComponents();
+        this.setPreferredSize(new java.awt.Dimension(500, 400)); // Taille adaptée à votre contenu
+        this.pack(); // Applique la taille
+        this.setLocationRelativeTo(null); // CENTRE sur l'écran
         this.salle = salle;
     }
 

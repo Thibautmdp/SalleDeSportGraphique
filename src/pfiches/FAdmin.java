@@ -22,6 +22,11 @@ public class FAdmin extends javax.swing.JDialog {
     public FAdmin(javax.swing.JDialog parent, boolean modal,  Salle salle) {
         super(parent, modal);
         initComponents();
+        
+        this.setPreferredSize(new java.awt.Dimension(1100, 700)); // Taille adaptée à votre contenu
+        this.pack(); // Applique la taille
+        this.setLocationRelativeTo(null); // CENTRE sur l'écran
+        
         this.salle = salle;
         this.parent = parent;
     }
@@ -56,7 +61,7 @@ public class FAdmin extends javax.swing.JDialog {
                 BConsulter_La_Liste_Des_ClientsActionPerformed(evt);
             }
         });
-        getContentPane().add(BConsulter_La_Liste_Des_Clients, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 420, 250, 270));
+        getContentPane().add(BConsulter_La_Liste_Des_Clients, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 230, 250, 270));
 
         BGestion_Des_Cours.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pimage/logo gestion cours.png"))); // NOI18N
         BGestion_Des_Cours.setToolTipText("");
@@ -67,7 +72,7 @@ public class FAdmin extends javax.swing.JDialog {
                 BGestion_Des_CoursActionPerformed(evt);
             }
         });
-        getContentPane().add(BGestion_Des_Cours, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 270, 270));
+        getContentPane().add(BGestion_Des_Cours, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 270, 270));
 
         BStatistique.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pimage/logo statiques.png"))); // NOI18N
         BStatistique.setBorderPainted(false);
@@ -77,7 +82,7 @@ public class FAdmin extends javax.swing.JDialog {
                 BStatistiqueActionPerformed(evt);
             }
         });
-        getContentPane().add(BStatistique, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 420, 260, 270));
+        getContentPane().add(BStatistique, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 230, 260, 270));
 
         BRetour.setText("Retour");
         BRetour.addActionListener(new java.awt.event.ActionListener() {
@@ -85,7 +90,7 @@ public class FAdmin extends javax.swing.JDialog {
                 BRetourActionPerformed(evt);
             }
         });
-        getContentPane().add(BRetour, new org.netbeans.lib.awtextra.AbsoluteConstraints(672, 333, 80, 30));
+        getContentPane().add(BRetour, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 80, 80, 30));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, -90, 1690, 840));
 
         pack();

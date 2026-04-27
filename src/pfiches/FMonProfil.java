@@ -22,6 +22,11 @@ public class FMonProfil extends javax.swing.JDialog {
     public FMonProfil(java.awt.Frame parent, boolean modal,Salle salle,Client client) {
         super(parent, modal);
         initComponents();
+        
+        this.setPreferredSize(new java.awt.Dimension(900, 600)); // Taille adaptée à votre contenu
+        this.pack(); // Applique la taille
+        this.setLocationRelativeTo(null); // CENTRE sur l'écran
+        
         this.client = client; 
         this.salle=salle;
         AfficherDonnees();

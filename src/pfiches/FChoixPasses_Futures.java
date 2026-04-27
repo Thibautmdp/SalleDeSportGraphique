@@ -18,6 +18,9 @@ public class FChoixPasses_Futures extends javax.swing.JDialog {
     public FChoixPasses_Futures(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setPreferredSize(new java.awt.Dimension(1100, 700)); // Taille adaptée à votre contenu
+        this.pack(); // Applique la taille
+        this.setLocationRelativeTo(null); // CENTRE sur l'écran
     }
 
     /**

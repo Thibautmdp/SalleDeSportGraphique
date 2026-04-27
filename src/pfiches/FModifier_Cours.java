@@ -21,6 +21,11 @@ public class FModifier_Cours extends javax.swing.JDialog {
     public FModifier_Cours(java.awt.Frame parent, boolean modal, Salle salle, Cours cours) {
         super(parent, modal);
         initComponents();
+        
+        this.setPreferredSize(new java.awt.Dimension(900, 600)); // Taille adaptée à votre contenu
+        this.pack(); // Applique la taille
+        this.setLocationRelativeTo(null); // CENTRE sur l'écran
+        
         this.salle = salle;
         this.cours = cours;
         if (this.cours != null){
