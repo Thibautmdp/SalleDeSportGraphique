@@ -32,6 +32,7 @@ public class FListeActivites extends javax.swing.JDialog {
          this.monAcceuil = (FAcceuilPrincipal) parent;
         Remplir_Tableau_Cours();
         this.clientConnecte = client;
+        
     }
     
     private void Remplir_Tableau_Cours(){
