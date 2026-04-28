@@ -25,9 +25,14 @@ public class FCalendrierCour extends javax.swing.JDialog {
     public FCalendrierCour(java.awt.Frame parent, boolean modal,Salle salle,Client client,String type) {
         super(parent, modal);
         initComponents();
+
         this.setPreferredSize(new java.awt.Dimension(1100, 700)); // Taille adaptée à votre contenu
         this.pack(); // Applique la taille
         this.setLocationRelativeTo(null); // CENTRE sur l'écran
+
+        // On force le placement en haut à gauche (0,0)
+        this.setLocation(0, 0);
+
         this.salle = salle;
         this.clientConnecte = client;
         this.typeActivite = type;
@@ -69,7 +74,10 @@ private void remplirListes() {
                 // On calcule la différence de jours entre le lundi affiché et la date du cours
                 long diff = java.time.temporal.ChronoUnit.DAYS.between(lundiAffiche, c.getDate());
                 if (diff >= 0 && diff < 7) {
-                    models[(int) diff].addElement(c.getHeure() + " - " + c.getCoach());
+                    int max = c.getNb_Place_Max();
+                    int inscrits = c.getListe_Client_Inscrit().size();
+                    int restantes = max - inscrits;
+                    models[(int) diff].addElement("heure "+ c.getHeure() + "| Coach " + c.getCoach()+ "|  palces: "+ restantes);
                 }
             }
         }
@@ -83,6 +91,7 @@ private void remplirListes() {
     jList5.setModel(models[4]);
     jList6.setModel(models[5]);
     jList7.setModel(models[6]);
+    
 }
 
     /**
