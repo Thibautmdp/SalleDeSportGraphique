@@ -36,6 +36,9 @@ public class FAcceuilPrincipal extends javax.swing.JFrame {
         fichFInscription = new FInscription(this, true, salle);
         fichListeActivites = new FListeActivites (this,true,salle,null);
         
+        this.setPreferredSize(new java.awt.Dimension(600, 500)); // Taille adaptée à votre contenu
+        this.pack(); // Applique la taille
+        this.setLocationRelativeTo(null); // CENTRE sur l'écran
 
     }
     

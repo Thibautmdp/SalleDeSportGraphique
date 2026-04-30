@@ -17,6 +17,9 @@ public class FClient extends javax.swing.JFrame {
      */
     public FClient() {
         initComponents();
+        this.setPreferredSize(new java.awt.Dimension(1100, 700)); // Taille adaptée à votre contenu
+        this.pack(); // Applique la taille
+        this.setLocationRelativeTo(null); // CENTRE sur l'écran
     }
 
     /**

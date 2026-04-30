@@ -17,12 +17,16 @@ public class FGestion_Cours extends javax.swing.JDialog {
     private Salle salle;
     private FAjouter_Cours fichFAjouter_Cours;
     private FModifier_Cours fichFModifier_Cours;
+    
     /**
      * Creates new form FGestion_Cours
      */
     public FGestion_Cours(javax.swing.JDialog parent, boolean modal, Salle salle) {
         super(parent, modal);
         initComponents();
+        this.setPreferredSize(new java.awt.Dimension(1100, 700)); // Taille adaptée à votre contenu
+        this.pack(); // Applique la taille
+        this.setLocationRelativeTo(null); // CENTRE sur l'écran
         this.salle = salle;
         Remplir_Tableau_Cours();
         

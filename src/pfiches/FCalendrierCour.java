@@ -4,8 +4,7 @@
  */
 package pfiches;
 
-import ptraitement.Client;
-import ptraitement.Salle;
+import ptraitement.*;
 
 
 /**
@@ -19,6 +18,7 @@ public class FCalendrierCour extends javax.swing.JDialog {
     private Client clientConnecte;
     private String typeActivite;
     private java.time.LocalDate lundiAffiche;
+    private FMes_Cours fichFMes_Cours;
     /**
      * Creates new form FCalendrierCour
      */
@@ -27,6 +27,14 @@ public class FCalendrierCour extends javax.swing.JDialog {
         initComponents();
         // On force le placement en haut à gauche (0,0)
         this.setLocation(0, 0);
+
+        this.setPreferredSize(new java.awt.Dimension(1100, 700)); // Taille adaptée à votre contenu
+        this.pack(); // Applique la taille
+        this.setLocationRelativeTo(null); // CENTRE sur l'écran
+
+        // On force le placement en haut à gauche (0,0)
+        this.setLocation(0, 0);
+
         this.salle = salle;
         this.clientConnecte = client;
         this.typeActivite = type;
@@ -137,6 +145,8 @@ private void remplirListes() {
         jScrollPane7 = new javax.swing.JScrollPane();
         jList7 = new javax.swing.JList<>();
         PanelBas = new javax.swing.JPanel();
+        BMes_Cours = new javax.swing.JButton();
+        BInscrire = new javax.swing.JButton();
         bRetour = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
@@ -335,6 +345,22 @@ private void remplirListes() {
 
         PanelBas.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
 
+        BMes_Cours.setText("Mes Cours");
+        BMes_Cours.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BMes_CoursActionPerformed(evt);
+            }
+        });
+        PanelBas.add(BMes_Cours);
+
+        BInscrire.setText("Inscrire");
+        BInscrire.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BInscrireActionPerformed(evt);
+            }
+        });
+        PanelBas.add(BInscrire);
+
         bRetour.setText("Retour");
         bRetour.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -394,6 +420,85 @@ private void remplirListes() {
         this.dispose();
     }//GEN-LAST:event_bRetourActionPerformed
 
+    private void BInscrireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BInscrireActionPerformed
+        // TODO add your handling code here:
+        //Vérif état abo client
+        if (!clientConnecte.Abo_est_il_actif()) {
+            javax.swing.JOptionPane.showMessageDialog(this, 
+                "Erreur : Votre abonnement est INACTIF. Veuillez contacter l'administration.", 
+                "Abonnement suspendu", 
+                javax.swing.JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        //Identifier quelle liste a un cours sélectionné
+        javax.swing.JList<String>[] listes = new javax.swing.JList[]{jList1, jList2, jList3, jList4, jList5, jList6, jList7};
+        int jourIndex = -1;
+        int selectionIndex = -1;
+
+        for (int i = 0; i < listes.length; i++) {
+            if (!listes[i].isSelectionEmpty()) {
+                jourIndex = i;
+                selectionIndex = listes[i].getSelectedIndex();
+                break;
+            }
+        }
+
+        if (jourIndex == -1) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Veuillez sélectionner un cours dans l'une des listes.");
+            return;
+        }
+
+        //Retrouver Cours correspondant dans la salle
+        java.time.LocalDate dateDuCours = lundiAffiche.plusDays(jourIndex);
+        ptraitement.Cours coursCible = null;
+        int compteur = 0;
+
+        for (ptraitement.Cours c : salle.getListeDesCours()) {
+            // On applique les mêmes filtres que pour l'affichage
+            if (c.getNomActivite().equalsIgnoreCase(typeActivite) && c.getDate().equals(dateDuCours)) {
+                if (compteur == selectionIndex) {
+                    coursCible = c;
+                    break;
+                }
+                compteur++;
+            }
+        }
+
+        //Traitement de l'inscription
+        if (coursCible != null) {
+            // Vérification des doublons et des places (logique interne à la classe Cours)
+            if (coursCible.getListe_Client_Inscrit().contains(clientConnecte)) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Vous êtes déjà inscrit à ce cours.");
+            } 
+            else if (coursCible.getListe_Client_Inscrit().size() >= coursCible.getNb_Place_Max()) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Désolé, ce cours est complet.");
+            } 
+            else {
+                // Inscription effective
+                coursCible.ajouterParticipant(clientConnecte); // Ajoute le client au cours
+                clientConnecte.getListe_des_cours_futurs_clients().add(coursCible); // Ajoute le cours au client
+
+                // Sauvegarde automatique (méthode de la classe Salle)
+                salle.Sauvegarder();
+
+                javax.swing.JOptionPane.showMessageDialog(this, "Inscription réussie !");
+
+                // 5. Rafraîchir l'affichage
+                mettreAJourCalendrier();
+            }
+        }
+    }//GEN-LAST:event_BInscrireActionPerformed
+
+    private void BMes_CoursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BMes_CoursActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        FMes_Cours fichFMes_Cours = new FMes_Cours((java.awt.Frame)this.getParent(), true, clientConnecte, salle);
+        fichFMes_Cours.setVisible(true);
+        this.mettreAJourCalendrier();
+        this.setVisible(true);
+    }//GEN-LAST:event_BMes_CoursActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -435,6 +540,8 @@ private void remplirListes() {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BInscrire;
+    private javax.swing.JButton BMes_Cours;
     private javax.swing.JPanel PanelBas;
     private javax.swing.JButton bMoiSuivant;
     private javax.swing.JButton bMoisPrecedent;
