@@ -17,6 +17,7 @@ public class FGestion_Cours extends javax.swing.JDialog {
     private Salle salle;
     private FAjouter_Cours fichFAjouter_Cours;
     private FModifier_Cours fichFModifier_Cours;
+    
     /**
      * Creates new form FGestion_Cours
      */

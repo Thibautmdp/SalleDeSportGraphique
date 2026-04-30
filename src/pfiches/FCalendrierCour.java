@@ -4,8 +4,7 @@
  */
 package pfiches;
 
-import ptraitement.Client;
-import ptraitement.Salle;
+import ptraitement.*;
 
 
 /**
@@ -19,6 +18,7 @@ public class FCalendrierCour extends javax.swing.JDialog {
     private Client clientConnecte;
     private String typeActivite;
     private java.time.LocalDate lundiAffiche;
+    private FMes_Cours fichFMes_Cours;
     /**
      * Creates new form FCalendrierCour
      */
@@ -346,6 +346,11 @@ private void remplirListes() {
         PanelBas.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
 
         BMes_Cours.setText("Mes Cours");
+        BMes_Cours.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BMes_CoursActionPerformed(evt);
+            }
+        });
         PanelBas.add(BMes_Cours);
 
         BInscrire.setText("Inscrire");
@@ -484,6 +489,15 @@ private void remplirListes() {
             }
         }
     }//GEN-LAST:event_BInscrireActionPerformed
+
+    private void BMes_CoursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BMes_CoursActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        FMes_Cours fichFMes_Cours = new FMes_Cours((java.awt.Frame)this.getParent(), true, clientConnecte, salle);
+        fichFMes_Cours.setVisible(true);
+        this.mettreAJourCalendrier();
+        this.setVisible(true);
+    }//GEN-LAST:event_BMes_CoursActionPerformed
 
     /**
      * @param args the command line arguments
