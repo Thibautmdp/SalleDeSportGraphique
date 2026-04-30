@@ -331,6 +331,14 @@ public class FModifMonProfil extends javax.swing.JDialog {
                 javax.swing.JOptionPane.WARNING_MESSAGE);
             return; 
         }
+        if (!email.contains("@") || !email.contains(".")) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Adresse email invalide. Elle doit contenir '@' et '.'");
+        return;
+        }
+        if (!Tel.matches("\\d{10}")) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Numéro de téléphone invalide. Il doit contenir exactement 10 chiffres.");
+        return;
+        }
         if (email.isEmpty() && mdp.isEmpty() && Nom.isEmpty() && Prenom.isEmpty() && Tel.isEmpty()) {
         javax.swing.JOptionPane.showMessageDialog(this, 
             "Erreur : Vous n'avez saisi aucune donnée à modifier.", 

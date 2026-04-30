@@ -9,7 +9,8 @@ CLIENT ; C8 ; f ; f ; f ; p ; f ; Mensuel ; true
 CLIENT ; C9 ; m ; m ; m ; m ; m ; Semestriel ; true
 CLIENT ; C10 ; g ; g ; g ; h ; g ; Trimestriel ; true
 CLIENT ; C11 ; Poulard ; Maxence ; maxence.poulard@epfedu.fr ; Vie5cgmf! ; 0651012741 ; Mensuel ; true
-COURS_FUTUR ; collectif ; Yoga ; 40 ; thib ; 2026-05-01 ; 11:00 ; m,m,
+CLIENT ; C12 ; Martinant ; Thibaut ; tibomdp@gmail.com ; mdp ; 0766568268 ; Annuel ; true
+COURS_FUTUR ; collectif ; Yoga ; 40 ; thib ; 2026-05-01 ; 11:00 ; m,m,tibomdp@gmail.com,
 COURS_FUTUR ; Individuel ; Gymnastique ; 1 ; thib ; 2026-04-30 ; 23:00 ; m,
 COURS_PASSE ; Exterieur ; Escalade ; 3 ; Camille ; 2026-04-21 ; 09:45 ; AUCUN
 COURS_PASSE ; collectif ; yoga ; 30 ; thib ; 2026-04-26 ; 12:00 ; AUCUN

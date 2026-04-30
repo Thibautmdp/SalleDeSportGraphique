@@ -76,6 +76,12 @@ public class FInscription extends javax.swing.JDialog {
             }
         });
 
+        TXTMail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TXTMailActionPerformed(evt);
+            }
+        });
+
         TXTNom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TXTNomActionPerformed(evt);
@@ -223,6 +229,14 @@ public class FInscription extends javax.swing.JDialog {
             javax.swing.JOptionPane.showMessageDialog(this, "Veuillez remplir les informations et choisir un abonnement.");
             return;
         }
+        if (!email.contains("@") || !email.contains(".")) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Adresse email invalide. Elle doit contenir '@' et '.'");
+        return;
+        }
+        if (!Tel.matches("\\d{10}")) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Numéro de téléphone invalide. Il doit contenir exactement 10 chiffres.");
+        return;
+        }
         String numClient = "C" + (salle.getListeDesClients().size() + 1); // Numéro de client 
         
         Client NouveauClient = new Client(numClient, Nom, Prenom, email, mdp, Tel, abonnement);
@@ -259,6 +273,11 @@ public class FInscription extends javax.swing.JDialog {
     private void BTrimestielActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTrimestielActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BTrimestielActionPerformed
+
+    private void TXTMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TXTMailActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_TXTMailActionPerformed
 
 
     /**
