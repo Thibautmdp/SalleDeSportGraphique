@@ -143,6 +143,8 @@ private void remplirListes() {
         jScrollPane7 = new javax.swing.JScrollPane();
         jList7 = new javax.swing.JList<>();
         PanelBas = new javax.swing.JPanel();
+        BMes_Cours = new javax.swing.JButton();
+        BInscrire = new javax.swing.JButton();
         bRetour = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
@@ -341,6 +343,17 @@ private void remplirListes() {
 
         PanelBas.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
 
+        BMes_Cours.setText("Mes Cours");
+        PanelBas.add(BMes_Cours);
+
+        BInscrire.setText("Inscrire");
+        BInscrire.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BInscrireActionPerformed(evt);
+            }
+        });
+        PanelBas.add(BInscrire);
+
         bRetour.setText("Retour");
         bRetour.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -400,6 +413,11 @@ private void remplirListes() {
         this.dispose();
     }//GEN-LAST:event_bRetourActionPerformed
 
+    private void BInscrireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BInscrireActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_BInscrireActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -441,6 +459,8 @@ private void remplirListes() {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BInscrire;
+    private javax.swing.JButton BMes_Cours;
     private javax.swing.JPanel PanelBas;
     private javax.swing.JButton bMoiSuivant;
     private javax.swing.JButton bMoisPrecedent;
