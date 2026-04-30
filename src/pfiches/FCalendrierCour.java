@@ -33,8 +33,7 @@ public class FCalendrierCour extends javax.swing.JDialog {
         this.pack(); // Applique la taille
         this.setLocationRelativeTo(null); // CENTRE sur l'écran
 
-        // On force le placement en haut à gauche (0,0)
-        this.setLocation(0, 0);
+       
 
         this.salle = salle;
         this.clientConnecte = client;
@@ -44,7 +43,7 @@ public class FCalendrierCour extends javax.swing.JDialog {
         mettreAJourCalendrier();
     }
     private void mettreAJourCalendrier() {
-    // 1. On met à jour les labels des jours avec les dates
+    // Mise à jour les labels des jours avec les dates
     jLundi.setText("Lundi " + lundiAffiche.getDayOfMonth() + "/" + lundiAffiche.getMonthValue());
     jMardi.setText("Mardi " + lundiAffiche.plusDays(1).getDayOfMonth() + "/" + lundiAffiche.plusDays(1).getMonthValue());
     jMercredi.setText("Mercredi " + lundiAffiche.plusDays(2).getDayOfMonth() + "/" + lundiAffiche.plusDays(2).getMonthValue());
@@ -66,24 +65,24 @@ public class FCalendrierCour extends javax.swing.JDialog {
 
 
     private void remplirListes() {
-    // On prépare des modèles pour transformer nos objets Cours en texte dans la liste
+    //  prépare des modèles pour transformer nos objets Cours en texte dans liste
     javax.swing.DefaultListModel[] models = new javax.swing.DefaultListModel[7];
     for (int i = 0; i < 7; i++) models[i] = new javax.swing.DefaultListModel();
 
-    // On parcourt les cours de la salle
+   
     if (salle != null) {
         for (ptraitement.Cours c : salle.getListeDesCours()) {
             
-            // --- LIGNE DE TEST 1 : Affiche tous les cours trouvés dans la mémoire ---
+            // ligne de testes 1 : Affiche tous les cours trouvés dans la mémoire 
             System.out.println("TEST : Cours trouvé -> " + c.getNomActivite() + " le " + c.getDate());
 
-            // Est-ce le bon type d'activité ? (Yoga, Muscu...)
+            // Est-ce le bon type d'activité ? 
             if (c.getNomActivite().equalsIgnoreCase(typeActivite)) {
                 
-                // On calcule la différence de jours entre le lundi affiché et la date du cours
+                // calcule difference de jours entre le lundi affiché et la date du cours
                 long diff = java.time.temporal.ChronoUnit.DAYS.between(lundiAffiche, c.getDate());
                 
-                // --- LIGNE DE TEST 2 : Vérifie si le calcul de la semaine est bon ---
+                // ligne teste 2 : Vérifie si le calcul de la semaine est bon 
                 System.out.println("TEST : Type OK ! Différence avec lundiAffiche = " + diff);
 
                 if (diff >= 0 && diff < 7) {
@@ -96,7 +95,7 @@ public class FCalendrierCour extends javax.swing.JDialog {
         }
     }
 
-    // On applique les modèles à tes jList1, jList2, etc.
+    // j'ai applique les modèles à aux jList1, jList2, etc.
     jList1.setModel(models[0]);
     jList2.setModel(models[1]);
     jList3.setModel(models[2]);
@@ -443,7 +442,7 @@ public class FCalendrierCour extends javax.swing.JDialog {
             return;
         }
 
-        //Identifier quelle liste a un cours sélectionné
+        //Identifier liste a un cours sélectionné
         javax.swing.JList<String>[] listes = new javax.swing.JList[]{jList1, jList2, jList3, jList4, jList5, jList6, jList7};
         int jourIndex = -1;
         int selectionIndex = -1;
@@ -461,7 +460,7 @@ public class FCalendrierCour extends javax.swing.JDialog {
             return;
         }
 
-        //Retrouver Cours correspondant dans la salle
+        //ertrouve Cours correspondant dans la salle
         java.time.LocalDate dateDuCours = lundiAffiche.plusDays(jourIndex);
         // verif que le cour ne soit pas passe
         if (dateDuCours.isBefore(java.time.LocalDate.now())) {
@@ -469,7 +468,7 @@ public class FCalendrierCour extends javax.swing.JDialog {
             "Impossible de s'inscrire : ce cours est déjà passé !", 
             "Date expirée", 
             javax.swing.JOptionPane.WARNING_MESSAGE);
-        return; // On quitte la méthode ici
+        return; 
     }
         
         
@@ -498,16 +497,16 @@ public class FCalendrierCour extends javax.swing.JDialog {
                 javax.swing.JOptionPane.showMessageDialog(this, "Désolé, ce cours est complet.");
             } 
             else {
-                // Inscription effective
+              
                 coursCible.ajouterParticipant(clientConnecte); // Ajoute le client au cours
                 clientConnecte.getListe_des_cours_futurs_clients().add(coursCible); // Ajoute le cours au client
 
-                // Sauvegarde automatique (méthode de la classe Salle)
+                
                 salle.Sauvegarder();
 
                 javax.swing.JOptionPane.showMessageDialog(this, "Inscription réussie !");
 
-                // 5. Rafraîchir l'affichage
+                // Rafraîchir l'affichage
                 mettreAJourCalendrier();
             }
         }

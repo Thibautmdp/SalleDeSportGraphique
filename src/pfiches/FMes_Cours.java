@@ -35,13 +35,13 @@ public class FMes_Cours extends javax.swing.JDialog {
     
     private void Remplir_Tableau(javax.swing.JTable tableau, List<Cours> liste){
         
-       // 1. On définit les noms des colonnes
+       // définit les noms des colonne
     String[] colonnes = {"Activité", "Coach", "Date", "Heure", "Type"};
     
-    // 2. On crée le modèle avec les titres (0 ligne au départ)
+    //  On crée le modèle avec les titres 
     DefaultTableModel model = new DefaultTableModel(colonnes, 0);
     
-    // 3. On remplit les données
+    // remplissage les données
     if (liste != null) {
         for (Cours c : liste) {
             Object[] ligne = {
@@ -55,7 +55,7 @@ public class FMes_Cours extends javax.swing.JDialog {
         }
     }
     
-    // 4. On applique le nouveau modèle au tableau pour afficher les titres
+    //  applique le nouveau modèle au tableau pour afficher les titres
     tableau.setModel(model);
     }
     

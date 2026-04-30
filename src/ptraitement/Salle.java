@@ -503,16 +503,16 @@ public class Salle {
     }
     
 
-    // ========================
+ 
     // SAUVEGARDE / CHARGEMENT
-    // ========================
+    
 
     public void Sauvegarder() {
         try {
         FileWriter fw = new FileWriter(this.Nom_du_fichier_sauvegarder, false);
         PrintWriter pw = new PrintWriter(fw);
 
-        // --- CLIENTS ---
+        // CLIENTS 
         for (Client client : Liste_des_clients) {
             pw.println("CLIENT ; " + client.getNumClient() + " ; " + client.getNom() + " ; " + client.getPrenom()
                     + " ; " + client.getEmail() + " ; " + client.getMotDePasse()
@@ -520,7 +520,7 @@ public class Salle {
                     + " ; " + client.Abo_est_il_actif());
         }
 
-        // --- COURS FUTURS (avec participants) ---
+        // COURS FUTURS 
         for (Cours c : Liste_des_cours_futurs) {
             String ligneBase = "COURS_FUTUR ; " + c.getType_de_cours() + " ; " + c.getNomActivite() + " ; " 
                              + c.getNb_Place_Max() + " ; " + c.getCoach() + " ; " + c.getDate() + " ; " + c.getHeure();
@@ -534,7 +534,7 @@ public class Salle {
             pw.println(ligneBase + " ; " + (inscrits.isEmpty() ? "AUCUN" : inscrits));
         }
 
-        // --- COURS PASSÉS (avec participants) ---
+        // COURS PASSÉS 
         for (Cours c : Liste_des_cours_passes) {
             String ligneBase = "COURS_PASSE ; " + c.getType_de_cours() + " ; " + c.getNomActivite() + " ; " 
                              + c.getNb_Place_Max() + " ; " + c.getCoach() + " ; " + c.getDate() + " ; " + c.getHeure();
@@ -568,24 +568,24 @@ public class Salle {
 
             String marqueur = data[0];
 
-            // CHARGEMENT DES CLIENTS
+            // CHARGMENT dES clients
             if (marqueur.equals("CLIENT")) {
                 Client c = new Client(data[1], data[2], data[3], data[4], data[5], data[6], data[7]);
                 c.Abo_devient_actif(Boolean.parseBoolean(data[8]));
                 this.Liste_des_clients.add(c);
             } 
-            // CHARGEMENT DES COURS
+            //   COURS
             else if (marqueur.equals("COURS_FUTUR") || marqueur.equals("COURS_PASSE")) {
                 Cours c = new Cours(data[1], data[2], Integer.parseInt(data[3]), data[4], java.time.LocalDate.parse(data[5]), data[6]);
                 
-                // RECONNEXION DES PARTICIPANTS (L'email est en position data[7])
+                // RECONNEXION DES PARTICIPANTS 
                 if (data.length > 7 && !data[7].equals("AUCUN")) {
                     String[] emails = data[7].split(",");
                     for (String em : emails) {
                         for (Client cli : Liste_des_clients) {
                             if (cli.getEmail().equalsIgnoreCase(em)) {
-                                c.ajouterParticipant(cli); // On met le client dans le cours
-                                // On met aussi le cours dans le client
+                                c.ajouterParticipant(cli); // j'ai mis le client dans le cours
+                                
                                 if (marqueur.equals("COURS_FUTUR")) {
                                     cli.getListe_des_cours_futurs_clients().add(c);
                                 } else {
@@ -607,9 +607,9 @@ public class Salle {
     }
     }
 
-    // ========================
+
     // GETTERS
-    // ========================
+  
 
     public String getNom() {
         return Nom;

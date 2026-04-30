@@ -44,7 +44,7 @@ public class FListeActivites extends javax.swing.JDialog {
             Object[] ligne = {c.getType_de_cours(), c.getNomActivite(), c.getListe_Client_Inscrit().size(), "Coach", c.getDate(), "Heure"};
             model.addRow(ligne);
         }
-        //TCours.setModel(model);
+        
     }
 
     /**
@@ -167,11 +167,11 @@ public class FListeActivites extends javax.swing.JDialog {
 
     private void bYogaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bYogaActionPerformed
         // TODO add your handling code here:
-        // 1. On crée l'instance du calendrier
-    // On lui passe : le parent, le mode modal (true), la salle, le client et le TYPE ("Yoga")
+        
+   
     FCalendrierCour calendrier = new FCalendrierCour((java.awt.Frame)this.getParent(), true, this.salle, this.clientConnecte, "Yoga");
     
-    // 2. On rend le calendrier visible
+    
     calendrier.setVisible(true);
     }//GEN-LAST:event_bYogaActionPerformed
 
