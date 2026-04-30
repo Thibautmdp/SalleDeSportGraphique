@@ -69,6 +69,7 @@ public class FListeActivites extends javax.swing.JDialog {
         jLabel1.setText("Decouvrez toutes nos activités");
         jLabel1.setBorder(new javax.swing.border.MatteBorder(null));
 
+        bRetour.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         bRetour.setText("Retour");
         bRetour.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,7 +144,7 @@ public class FListeActivites extends javax.swing.JDialog {
                     .addComponent(bYoga, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bGym, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bPilate, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
                 .addComponent(bRetour)
                 .addGap(15, 15, 15))
         );

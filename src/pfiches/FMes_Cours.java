@@ -106,6 +106,7 @@ public class FMes_Cours extends javax.swing.JDialog {
         ));
         jScrollPane2.setViewportView(TCours_Passé);
 
+        BSe_Deinscrire.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         BSe_Deinscrire.setText("Se déinscrire");
         BSe_Deinscrire.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,6 +114,7 @@ public class FMes_Cours extends javax.swing.JDialog {
             }
         });
 
+        BRetour.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         BRetour.setText("Retour");
         BRetour.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,7 +169,7 @@ public class FMes_Cours extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 372, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 368, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BSe_Deinscrire)
                     .addComponent(BRetour))

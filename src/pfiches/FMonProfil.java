@@ -255,10 +255,23 @@ public class FMonProfil extends javax.swing.JDialog {
         //fichModifMonProfil.setVisible(true);
                                                        
   
-        FModifMonProfil modif = new FModifMonProfil((java.awt.Frame)this.getParent(), true,this.salle, this.client);
+     //   FModifMonProfil modif = new FModifMonProfil((java.awt.Frame)this.getParent(), true,this.salle, this.client);
         
-        modif.setVisible(true);  
-        AfficherDonnees();
+     ////AfficherDonnees();
+    FModifMonProfil modif = new FModifMonProfil((java.awt.Frame)this.getParent(), true, this.salle, this.client);
+    modif.setVisible(true);
+
+    // Ces lignes s'exécutent automatiquement quand FModifMonProfil se ferme
+    AfficherDonnees();
+
+    String aboActuel = client.getAbo();
+    if (aboActuel.equals("Mensuel")) {
+        bMensuel.setSelected(true);
+    } else if (aboActuel.equals("Trimestriel")) {
+        bTrimestriel.setSelected(true);
+    } else if (aboActuel.equals("Annuel")) {
+        bAnnuel.setSelected(true);
+    }
         
     }//GEN-LAST:event_bModifierMesInfosActionPerformed
 

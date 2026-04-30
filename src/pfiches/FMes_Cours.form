@@ -66,7 +66,7 @@
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="372" max="32767" attributes="0"/>
+              <EmptySpace pref="368" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="BSe_Deinscrire" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="BRetour" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -131,6 +131,9 @@
     </Container>
     <Component class="javax.swing.JButton" name="BSe_Deinscrire">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="14" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Se d&#xe9;inscrire"/>
       </Properties>
       <Events>
@@ -139,6 +142,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="BRetour">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="14" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Retour"/>
       </Properties>
       <Events>
