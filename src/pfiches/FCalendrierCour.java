@@ -417,7 +417,72 @@ private void remplirListes() {
 
     private void BInscrireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BInscrireActionPerformed
         // TODO add your handling code here:
-        
+        //Vérif état abo client
+        if (!clientConnecte.Abo_est_il_actif()) {
+            javax.swing.JOptionPane.showMessageDialog(this, 
+                "Erreur : Votre abonnement est INACTIF. Veuillez contacter l'administration.", 
+                "Abonnement suspendu", 
+                javax.swing.JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        //Identifier quelle liste a un cours sélectionné
+        javax.swing.JList<String>[] listes = new javax.swing.JList[]{jList1, jList2, jList3, jList4, jList5, jList6, jList7};
+        int jourIndex = -1;
+        int selectionIndex = -1;
+
+        for (int i = 0; i < listes.length; i++) {
+            if (!listes[i].isSelectionEmpty()) {
+                jourIndex = i;
+                selectionIndex = listes[i].getSelectedIndex();
+                break;
+            }
+        }
+
+        if (jourIndex == -1) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Veuillez sélectionner un cours dans l'une des listes.");
+            return;
+        }
+
+        //Retrouver Cours correspondant dans la salle
+        java.time.LocalDate dateDuCours = lundiAffiche.plusDays(jourIndex);
+        ptraitement.Cours coursCible = null;
+        int compteur = 0;
+
+        for (ptraitement.Cours c : salle.getListeDesCours()) {
+            // On applique les mêmes filtres que pour l'affichage
+            if (c.getNomActivite().equalsIgnoreCase(typeActivite) && c.getDate().equals(dateDuCours)) {
+                if (compteur == selectionIndex) {
+                    coursCible = c;
+                    break;
+                }
+                compteur++;
+            }
+        }
+
+        //Traitement de l'inscription
+        if (coursCible != null) {
+            // Vérification des doublons et des places (logique interne à la classe Cours)
+            if (coursCible.getListe_Client_Inscrit().contains(clientConnecte)) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Vous êtes déjà inscrit à ce cours.");
+            } 
+            else if (coursCible.getListe_Client_Inscrit().size() >= coursCible.getNb_Place_Max()) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Désolé, ce cours est complet.");
+            } 
+            else {
+                // Inscription effective
+                coursCible.ajouterParticipant(clientConnecte); // Ajoute le client au cours
+                clientConnecte.getListe_des_cours_futurs_clients().add(coursCible); // Ajoute le cours au client
+
+                // Sauvegarde automatique (méthode de la classe Salle)
+                salle.Sauvegarder();
+
+                javax.swing.JOptionPane.showMessageDialog(this, "Inscription réussie !");
+
+                // 5. Rafraîchir l'affichage
+                mettreAJourCalendrier();
+            }
+        }
     }//GEN-LAST:event_BInscrireActionPerformed
 
     /**
