@@ -19,6 +19,7 @@ public class FCalendrierCour extends javax.swing.JDialog {
     private String typeActivite;
     private java.time.LocalDate lundiAffiche;
     private FMes_Cours fichFMes_Cours;
+    
     /**
      * Creates new form FCalendrierCour
      */
@@ -63,7 +64,8 @@ public class FCalendrierCour extends javax.swing.JDialog {
     remplirListes();
 }
 
-private void remplirListes() {
+
+    private void remplirListes() {
     // On prépare des modèles pour transformer nos objets Cours en texte dans la liste
     javax.swing.DefaultListModel[] models = new javax.swing.DefaultListModel[7];
     for (int i = 0; i < 7; i++) models[i] = new javax.swing.DefaultListModel();
@@ -71,10 +73,19 @@ private void remplirListes() {
     // On parcourt les cours de la salle
     if (salle != null) {
         for (ptraitement.Cours c : salle.getListeDesCours()) {
+            
+            // --- LIGNE DE TEST 1 : Affiche tous les cours trouvés dans la mémoire ---
+            System.out.println("TEST : Cours trouvé -> " + c.getNomActivite() + " le " + c.getDate());
+
             // Est-ce le bon type d'activité ? (Yoga, Muscu...)
             if (c.getNomActivite().equalsIgnoreCase(typeActivite)) {
+                
                 // On calcule la différence de jours entre le lundi affiché et la date du cours
                 long diff = java.time.temporal.ChronoUnit.DAYS.between(lundiAffiche, c.getDate());
+                
+                // --- LIGNE DE TEST 2 : Vérifie si le calcul de la semaine est bon ---
+                System.out.println("TEST : Type OK ! Différence avec lundiAffiche = " + diff);
+
                 if (diff >= 0 && diff < 7) {
                     int max = c.getNb_Place_Max();
                     int inscrits = c.getListe_Client_Inscrit().size();
@@ -93,6 +104,7 @@ private void remplirListes() {
     jList5.setModel(models[4]);
     jList6.setModel(models[5]);
     jList7.setModel(models[6]);
+
     
 }
 
@@ -451,6 +463,17 @@ private void remplirListes() {
 
         //Retrouver Cours correspondant dans la salle
         java.time.LocalDate dateDuCours = lundiAffiche.plusDays(jourIndex);
+        // verif que le cour ne soit pas passe
+        if (dateDuCours.isBefore(java.time.LocalDate.now())) {
+        javax.swing.JOptionPane.showMessageDialog(this, 
+            "Impossible de s'inscrire : ce cours est déjà passé !", 
+            "Date expirée", 
+            javax.swing.JOptionPane.WARNING_MESSAGE);
+        return; // On quitte la méthode ici
+    }
+        
+        
+        
         ptraitement.Cours coursCible = null;
         int compteur = 0;
 

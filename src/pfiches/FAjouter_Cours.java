@@ -206,7 +206,7 @@ public class FAjouter_Cours extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Cours ajouté avec succès ");
             this.dispose();
         
-            this.dispose();
+           
         } catch (java.time.format.DateTimeParseException e) {
             JOptionPane.showMessageDialog(this, "Erreur de format !\n" + "- Date : AAAA-MM-JJ (ex: 2026-05-20)\n" + "- Heure : HH:mm (ex: 18:30)");
         } catch (NumberFormatException e) {

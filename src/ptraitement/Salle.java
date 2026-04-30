@@ -26,7 +26,7 @@ public class Salle {
     private List<Cours> Liste_des_cours_futurs;
     private List<Cours> Liste_des_cours_passes;
     private String Nom_du_fichier_sauvegarder;
-    private List<Cours> Liste_des_cours;
+    //private List<Cours> Liste_des_cours;
 
     Scanner scan = new Scanner(System.in);
 
@@ -509,9 +509,10 @@ public class Salle {
 
     public void Sauvegarder() {
         try {
-            FileWriter fw = new FileWriter(this.Nom_du_fichier_sauvegarder, false);
-            PrintWriter pw = new PrintWriter(fw);
-            // CLIENTS
+        FileWriter fw = new FileWriter(this.Nom_du_fichier_sauvegarder, false);
+        PrintWriter pw = new PrintWriter(fw);
+
+        // --- CLIENTS ---
         for (Client client : Liste_des_clients) {
             pw.println("CLIENT ; " + client.getNumClient() + " ; " + client.getNom() + " ; " + client.getPrenom()
                     + " ; " + client.getEmail() + " ; " + client.getMotDePasse()
@@ -519,62 +520,91 @@ public class Salle {
                     + " ; " + client.Abo_est_il_actif());
         }
 
-        // COURS FUTURS
+        // --- COURS FUTURS (avec participants) ---
         for (Cours c : Liste_des_cours_futurs) {
-            pw.println("COURS_FUTUR ; " + c.getType_de_cours() + " ; " + c.getNomActivite() + " ; " 
-                    + c.getNb_Place_Max() + " ; " + c.getCoach() + " ; " + c.getDate() + " ; " + c.getHeure());
+            String ligneBase = "COURS_FUTUR ; " + c.getType_de_cours() + " ; " + c.getNomActivite() + " ; " 
+                             + c.getNb_Place_Max() + " ; " + c.getCoach() + " ; " + c.getDate() + " ; " + c.getHeure();
+            
+            // On récupère les emails des inscrits
+            String inscrits = "";
+            for (Client participant : c.getListe_Client_Inscrit()) {
+                inscrits += participant.getEmail() + ",";
+            }
+            // Si pas d'inscrit, on met un marqueur vide
+            pw.println(ligneBase + " ; " + (inscrits.isEmpty() ? "AUCUN" : inscrits));
         }
 
-        //  COURS PASSÉS
+        // --- COURS PASSÉS (avec participants) ---
         for (Cours c : Liste_des_cours_passes) {
-            pw.println("COURS_PASSE ; " + c.getType_de_cours() + " ; " + c.getNomActivite() + " ; " 
-                    + c.getNb_Place_Max() + " ; " + c.getCoach() + " ; " + c.getDate() + " ; " + c.getHeure());
+            String ligneBase = "COURS_PASSE ; " + c.getType_de_cours() + " ; " + c.getNomActivite() + " ; " 
+                             + c.getNb_Place_Max() + " ; " + c.getCoach() + " ; " + c.getDate() + " ; " + c.getHeure();
+            
+            String inscrits = "";
+            for (Client participant : c.getListe_Client_Inscrit()) {
+                inscrits += participant.getEmail() + ",";
+            }
+            pw.println(ligneBase + " ; " + (inscrits.isEmpty() ? "AUCUN" : inscrits));
         }
-            pw.close();
-             System.out.println("Sauvegarde Cours reussie.");
-        } catch (IOException e) {
-            System.out.println("Erreur lors de la sauvegarde.");
-        }
+
+        pw.close();
+        System.out.println("Sauvegarde effectuée avec succès.");
+    } catch (IOException e) {
+        System.out.println("Erreur lors de la sauvegarde.");
+    }
     }
 
     public void Charger() {
         try {
-            FileReader fr = new FileReader(this.Nom_du_fichier_sauvegarder);
-            BufferedReader br = new BufferedReader(fr);
-            String ligne;
-            this.Liste_des_clients.clear();
-            this.Liste_des_cours_futurs.clear();
-            this.Liste_des_cours_passes.clear();
-            
-            while ((ligne = br.readLine()) != null) {
-                String[] data = ligne.split(" ; ");
-                if (data.length > 0) {
-                String marqueur = data[0]; // Le premier élément nous dit ce que c'est
+        FileReader fr = new FileReader(this.Nom_du_fichier_sauvegarder);
+        BufferedReader br = new BufferedReader(fr);
+        String ligne;
+        this.Liste_des_clients.clear();
+        this.Liste_des_cours_futurs.clear();
+        this.Liste_des_cours_passes.clear();
 
-                if (marqueur.equals("CLIENT") && data.length == 9) {
-                    // Lecture d'un client
-                    Client c = new Client(data[1], data[2], data[3], data[4], data[5], data[6], data[7]);
-                    c.Abo_devient_actif(Boolean.parseBoolean(data[8]));
-                    this.Liste_des_clients.add(c);
-                } 
-                else if (marqueur.equals("COURS_FUTUR") && data.length == 7) {
-                    // Lecture d'un cours futur
-                    // Ordre : Type, Activité, Places, Coach, Date, Heure
-                    Cours c = new Cours(data[1], data[2], Integer.parseInt(data[3]), data[4], java.time.LocalDate.parse(data[5]), data[6]);
-                    this.Liste_des_cours_futurs.add(c);
-                } 
-                else if (marqueur.equals("COURS_PASSE") && data.length == 7) {
-                    // Lecture d'un cours passé
-                    Cours c = new Cours(data[1], data[2], Integer.parseInt(data[3]), data[4], java.time.LocalDate.parse(data[5]), data[6]);
-                    this.Liste_des_cours_passes.add(c);
+        while ((ligne = br.readLine()) != null) {
+            String[] data = ligne.split(" ; ");
+            if (data.length < 2) continue;
+
+            String marqueur = data[0];
+
+            // CHARGEMENT DES CLIENTS
+            if (marqueur.equals("CLIENT")) {
+                Client c = new Client(data[1], data[2], data[3], data[4], data[5], data[6], data[7]);
+                c.Abo_devient_actif(Boolean.parseBoolean(data[8]));
+                this.Liste_des_clients.add(c);
+            } 
+            // CHARGEMENT DES COURS
+            else if (marqueur.equals("COURS_FUTUR") || marqueur.equals("COURS_PASSE")) {
+                Cours c = new Cours(data[1], data[2], Integer.parseInt(data[3]), data[4], java.time.LocalDate.parse(data[5]), data[6]);
+                
+                // RECONNEXION DES PARTICIPANTS (L'email est en position data[7])
+                if (data.length > 7 && !data[7].equals("AUCUN")) {
+                    String[] emails = data[7].split(",");
+                    for (String em : emails) {
+                        for (Client cli : Liste_des_clients) {
+                            if (cli.getEmail().equalsIgnoreCase(em)) {
+                                c.ajouterParticipant(cli); // On met le client dans le cours
+                                // On met aussi le cours dans le client
+                                if (marqueur.equals("COURS_FUTUR")) {
+                                    cli.getListe_des_cours_futurs_clients().add(c);
+                                } else {
+                                    cli.getListe_des_cours_passes_clients().add(c);
+                                }
+                            }
+                        }
+                    }
                 }
+
+                if (marqueur.equals("COURS_FUTUR")) this.Liste_des_cours_futurs.add(c);
+                else this.Liste_des_cours_passes.add(c);
             }
-            }
-            br.close();
-            System.out.println("Chargement termine : " + Liste_des_clients.size() + " clients recuperes et " + (Liste_des_cours_futurs.size() + Liste_des_cours_passes.size()) + " cours");
-        } catch (IOException e) {
-            System.out.println("Aucun fichier de sauvegarde trouve ou erreur de lecture.");
         }
+        br.close();
+        System.out.println("Chargement terminé : liens clients/cours rétablis.");
+    } catch (Exception e) {
+        System.out.println("Erreur de chargement ou fichier inexistant.");
+    }
     }
 
     // ========================

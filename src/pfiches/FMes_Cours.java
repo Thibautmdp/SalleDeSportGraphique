@@ -34,15 +34,29 @@ public class FMes_Cours extends javax.swing.JDialog {
 
     
     private void Remplir_Tableau(javax.swing.JTable tableau, List<Cours> liste){
-        DefaultTableModel model = (DefaultTableModel) tableau.getModel();
-        model.setRowCount(0);
         
-        if (liste != null){
-            for (Cours c : liste){
-                Object[] ligne = {c.getNomActivite(),c.getCoach(),c.getDate().toString(),c.getHeure(),c.getType_de_cours()};
-                model.addRow(ligne);
-            }
+       // 1. On définit les noms des colonnes
+    String[] colonnes = {"Activité", "Coach", "Date", "Heure", "Type"};
+    
+    // 2. On crée le modèle avec les titres (0 ligne au départ)
+    DefaultTableModel model = new DefaultTableModel(colonnes, 0);
+    
+    // 3. On remplit les données
+    if (liste != null) {
+        for (Cours c : liste) {
+            Object[] ligne = {
+                c.getNomActivite(), 
+                c.getCoach(), 
+                c.getDate().toString(), 
+                c.getHeure(), 
+                c.getType_de_cours()
+            };
+            model.addRow(ligne);
         }
+    }
+    
+    // 4. On applique le nouveau modèle au tableau pour afficher les titres
+    tableau.setModel(model);
     }
     
     /**
@@ -60,6 +74,8 @@ public class FMes_Cours extends javax.swing.JDialog {
         TCours_Passé = new javax.swing.JTable();
         BSe_Deinscrire = new javax.swing.JButton();
         BRetour = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -103,6 +119,12 @@ public class FMes_Cours extends javax.swing.JDialog {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setText("Cours Futurs");
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setText("Cours passés");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -112,7 +134,13 @@ public class FMes_Cours extends javax.swing.JDialog {
                 .addComponent(BSe_Deinscrire)
                 .addGap(93, 93, 93)
                 .addComponent(BRetour)
-                .addContainerGap(581, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(134, 134, 134)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 384, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(340, 340, 340))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -124,7 +152,11 @@ public class FMes_Cours extends javax.swing.JDialog {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(474, Short.MAX_VALUE)
+                .addGap(77, 77, 77)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 372, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BSe_Deinscrire)
                     .addComponent(BRetour))
@@ -216,6 +248,8 @@ public class FMes_Cours extends javax.swing.JDialog {
     private javax.swing.JButton BSe_Deinscrire;
     private javax.swing.JTable TCours_Futur;
     private javax.swing.JTable TCours_Passé;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables

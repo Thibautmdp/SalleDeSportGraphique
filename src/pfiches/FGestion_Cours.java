@@ -17,6 +17,7 @@ public class FGestion_Cours extends javax.swing.JDialog {
     private Salle salle;
     private FAjouter_Cours fichFAjouter_Cours;
     private FModifier_Cours fichFModifier_Cours;
+   
     
     /**
      * Creates new form FGestion_Cours
@@ -28,6 +29,7 @@ public class FGestion_Cours extends javax.swing.JDialog {
         this.pack(); // Applique la taille
         this.setLocationRelativeTo(null); // CENTRE sur l'écran
         this.salle = salle;
+        
         Remplir_Tableau_Cours();
         
         
@@ -197,6 +199,8 @@ public class FGestion_Cours extends javax.swing.JDialog {
         fichFAjouter_Cours = new FAjouter_Cours(null, true, salle);
         fichFAjouter_Cours.setVisible(true);
         Remplir_Tableau_Cours();
+       
+    
     }//GEN-LAST:event_BAjouterActionPerformed
 
     private void BSupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSupprimerActionPerformed

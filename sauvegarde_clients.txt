@@ -8,7 +8,14 @@ CLIENT ; C7 ; thib ; thib ; thib ; m ; 06 ; Annuel ; true
 CLIENT ; C8 ; f ; f ; f ; p ; f ; Mensuel ; true
 CLIENT ; C9 ; m ; m ; m ; m ; m ; Semestriel ; true
 CLIENT ; C10 ; g ; g ; g ; h ; g ; Trimestriel ; true
-COURS_FUTUR ; Collectif ; Yoga ; 30 ; thib ; 2026-04-29 ; 12:00
 CLIENT ; C11 ; Poulard ; Maxence ; maxence.poulard@epfedu.fr ; Vie5cgmf! ; 0651012741 ; Mensuel ; true
-COURS_PASSE ; Exterieur ; Escalade ; 3 ; Camille ; 2026-04-21 ; 09:45
-COURS_PASSE ; collectif ; yoga ; 30 ; thib ; 2026-04-26 ; 12:00
+COURS_FUTUR ; collectif ; Yoga ; 40 ; thib ; 2026-05-01 ; 11:00 ; m,m,
+COURS_FUTUR ; Individuel ; Gymnastique ; 1 ; thib ; 2026-04-30 ; 23:00 ; m,
+COURS_PASSE ; Exterieur ; Escalade ; 3 ; Camille ; 2026-04-21 ; 09:45 ; AUCUN
+COURS_PASSE ; collectif ; yoga ; 30 ; thib ; 2026-04-26 ; 12:00 ; AUCUN
+COURS_PASSE ; Collectif ; Yoga ; 30 ; thib ; 2026-04-29 ; 12:00 ; AUCUN
+COURS_PASSE ; collectif ; yoga ; 30 ; thib ; 2025-04-30 ; 11:00 ; AUCUN
+COURS_PASSE ; collectif ; Pilate ; 40 ; thib ; 2025-04-26 ; 11:00 ; AUCUN
+COURS_PASSE ; individuel ; yoga ; 1 ; thib ; 2025-04-30 ; 13:00 ; AUCUN
+COURS_PASSE ; collectif ; Yoga ; 30 ; thib ; 2025-04-30 ; 11:00 ; AUCUN
+COURS_PASSE ; col ; Yoga ; 3 ; thib ; 2025-05-01 ; 11:00 ; AUCUN
